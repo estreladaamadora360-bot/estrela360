@@ -18,105 +18,635 @@
         body {
             font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at top right, rgba(0, 135, 81, 0.15), transparent 300px),
+                              radial-gradient(circle at top left, rgba(210, 38, 48, 0.15), transparent 300px);
             color: var(--text-light);
             margin: 0;
             padding: 0;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* SPLASH SCREEN ATUALIZADO */
+        /* ECRÃ DE BOAS-VINDAS (SPLASH SCREEN) */
         #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: #070709;
             z-index: 99999;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        .splash-logo {
+            font-size: 50px;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+        .splash-title {
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-top: 15px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #B5B5B5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .splash-subtitle {
+            font-size: 11px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-top: 5px;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
         }
 
-        header { padding: 30px 20px 15px 20px; text-align: center; border-bottom: 1px solid var(--card-border); }
-        header h1 { margin: 0; font-size: 34px; font-weight: 900; text-transform: uppercase; }
-        
-        nav { display: flex; background: rgba(13, 13, 16, 0.95); padding: 8px 4px; position: sticky; top: 0; z-index: 999; border-bottom: 1px solid var(--card-border); }
-        nav button { background: none; border: none; color: var(--text-muted); font-size: 11px; font-weight: 800; cursor: pointer; padding: 10px 6px; flex-grow: 1; text-transform: uppercase; }
-        nav button.active { color: #FFFFFF; background: var(--primary-green); border-radius: 10px; }
+        header {
+            padding: 30px 20px 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+            position: relative;
+        }
 
-        .container { padding: 20px; max-width: 600px; margin: 0 auto; }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, #FFFFFF 50%, var(--primary-red) 100%);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #FFFFFF 0%, #B5B5B5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            margin: 4px 0 0 0;
+            font-size: 11px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(13, 13, 16, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px 4px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+            padding: 10px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        nav button.active {
+            color: #FFFFFF;
+            background: linear-gradient(135deg, var(--primary-green) 0%, rgba(0, 135, 81, 0.4) 100%);
+            box-shadow: 0 4px 10px rgba(0, 135, 81, 0.25);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+
         .app-section { display: none; }
         .app-section.active { display: block; }
 
-        /* NOTÍCIAS ESTILO PLANTEL */
-        .news-item {
+        .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 15px;
-            border-radius: 16px;
-            margin-bottom: 15px;
-            cursor: pointer;
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
-        .news-item:hover { background: rgba(255,255,255,0.05); }
 
-        /* MODAL GERAL (PARA NOTÍCIAS E JOGADORES) */
-        .custom-modal {
-            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(7, 7, 9, 0.98); z-index: 10000; padding: 20px; overflow-y: auto;
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 10px 0 20px 0;
+            letter-spacing: -0.5px;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 10px;
         }
-        .modal-content { max-width: 500px; margin: 40px auto; }
-        .modal-close { background: var(--primary-red); border: none; color: white; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
+
+        /* Notícias Interativas */
+        .news-card-modern {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .news-card-modern:hover {
+            transform: scale(1.01);
+            background: rgba(30, 30, 38, 0.8);
+        }
+
+        .news-image-banner {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content-area { padding: 20px; }
+        .news-tag {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .news-title { font-size: 20px; font-weight: 900; margin: 0 0 10px 0; line-height: 1.35; }
+        .news-desc { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+        /* Resultados */
+        .alert-card {
+            background: rgba(210, 38, 48, 0.1);
+            border: 1px dashed var(--primary-red);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            color: #FFA3A3;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .match-card { background: linear-gradient(145deg, rgba(28,28,35,0.9), rgba(16,16,20,0.9)); }
+        .match-flex { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; gap: 8px; }
+        .team-name { font-weight: 800; font-size: 13px; width: 40%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .team-left { text-align: left; color: #FFF; }
+        .team-right { text-align: right; color: #FFF; }
+        .score-box {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #064E3B 100%);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        .match-info { text-align: center; color: var(--text-muted); font-size: 11px; margin-top: 15px; font-weight: 600; text-transform: uppercase; }
+
+        /* Plantel Interativo */
+        .squad-group-title {
+            font-size: 12px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 20px 0 10px 0;
+            font-weight: 800;
+        }
+        .player-row {
+            display: grid;
+            grid-template-columns: 12% 48% 12% 28%;
+            align-items: center;
+            padding: 14px 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 8px;
+        }
+        .player-row:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+        .p-number { font-weight: 800; color: var(--text-muted); }
+        .p-name { font-weight: 700; color: #FFF; }
+        .p-age { color: var(--text-muted); text-align: center; }
+        .p-value { font-weight: 800; text-align: right; color: #F59E0B; }
+
+        /* FLUTUANTES (MODAIS PREMIUM) */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(7, 7, 9, 0.96);
+            z-index: 10000;
+            padding: 20px;
+            overflow-y: auto;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .modal-header-card {
+            background: linear-gradient(135deg, var(--primary-green) 0%, rgba(210, 38, 48, 0.3) 100%);
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none; color: white;
+            width: 36px; height: 36px;
+            border-radius: 50%; font-weight: 900;
+            cursor: pointer; font-size: 16px;
+        }
+        .modal-number { font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.15); margin: 0; line-height: 1; }
+        .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
+        .modal-position { font-size: 11px; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .modal-grid-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .modal-stat-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 15px 5px;
+            text-align: center;
+        }
+        .modal-stat-box span { display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+        .modal-stat-box strong { font-size: 16px; color: #FFF; font-weight: 800; }
+
+        /* Design Expandido da Notícia */
+        .news-modal-banner {
+            height: 200px;
+            border-radius: 20px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+        .news-modal-title {
+            font-size: 24px;
+            font-weight: 900;
+            margin: 15px 0;
+            line-height: 1.3;
+        }
+
+        /* Análises */
+        .stat-row { margin-bottom: 18px; }
+        .stat-labels { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
+        .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
+
+        /* Comentários */
+        .comment-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 16px; box-sizing: border-box; font-size: 14px; resize: none; }
+        .comment-btn { background: #FFFFFF; color: #000000; border: none; padding: 14px 24px; border-radius: 14px; cursor: pointer; font-weight: 800; font-size: 14px; margin-top: 12px; width: 100%; text-transform: uppercase; }
+        .comment-list { margin-top: 30px; }
+        .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <h2>ESTRELA360</h2>
-        <p>Bem-vindo à casa Tricolor</p>
+        <span class="splash-logo">⭐</span>
+        <div class="splash-title">Estrela360 Pro</div>
+        <div class="splash-subtitle">A Comunidade Tricolor</div>
     </div>
 
     <header>
         <h1>Estrela360</h1>
+        <p id="app-subtitle">A Comunidade Tricolor</p>
     </header>
 
     <nav>
         <button onclick="irParaSecao('news')" id="btn-news" class="active">Notícias</button>
+        <button onclick="irParaSecao('results')" id="btn-results">Resultados</button>
         <button onclick="irParaSecao('squad')" id="btn-squad">Plantel</button>
+        <button onclick="irParaSecao('stats')" id="btn-stats">Análises</button>
+        <button onclick="irParaSecao('community')" id="btn-comm">Momentos</button>
     </nav>
 
     <div class="container">
+
         <section id="news" class="app-section active">
-            <h2 class="section-title">Notícias</h2>
-            <div class="news-item" onclick="abrirModal('Título Notícia 1', 'Texto longo da notícia 1 aqui...')">
-                <h3>Revolução de 45M€</h3>
+            <h2 class="section-title">Destaques Principais</h2>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
+            
+            <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag">SAD Investimento</span>
+                    <h3 class="news-title">Revolução de 45M€: Hummels e Müller associados à compra do Estrela</h3>
+                    <p class="news-desc">Estrelas globais como Mats Hummels, Thomas Müller e Yann Sommer estão ligados a um consórcio internacional para reestruturar financeiramente a SAD tricolor.</p>
+                </div>
+            </div>
+
+            <div class="news-card-modern" onclick="abrirNoticia('noticia2')">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-green);">Mercado</span>
+                    <h3 class="news-title">Assédio do Brasil: Vasco da Gama sonda Abraham Marcus</h3>
+                    <p class="news-desc">O extremo nigeriano de 26 anos está blindado pela direção tricolor, mas as excelentes exibições despertaram o forte interesse do clube brasileiro.</p>
+                </div>
             </div>
         </section>
+
+        <section id="results" class="app-section">
+            <h2 class="section-title">Época Competitiva</h2>
+            <div class="alert-card">⚠️ Ainda não há calendário definido para a temporada 2026/2027</div>
+            <div class="card match-card">
+                <div class="match-flex">
+                    <span class="team-name team-left">SC Braga</span>
+                    <span class="score-box">2 - 2</span>
+                    <span class="team-name team-right">Estrela Amadora</span>
+                </div>
+                <div class="match-info">Liga Portugal • Manutenção Assegurada • Terminado</div>
+            </div>
+        </section>
+
+        <section id="squad" class="app-section">
+            <h2 class="section-title">Plantel Principal</h2>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
+            
+            <div class="card" style="padding: 10px 15px;">
+                
+                <div class="squad-group-title">Guarda-Redes</div>
+                <div class="player-row" onclick="abrirJogador(40)">
+                    <span class="p-number">40</span><span class="p-name">Renan Ribeiro</span><span class="p-age">36</span><span class="p-value">100 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(1)">
+                    <span class="p-number">1</span><span class="p-name">Diogo Pinto</span><span class="p-age">21</span><span class="p-value">300 mil €</span>
+                </div>
+
+                <div class="squad-group-title">Defesas</div>
+                <div class="player-row" onclick="abrirJogador(25)">
+                    <span class="p-number">25</span><span class="p-name">Stefan Lekovic</span><span class="p-age">22</span><span class="p-value">2.50 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(30)">
+                    <span class="p-number">30</span><span class="p-name">Luan Patrick</span><span class="p-age">24</span><span class="p-value">2.00 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(83)">
+                    <span class="p-number">83</span><span class="p-name">Otávio</span><span class="p-age">20</span><span class="p-value">1.50 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(24)">
+                    <span class="p-number">24</span><span class="p-name">Bruno Langa</span><span class="p-age">28</span><span class="p-value">1.00 M €</span>
+                </div>
+
+                <div class="squad-group-title">Médios</div>
+                <div class="player-row" onclick="abrirJogador(19)">
+                    <span class="p-number">19</span><span class="p-name">Paulo Moreira</span><span class="p-age">26</span><span class="p-value">1.50 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(10)">
+                    <span class="p-number">10</span><span class="p-name">Ianis Stoica</span><span class="p-age">23</span><span class="p-value">1.50 M €</span>
+                </div>
+
+                <div class="squad-group-title">Avançados</div>
+                <div class="player-row" onclick="abrirJogador(99)">
+                    <span class="p-number">99</span><span class="p-name">Abraham Marcus</span><span class="p-age">26</span><span class="p-value">1.00 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(20)">
+                    <span class="p-number">20</span><span class="p-name">S. van Hooijdonk</span><span class="p-age">26</span><span class="p-value">1.00 M €</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="stats" class="app-section">
+            <h2 class="section-title">Performance Global</h2>
+            <div class="card">
+                <div class="stat-row">
+                    <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="community" class="app-section">
+            <h2 class="section-title">Mural Interativo</h2>
+            <div class="card">
+                <textarea id="commentInput" class="comment-input" rows="3" placeholder="Escreve algo sobre o Estrela..."></textarea>
+                <button onclick="enviarComentario()" class="comment-btn">Publicar</button>
+                <div class="comment-list" id="commentList">
+                    <div class="comment-item"><strong>@TricolorSempre:</strong> O Lekovic vale ouro! 🛡️</div>
+                </div>
+            </div>
+        </section>
+
     </div>
 
-    <div id="modal-geral" class="custom-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="fecharModal()">Fechar</button>
-            <h2 id="modal-titulo"></h2>
-            <p id="modal-texto"></p>
+    <div id="playerModal" class="custom-modal">
+        <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
+        
+        <div class="modal-header-card">
+            <p id="modalNum" class="modal-number">#00</p>
+            <h2 id="modalName" class="modal-name">Nome do Jogador</h2>
+            <span id="modalPos" class="modal-position">Posição</span>
+        </div>
+
+        <div class="modal-grid-stats">
+            <div class="modal-stat-box"><span>Idade</span><strong id="modalAge">--</strong></div>
+            <div class="modal-stat-box"><span>Valor</span><strong id="modalVal">--</strong></div>
+            <div class="modal-stat-box"><span>País</span><strong id="modalNat">--</strong></div>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
+            <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
+        </div>
+        
+        <div class="card">
+            <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
+            <p id="modalHistory" style="font-size:13px; line-height:1.6; color:var(--text-muted); margin:0;">Carregando...</p>
+        </div>
+    </div>
+
+    <div id="newsModal" class="custom-modal">
+        <button class="modal-close-btn" onclick="fecharNoticia()">✕</button>
+        
+        <div id="newsModalBanner" class="news-modal-banner"></div>
+        
+        <span id="newsModalTag" class="news-tag">Tag</span>
+        <h2 id="newsModalTitle" class="news-modal-title">Título da Notícia</h2>
+        
+        <div class="card" style="padding: 20px; background: rgba(255,255,255,0.02);">
+            <p id="newsModalFullText" style="font-size:14px; line-height:1.7; color:#E2E2EC; margin:0; white-space: pre-line;">Conteúdo...</p>
         </div>
     </div>
 
     <script>
-        // Splash Screen Logic
-        window.onload = () => {
-            setTimeout(() => {
-                document.getElementById('splash-screen').style.display = 'none';
-            }, 2000);
+        // EXECUÇÃO DO ECRÃ DE BOAS-VINDAS
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var splash = document.getElementById('splash-screen');
+                splash.style.opacity = '0';
+                setTimeout(function() {
+                    splash.style.visibility = 'hidden';
+                }, 500);
+            }, 2000); // Fica ativo por 2 segundos antes de sumir
+        });
+
+        // BASE DE DADOS DAS NOTÍCIAS EXPANDIDAS
+        var baseNoticias = {
+            "noticia1": {
+                titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
+                tag: "SAD Investimento",
+                corTag: "var(--primary-red)",
+                imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela.\n\nO plano prevê uma injeção de capital direta que pode ascender aos 45 milhões de euros no decorrer dos próximos três anos, focando-se na modernização total das infraestruturas e em contratações de peso.\n\nFiguras lendárias como Mats Hummels, Thomas Müller e o experiente guardião Yann Sommer surgem associados ao fundo de investimento como embaixadores e futuros consultores desportivos do projeto, o que promete colocar o emblema da Reboleira no mapa do futebol europeu a curto prazo."
+            },
+            "noticia2": {
+                titulo: "Assédio do Brasil: Vasco da Gama sonda Abraham Marcus",
+                tag: "Mercado",
+                corTag: "var(--primary-green)",
+                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
+            }
         };
 
-        function irParaSecao(id) {
-            document.querySelectorAll('.app-section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
+        function abrirNoticia(idNoticia) {
+            var noticia = baseNoticias[idNoticia];
+            if(!noticia) return;
+
+            document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
+            document.getElementById('newsModalTag').innerText = noticia.tag;
+            document.getElementById('newsModalTag').style.background = noticia.corTag;
+            document.getElementById('newsModalTitle').innerText = noticia.titulo;
+            document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
+
+            document.getElementById('newsModal').style.display = 'block';
         }
 
-        function abrirModal(titulo, texto) {
-            document.getElementById('modal-titulo').innerText = titulo;
-            document.getElementById('modal-texto').innerText = texto;
-            document.getElementById('modal-geral').style.display = 'block';
+        function fecharNoticia() {
+            document.getElementById('newsModal').style.display = 'none';
         }
 
-        function fecharModal() {
-            document.getElementById('modal-geral').style.display = 'none';
+        var baseJogadores = {
+            "40": {
+                nome: "Renan Ribeiro", numero: "#40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
+                bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
+                historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
+            },
+            "1": {
+                nome: "Diogo Pinto", numero: "#1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
+                bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.",
+                historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
+            },
+            "25": {
+                nome: "Stefan Lekovic", numero: "#25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸",
+                bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo e com excelente visão de saída de bola.",
+                historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela."
+            },
+            "30": {
+                nome: "Luan Patrick", numero: "#30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷",
+                bio: "Central moderno, rápido na cobertura da profundidade e com posicionamento exímio.",
+                historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado."
+            },
+            "83": {
+                nome: "Otávio", numero: "#83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷",
+                bio: "Jovem defesa de perfil físico exuberante e muito agressivo nos duelos individuais.",
+                historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva."
+            },
+            "24": {
+                nome: "Bruno Langa", numero: "#24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿",
+                bio: "Lateral de passada larga e pulmão inesgotável, garantindo consistência defensiva total.",
+                historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira."
+            },
+            "19": {
+                nome: "Paulo Moreira", numero: "#19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹",
+                bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas e exímio na distribuição curta.",
+                historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa."
+            },
+            "10": {
+                nome: "Ianis Stoica", numero: "#10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴",
+                bio: "Criativo puro e desequilibrador nato. Combina visão de jogo em espaços curtos com drible forte.",
+                historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais."
+            },
+            "99": {
+                nome: "Abraham Marcus", numero: "#99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬",
+                bio: "Velocidade pura e verticalidade letal. Forte no um para um e no ataque à profundidade.",
+                historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama."
+            },
+            "20": {
+                nome: "S. van Hooijdonk", numero: "#20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱",
+                bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza e forte na finalização aérea.",
+                historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor."
+            }
+        };
+
+        function abrirJogador(numeroCamisola) {
+            var jogador = baseJogadores[numeroCamisola];
+            if(!jogador) return;
+
+            document.getElementById('modalNum').innerText = displayName(jogador.numero);
+            document.getElementById('modalName').innerText = displayName(jogador.nome);
+            document.getElementById('modalPos').innerText = jogador.posicao;
+            document.getElementById('modalAge').innerText = jogador.idade;
+            document.getElementById('modalVal').innerText = jogador.valor;
+            document.getElementById('modalNat').innerText = jogador.nacionalidade;
+            document.getElementById('modalBio').innerText = jogador.bio;
+            document.getElementById('modalHistory').innerText = jogador.historia;
+
+            document.getElementById('playerModal').style.display = 'block';
+        }
+
+        function displayName(name) { return name; }
+
+        function fecharJogador() {
+            document.getElementById('playerModal').style.display = 'none';
+        }
+
+        function irParaSecao(idSecao) {
+            var secoes = document.getElementsByClassName('app-section');
+            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
+            
+            var botoes = document.querySelectorAll('nav button');
+            for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
+            
+            document.getElementById(idSecao).classList.add('active');
+            
+            var idBotao = 'btn-' + idSecao;
+            if(idSecao === 'community') idBotao = 'btn-comm';
+            document.getElementById(idBotao).classList.add('active');
+        }
+
+        function enviarComentario() {
+            var campo = document.getElementById('commentInput');
+            var texto = campo.value.trim();
+            if(texto === "") return;
+            var lista = document.getElementById('commentList');
+            var elemento = document.createElement('div');
+            elemento.className = 'comment-item';
+            elemento.innerHTML = '<strong>@AdeptoTricolor:</strong> ' + texto;
+            lista.insertBefore(elemento, lista.firstChild);
+            campo.value = "";
         }
     </script>
 </body>
