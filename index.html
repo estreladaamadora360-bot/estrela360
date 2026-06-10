@@ -318,7 +318,7 @@
             justify-content: center;
         }
 
-        /* NOVO: DESIGN COMPONENTE DA FOTO DO JOGADOR NO MODAL */
+        /* COMPONENTE DA FOTO DO JOGADOR NO MODAL */
         .modal-photo-container {
             position: relative;
             width: 110px;
@@ -340,7 +340,7 @@
             right: 0;
             background: var(--primary-red);
             color: white;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 900;
             width: 32px;
             height: 32px;
@@ -350,6 +350,9 @@
             justify-content: center;
             border: 2px solid #FFFFFF;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .modal-number-badge::before {
+            content: '#';
         }
 
         .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
@@ -586,7 +589,7 @@
             </div>
         </div>
 
-    </div>
+    </div> 
 
     <script>
         // EXECUÇÃO DO ECRÃ DE BOAS-VINDAS
@@ -614,7 +617,7 @@
                 tag: "Mercado",
                 corTag: "var(--primary-green)",
                 imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
+                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-frontreiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondaem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
             }
         };
 
@@ -633,18 +636,17 @@
             document.getElementById('newsModal').style.display = 'none';
         }
 
-        // BASE DE DADOS DOS JOGADORES (CAMPOS DE FOTO ADICIONADOS)
-        // Substitui os links vazios abaixo pelos links reais das fotos (podes usar caminhos locais ou links da internet)
+        // BASE DE DADOS DOS JOGADORES ATUALIZADA E CORRIGIDA
         var baseJogadores = {
             "40": {
                 nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
-                foto: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200", // Muda pelo link da foto real
+                foto: "", 
                 bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
                 historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
             },
             "1": {
                 nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
-                foto: "", // Deixa vazio ou adiciona o link da imagem
+                foto: "", 
                 bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.",
                 historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
             },
@@ -699,21 +701,22 @@
         };
 
         function abrirJogador(numeroCamisola) {
-            var jogador = baseJogadores[numeroCamisola];
+            var jogador = baseJogadores[numeroCamisola.toString()];
             if(!jogador) return;
 
-            // Define o número no círculo
+            // Define o número no badge redondo
             document.getElementById('modalNumBadge').innerText = jogador.numero;
-           
-            // Tratamento da imagem: se não houver foto, mete um avatar cinzento por defeito
+            
+            // Tratamento da imagem
             var imgElement = document.getElementById('modalPhoto');
             if (jogador.foto && jogador.foto.trim() !== "") {
                 imgElement.src = jogador.foto;
             } else {
-                imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
+                // Imagem de substituição moderna enquanto não colocas um link válido
+                imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='18' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>SEM FOTO</text></svg>";
             }
 
-            document.getElementById('modalName').innerText = displayName(jogador.nome);
+            document.getElementById('modalName').innerText = jogador.nome;
             document.getElementById('modalPos').innerText = jogador.posicao;
             document.getElementById('modalAge').innerText = jogador.idade;
             document.getElementById('modalVal').innerText = jogador.valor;
@@ -723,8 +726,6 @@
 
             document.getElementById('playerModal').style.display = 'block';
         }
-
-        function displayName(name) { return name; }
 
         function fecharJogador() {
             document.getElementById('playerModal').style.display = 'none';
