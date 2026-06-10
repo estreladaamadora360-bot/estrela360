@@ -502,67 +502,32 @@
 
             </div>
         </section>
-<!-- SECÇÃO DE ANÁLISES -->
-    <section id="analytics" class="app-section">
-        <h2 class="section-title">Análises</h2>
 
-        <!-- VALOR DE MERCADO FIXO DO PLANTEL -->
-        <div class="card" style="background: linear-gradient(135deg, rgba(0,135,81,0.15) 0%, rgba(210,38,48,0.1) 100%); border: 1px solid rgba(255,255,255,0.1); text-align: center; margin-bottom: 25px; padding: 20px; border-radius: 12px;">
-            <p style="margin: 0; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Valor de Mercado do Plantel Atual</p>
-            <h3 style="margin: 8px 0 4px 0; font-size: 32px; color: #FFF; font-weight: 800;">21.00 M €</h3>
-            <span style="font-size: 11px; color: var(--primary-green); font-weight: bold;">▲ +5.83M € de valorização nesta época</span>
-        </div>
-
-        <!-- NOVIDADES E JOGADORES -->
-        <h3 style="font-size: 16px; margin-bottom: 15px; color: #FFF; font-weight: 600;">Últimas Atualizações Financeiras</h3>
-       
-        <!-- Jogador 1 -->
-        <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold;">AUMENTO DE VALOR</span>
-                    <h4 style="margin: 8px 0 4px 0; font-size: 15px; color: #FFF;">Stefan Leković</h4>
-                    <p style="margin: 0; font-size: 12px; color: var(--text-muted);">A afirmação a titular e a compra definitiva dispararam a sua cotação.</p>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: var(--primary-green); font-weight: bold; font-size: 16px;">▲ 2.50M €</span>
+        <section id="stats" class="app-section">
+            <h2 class="section-title">Performance Global</h2>
+            <div class="card">
+                <div class="stat-row">
+                    <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
                 </div>
             </div>
-        </div>
-
-        <!-- Jogador 2 -->
-        <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                    <span style="background: rgba(245,158,11,0.2); color: #F59E0B; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold;">VALORIZAÇÃO EM FOCO</span>
-                    <h4 style="margin: 8px 0 4px 0; font-size: 15px; color: #FFF;">Ianis Stoica</h4>
-                    <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Extremo mantém-se como um dos ativos mais valiosos do clube.</p>
-                </div>
-                <div style="text-align: right;">
-                    <span style="color: #F59E0B; font-weight: bold; font-size: 16px;">1.50M €</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
+        </section>
 
         <section id="community" class="app-section">
             <h2 class="section-title">Mercado de Tranferências Tricolor</h2>
             <div class="card">
                 <div class="card">
-<div class="comment-list" id="commentList">
-                    <!-- EXEMPLO DE ENTRADA -->
-                    <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
-                        <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
-                        <strong>Stefan Leković:</strong> Estrela da Amadora acionou oficialmente a opção de compra ao Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
-                    </div>
-                   
-                    <!-- EXEMPLO DE SAÍDA -->
-                    <div class="comment-item" style="border-left: 4px solid var(--primary-red);">
-                        <span style="color: var(--primary-red); font-size: 18px; font-weight: bold; margin-right: 8px; display: inline-block; transform: rotate(180deg);">➔</span>
-                        <strong>Oumar Ngom:</strong> Transferência oficializada para o Lecce de Itália. O negócio rendeu cerca de <strong>2M €</strong> aos cofres tricolores.
+                <textarea id="commentInput" class="comment-input" rows="3" placeholder="Insere um rumor ou negócio confirmado..."></textarea>
+                <button onclick="enviarComentario()" class="comment-btn">Publicar Atualização</button>
+                <div class="comment-list" id="commentList">
+                    <!-- O exemplo que pediste sobre o Lekovic -->
+                    <div class="comment-item">
+                        <strong style="color: var(--primary-green);">[CONFIRMADO]</strong>
+                        <strong>Stefan Leković:</strong> Estrela da Amadora aciona oficialmente a cláusula de opção de compra junto do Estrela Vermelha. Negócio fechado por <strong>1 milhão de euros</strong> para garantir o central em definitivo.
                     </div>
                 </div>
+            </div>
+
     <div id="playerModal" class="custom-modal">
         <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
        
