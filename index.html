@@ -26,7 +26,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-/* ECRÃ DE BOAS-VINDAS (SPLASH SCREEN CENTRADO TOTAL) */
+        /* ECRÃ DE BOAS-VINDAS (SPLASH SCREEN CENTRADO TOTAL) */
         #splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -41,8 +41,8 @@
             box-sizing: border-box;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
-/* Contentor para alinhar as 3 estrelas */
-.splash-stars-container {
+        /* Contentor para alinhar as 3 estrelas */
+        .splash-stars-container {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -317,7 +317,41 @@
             align-items: center;
             justify-content: center;
         }
-        .modal-number { font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.15); margin: 0; line-height: 1; }
+
+        /* NOVO: DESIGN COMPONENTE DA FOTO DO JOGADOR NO MODAL */
+        .modal-photo-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px auto;
+        }
+        .modal-player-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #FFFFFF;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            background: #16161c;
+        }
+        .modal-number-badge {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background: var(--primary-red);
+            color: white;
+            font-size: 14px;
+            font-weight: 900;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
         .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
         .modal-position { font-size: 11px; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
        
@@ -365,32 +399,14 @@
         .comment-list { margin-top: 30px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
-/* CORREÇÃO DE LARGURA PARA TELEMÓVEL */
+        /* CORREÇÃO DE LARGURA PARA TELEMÓVEL */
         @media (max-width: 480px) {
-            body, html {
-                overflow-x: hidden;
-            }
-            .container {
-                padding: 15px;
-                box-sizing: border-box;
-            }
-            .card {
-                padding: 15px !important;
-                box-sizing: border-box;
-                width: 100% !important;
-            }
-            .comment-item {
-                font-size: 13px !important;
-                white-space: normal !important;
-                word-break: break-word !important;
-                padding: 10px !important;
-            }
-            .comment-input {
-                font-size: 13px !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-}
+            body, html { overflow-x: hidden; }
+            .container { padding: 15px; box-sizing: border-box; }
+            .card { padding: 15px !important; box-sizing: border-box; width: 100% !important; }
+            .comment-item { font-size: 13px !important; white-space: normal !important; word-break: break-word !important; padding: 10px !important; }
+            .comment-input { font-size: 13px !important; width: 100% !important; max-width: 100% !important; }
+        }
     </style>
 </head>
 <body>
@@ -514,7 +530,7 @@
         <section id="community" class="app-section">
             <h2 class="section-title">Mercado de Transferências Tricolor</h2>
             <div class="card">
-<div class="comment-list" id="commentList">
+                <div class="comment-list" id="commentList">
                     <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
                         <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
                         <strong>Stefan Leković:</strong> Estrela da Amadora acionou oficialmente a opção de compra ao Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
@@ -528,21 +544,17 @@
             </div>
         </section>
 
-
-<div id="playerModal" class="custom-modal">
+        <div id="playerModal" class="custom-modal">
             <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
            
             <div class="modal-header-card">
-                <p id="modalNum" class="modal-number">#00</p>
+                <div class="modal-photo-container">
+                    <img id="modalPhoto" src="" alt="Foto Jogador" class="modal-player-img">
+                    <div id="modalNumBadge" class="modal-number-badge">00</div>
+                </div>
                 <h2 id="modalName" class="modal-name">Nome do Jogador</h2>
                 <span id="modalPos" class="modal-position">Posição</span>
-               
-                <div style="display: flex; justify-content: center; margin-top: 20px;">
-                    <img id="modalPlayerImg" src="" alt="Foto do jogador" style="width: 140px; height: 140px; object-fit: cover; border-radius: 50%; border: 3px solid rgba(255,255,255,0.2); box-shadow: 0 8px 20px rgba(0,0,0,0.4);">
-                </div>
             </div>
-
-            <div class="modal-grid-stats">
 
             <div class="modal-grid-stats">
                 <div class="modal-stat-box"><span>Idade</span><strong id="modalAge">--</strong></div>
@@ -574,7 +586,9 @@
             </div>
         </div>
 
-    </div> <script>
+    </div>
+
+    <script>
         // EXECUÇÃO DO ECRÃ DE BOAS-VINDAS
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
@@ -619,66 +633,68 @@
             document.getElementById('newsModal').style.display = 'none';
         }
 
+        // BASE DE DADOS DOS JOGADORES (CAMPOS DE FOTO ADICIONADOS)
+        // Substitui os links vazios abaixo pelos links reais das fotos (podes usar caminhos locais ou links da internet)
         var baseJogadores = {
             "40": {
-                nome: "Renan Ribeiro", numero: "#40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
+                nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
+                foto: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200", // Muda pelo link da foto real
                 bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
-                historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga.",
-                imagem: "https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?q=80&w=400&auto=format&fit=crop" // Exemplo de Foto
+                historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
             },
             "1": {
-                nome: "Diogo Pinto", numero: "#1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
+                nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
+                foto: "", // Deixa vazio ou adiciona o link da imagem
                 bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.",
-                historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira.",
-                imagem: "https://images.unsplash.com/photo-1510566337590-2fc1f21d0faa?q=80&w=400&auto=format&fit=crop"
+                historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
             },
             "25": {
-                nome: "Stefan Lekovic", numero: "#25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸",
+                nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸",
+                foto: "",
                 bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo e com excelente visão de saída de bola.",
-                historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela.",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&auto=format&fit=crop"
+                historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela."
             },
             "30": {
-                nome: "Luan Patrick", numero: "#30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷",
+                nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷",
+                foto: "",
                 bio: "Central moderno, rápido na cobertura da profundidade e com posicionamento exímio.",
-                historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado.",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&auto=format&fit=crop"
+                historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado."
             },
             "83": {
-                nome: "Otávio", numero: "#83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷",
+                nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷",
+                foto: "",
                 bio: "Jovem defesa de perfil físico exuberante e muito agressivo nos duelos individuais.",
-                historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva.",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&auto=format&fit=crop"
+                historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva."
             },
             "24": {
-                nome: "Bruno Langa", numero: "#24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿",
+                nome: "Bruno Langa", numero: "24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿",
+                foto: "",
                 bio: "Lateral de passada larga e pulmão inesgotável, garantindo consistência defensiva total.",
-                historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira.",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&auto=format&fit=crop"
+                historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira."
             },
             "19": {
-                nome: "Paulo Moreira", numero: "#19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹",
+                nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹",
+                foto: "",
                 bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas e exímio na distribuição curta.",
-                historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa.",
-                imagem: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=400&auto=format&fit=crop"
+                historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa."
             },
             "10": {
-                nome: "Ianis Stoica", numero: "#10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴",
+                nome: "Ianis Stoica", numero: "10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴",
+                foto: "",
                 bio: "Criativo puro e desequilibrador nato. Combina visão de jogo em espaços curtos com drible forte.",
-                historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais.",
-                imagem: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=400&auto=format&fit=crop"
+                historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais."
             },
             "99": {
-                nome: "Abraham Marcus", numero: "#99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬",
+                nome: "Abraham Marcus", numero: "99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬",
+                foto: "",
                 bio: "Velocidade pura e verticalidade letal. Forte no um para um e no ataque à profundidade.",
-                historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama.",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&auto=format&fit=crop"
+                historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama."
             },
             "20": {
-                nome: "S. van Hooijdonk", numero: "#20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱",
+                nome: "S. van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱",
+                foto: "",
                 bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza e forte na finalização aérea.",
-                historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor.",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=400&auto=format&fit=crop"
+                historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor."
             }
         };
 
@@ -686,23 +702,27 @@
             var jogador = baseJogadores[numeroCamisola];
             if(!jogador) return;
 
-            document.getElementById('modalNum').innerText = displayName(jogador.numero);
+            // Define o número no círculo
+            document.getElementById('modalNumBadge').innerText = jogador.numero;
+           
+            // Tratamento da imagem: se não houver foto, mete um avatar cinzento por defeito
+            var imgElement = document.getElementById('modalPhoto');
+            if (jogador.foto && jogador.foto.trim() !== "") {
+                imgElement.src = jogador.foto;
+            } else {
+                imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
+            }
+
             document.getElementById('modalName').innerText = displayName(jogador.nome);
             document.getElementById('modalPos').innerText = jogador.posicao;
             document.getElementById('modalAge').innerText = jogador.idade;
             document.getElementById('modalVal').innerText = jogador.valor;
             document.getElementById('modalNat').innerText = jogador.nacionalidade;
-            document.getElementById('modalBio').innerText = defenderTexto(jogador.bio);
-            document.getElementById('modalHistory').innerText = defenderTexto(jogador.historia);
-           
-            // ESTA LINHA ADICIONA A IMAGEM DINAMICAMENTE:
-            document.getElementById('modalPlayerImg').src = jogador.imagem;
+            document.getElementById('modalBio').innerText = jogador.bio;
+            document.getElementById('modalHistory').innerText = jogador.historia;
 
             document.getElementById('playerModal').style.display = 'block';
         }
-       
-        // Função auxiliar para evitar erros caso falte texto
-        function defenderTexto(txt) { return txt ? txt : "Carregando..."; }
 
         function displayName(name) { return name; }
 
