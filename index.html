@@ -6,140 +6,85 @@
     <title>Estrela360 Pro</title>
     <style>
         :root {
-            --tricolor-green: #008751;
-            --tricolor-red: #D22630;
-            --bg: #050505;
-            --card: #0c0c0e;
-            --accent: #ffffff;
+            --green: #008751;
+            --red: #D22630;
+            --dark: #050505;
+            --glass: rgba(255, 255, 255, 0.05);
         }
 
-        body {
-            margin: 0;
-            background-color: var(--bg);
-            color: var(--accent);
-            font-family: 'Inter', system-ui, sans-serif;
-            padding-bottom: 100px;
-        }
+        body { background: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; }
 
-        .header-hero {
-            padding: 60px 20px;
+        /* HEADER MODERNO */
+        .header-modern {
+            padding: 40px 20px;
             text-align: center;
-            background: linear-gradient(180deg, var(--tricolor-green) 0%, var(--bg) 100%);
+            background: linear-gradient(160deg, var(--green) 0%, var(--dark) 100%);
+            border-bottom: 3px solid var(--red);
         }
+        .header-modern h1 { font-size: 2.5rem; margin: 0; text-transform: uppercase; letter-spacing: -2px; }
 
-        .header-hero h1 {
-            font-size: 3rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
-
-        .nav-grid {
+        /* NAVEGAÇÃO 5 ABAS */
+        .nav-container {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 20px;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            padding: 10px;
+            background: #000;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-
-        .btn-nav {
-            background: var(--card);
-            border: 1px solid #222;
-            padding: 15px;
-            border-radius: 12px;
+        .nav-btn {
+            background: var(--glass);
+            border: none;
             color: #888;
+            padding: 10px 0;
+            border-radius: 8px;
+            font-size: 10px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-nav.active {
-            border-color: var(--tricolor-red);
-            color: white;
-        }
-
-        .main-container { padding: 0 20px; }
-
-        .card-modern {
-            background: var(--card);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--tricolor-green);
-        }
-
-        .stats-bar {
-            height: 10px;
-            background: #1a1a1a;
-            border-radius: 5px;
-            margin: 10px 0;
-            overflow: hidden;
-        }
-
-        .fill { height: 100%; border-radius: 5px; animation: load 1.5s ease; }
-
-        @keyframes load { from { width: 0; } }
-
-        .tag {
-            background: var(--tricolor-red);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
             text-transform: uppercase;
         }
+        .nav-btn.active { background: var(--green); color: white; }
+
+        .content-area { padding: 20px; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 <body>
 
-    <div class="header-hero">
+    <header class="header-modern">
         <h1>ESTRELA360</h1>
-        <p>O Coração da Reboleira</p>
-    </div>
+    </header>
 
-    <div class="nav-grid">
-        <button class="btn-nav active" onclick="show('news')">NOTÍCIAS</button>
-        <button class="btn-nav" onclick="show('squad')">PLANTEL</button>
-        <button class="btn-nav" onclick="show('performance')">DADOS</button>
-    </div>
+    <nav class="nav-container">
+        <button class="nav-btn active" onclick="mudarTab('noticias', this)">Notícias</button>
+        <button class="nav-btn" onclick="mudarTab('plantel', this)">Plantel</button>
+        <button class="nav-btn" onclick="mudarTab('analise', this)">Análise</button>
+        <button class="nav-btn" onclick="mudarTab('resultados', this)">Resultados</button>
+        <button class="nav-btn" onclick="mudarTab('momentos', this)">Momentos</button>
+    </nav>
 
-    <div class="main-container">
-        <div id="news" class="content">
-            <div class="card-modern">
-                <span class="tag">Infraestrutura</span>
-                <h2 style="margin: 10px 0;">Cidade Desportiva</h2>
-                <p style="color: #aaa;">O projeto da nova casa tricolor já começou a ser desenhado.</p>
-            </div>
-            <div class="card-modern" style="border-left-color: var(--tricolor-red);">
-                <span class="tag">SAD</span>
-                <h2 style="margin: 10px 0;">Investimento 45M€</h2>
-                <p style="color: #aaa;">Parceria estratégica para elevar o patamar do clube.</p>
+    <div class="content-area">
+        <div id="noticias" class="tab-content active"><h2>Notícias</h2></div>
+        <div id="plantel" class="tab-content"><h2>Plantel</h2></div>
+        <div id="analise" class="tab-content"><h2>Análise</h2></div>
+        <div id="resultados" class="tab-content">
+            <h2>Resultados</h2>
+            <div style="background: rgba(210, 38, 48, 0.1); padding: 15px; border-radius: 10px; border: 1px solid var(--red);">
+                ⚠️ Ainda não há calendário definido para a temporada 2026/2027
             </div>
         </div>
-
-        <div id="performance" class="content" style="display:none;">
-            <div class="card-modern">
-                <h3>Performance Trimestral</h3>
-                <label>Valorização do Plantel</label>
-                <div class="stats-bar"><div class="fill" style="width: 85%; background: var(--tricolor-green);"></div></div>
-                <label>Evolução Tática</label>
-                <div class="stats-bar"><div class="fill" style="width: 92%; background: var(--tricolor-red);"></div></div>
-            </div>
-        </div>
-
-        <div id="squad" class="content" style="display:none;">
-            <div class="card-modern">
-                <h3>Plantel Principal</h3>
-                <p>Lista técnica em atualização permanente...</p>
-            </div>
-        </div>
+        <div id="momentos" class="tab-content"><h2>Momentos</h2></div>
     </div>
 
     <script>
-        function show(id) {
-            document.querySelectorAll('.content').forEach(c => c.style.display = 'none');
-            document.querySelectorAll('.btn-nav').forEach(b => b.classList.remove('active'));
-            document.getElementById(id).style.display = 'block';
-            event.currentTarget.classList.add('active');
+        function mudarTab(id, btn) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            btn.classList.add('active');
         }
     </script>
 </body>
