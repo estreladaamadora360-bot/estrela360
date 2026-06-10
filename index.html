@@ -26,7 +26,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ECRÃ DE BOAS-VINDAS (SPLASH SCREEN) */
+/* ECRÃ DE BOAS-VINDAS (SPLASH SCREEN CENTRADO TOTAL) */
         #splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -36,17 +36,20 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center; /* Força todo o texto a ir para o centro */
+            padding: 20px;
+            box-sizing: border-box;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
-/* Contentor para alinhar as 3 estrelas ao centro */
-        .splash-stars-container {
+/* Contentor para alinhar as 3 estrelas */
+.splash-stars-container {
             display: flex;
-            justify-content: center; /* Centra horizontalmente */
-            align-items: center;     /* Centra verticalmente */
+            justify-content: center;
+            align-items: center;
             gap: 15px;
-            font-size: 55px;
+            font-size: 50px; /* Diminuído ligeiramente para nunca quebrar linha em telemóveis pequenos */
             margin-bottom: 15px;
-            width: 100%;             /* Garante que ocupa a largura total para alinhar bem */
+            width: 100%;
             animation: pulseModern 1.8s infinite ease-in-out;
         }
         /* Cor da primeira estrela: Vermelha */
@@ -362,20 +365,32 @@
         .comment-list { margin-top: 30px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
-/* Ajustes para o texto não sair para fora do telemóvel */
-        .comment-item {
-            word-wrap: break-word;       /* Força o texto a quebrar a linha se for muito grande */
-            word-break: break-word;
-            overflow-wrap: break-word;
-            font-size: 14px;             /* Diminui um pouco o texto no telemóvel para caber melhor */
-            line-height: 1.4;
-            padding: 12px !important;    /* Ajusta o espaçamento interno */
-        }
-
-        .comment-input {
-            width: 100%;                 /* Garante que a caixa de texto não ultrapassa a largura */
-            box-sizing: border-box;      /* Inclui as bordas no cálculo da largura */
-        }
+/* CORREÇÃO DE LARGURA PARA TELEMÓVEL */
+        @media (max-width: 480px) {
+            body, html {
+                overflow-x: hidden; /* Impede o ecrã de deslizar para os lados */
+            }
+            .container {
+                padding: 15px; /* Reduz a margem lateral para dar mais espaço ao texto */
+                box-sizing: border-box;
+            }
+            .card {
+                padding: 15px !important;
+                box-sizing: border-box;
+                width: 100% !important;
+            }
+            .comment-item {
+                font-size: 13px !important; /* Texto ligeiramente menor para caber melhor */
+                white-space: normal !important; /* Permite que o texto quebre as linhas naturalmente */
+                word-break: break-word !important; /* Esfrangalha palavras longas se necessário */
+                padding: 10px !important;
+            }
+            .comment-input {
+                font-size: 13px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+}
     </style>
 </head>
 <body>
@@ -400,7 +415,7 @@
         <button onclick="irParaSecao('results')" id="btn-results">Resultados</button>
         <button onclick="irParaSecao('squad')" id="btn-squad">Plantel</button>
         <button onclick="irParaSecao('stats')" id="btn-stats">Análises</button>
-        <button onclick="irParaSecao('community')" id="btn-comm">Transferências</button>
+        <button onclick="irParaSecao('community')" id="btn-comm">Mercado</button>
     </nav>
 
     <div class="container">
