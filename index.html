@@ -287,7 +287,7 @@
         .modal-number { font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.15); margin: 0; line-height: 1; }
         .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
         .modal-position { font-size: 11px; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        
+       
         .modal-grid-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -359,7 +359,7 @@
         <section id="news" class="app-section active">
             <h2 class="section-title">Destaques Principais</h2>
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
-            
+           
             <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
                 <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
                 <div class="news-content-area">
@@ -395,9 +395,9 @@
         <section id="squad" class="app-section">
             <h2 class="section-title">Plantel Principal</h2>
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
-            
+           
             <div class="card" style="padding: 10px 15px;">
-                
+               
                 <div class="squad-group-title">Guarda-Redes</div>
                 <div class="player-row" onclick="abrirJogador(40)">
                     <span class="p-number">40</span><span class="p-name">Renan Ribeiro</span><span class="p-age">36</span><span class="p-value">100 mil €</span>
@@ -464,7 +464,7 @@
 
     <div id="playerModal" class="custom-modal">
         <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
-        
+       
         <div class="modal-header-card">
             <p id="modalNum" class="modal-number">#00</p>
             <h2 id="modalName" class="modal-name">Nome do Jogador</h2>
@@ -481,7 +481,7 @@
             <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
             <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
         </div>
-        
+       
         <div class="card">
             <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
             <p id="modalHistory" style="font-size:13px; line-height:1.6; color:var(--text-muted); margin:0;">Carregando...</p>
@@ -490,12 +490,12 @@
 
     <div id="newsModal" class="custom-modal">
         <button class="modal-close-btn" onclick="fecharNoticia()">✕</button>
-        
+       
         <div id="newsModalBanner" class="news-modal-banner"></div>
-        
+       
         <span id="newsModalTag" class="news-tag">Tag</span>
         <h2 id="newsModalTitle" class="news-modal-title">Título da Notícia</h2>
-        
+       
         <div class="card" style="padding: 20px; background: rgba(255,255,255,0.02);">
             <p id="newsModalFullText" style="font-size:14px; line-height:1.7; color:#E2E2EC; margin:0; white-space: pre-line;">Conteúdo...</p>
         </div>
@@ -530,15 +530,6 @@
                 textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
             }
         };
- 	"noticia3": {
-                titulo: "Assédio do Brasil: Vasco da Gama sonda Abraham Marcus",
-                tag: "Mercado",
-                corTag: "var(--primary-green)",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
-            }
-        };
-
 
         function abrirNoticia(idNoticia) {
             var noticia = baseNoticias[idNoticia];
@@ -635,12 +626,12 @@
         function irParaSecao(idSecao) {
             var secoes = document.getElementsByClassName('app-section');
             for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
-            
+           
             var botoes = document.querySelectorAll('nav button');
             for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
-            
+           
             document.getElementById(idSecao).classList.add('active');
-            
+           
             var idBotao = 'btn-' + idSecao;
             if(idSecao === 'community') idBotao = 'btn-comm';
             document.getElementById(idBotao).classList.add('active');
