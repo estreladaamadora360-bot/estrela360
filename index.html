@@ -382,7 +382,7 @@
         <button onclick="irParaSecao('results')" id="btn-results">Resultados</button>
         <button onclick="irParaSecao('squad')" id="btn-squad">Plantel</button>
         <button onclick="irParaSecao('stats')" id="btn-stats">Análises</button>
-        <button onclick="irParaSecao('community')" id="btn-comm">Momentos</button>
+        <button onclick="irParaSecao('community')" id="btn-comm">Transferências</button>
     </nav>
 
     <div class="container">
@@ -481,17 +481,19 @@
         </section>
 
         <section id="community" class="app-section">
-            <h2 class="section-title">Mural Interativo</h2>
+            <h2 class="section-title">Mercado de Tranferências Tricolor</h2>
             <div class="card">
-                <textarea id="commentInput" class="comment-input" rows="3" placeholder="Escreve algo sobre o Estrela..."></textarea>
-                <button onclick="enviarComentario()" class="comment-btn">Publicar</button>
+                <div class="card">
+                <textarea id="commentInput" class="comment-input" rows="3" placeholder="Insere um rumor ou negócio confirmado..."></textarea>
+                <button onclick="enviarComentario()" class="comment-btn">Publicar Atualização</button>
                 <div class="comment-list" id="commentList">
-                    <div class="comment-item"><strong>@TricolorSempre:</strong> O Lekovic vale ouro! 🛡️</div>
+                    <!-- O exemplo que pediste sobre o Lekovic -->
+                    <div class="comment-item">
+                        <strong style="color: var(--primary-green);">[CONFIRMADO]</strong>
+                        <strong>Stefan Leković:</strong> Estrela da Amadora aciona oficialmente a cláusula de opção de compra junto do Estrela Vermelha. Negócio fechado por <strong>1 milhão de euros</strong> para garantir o central em definitivo.
+                    </div>
                 </div>
             </div>
-        </section>
-
-    </div>
 
     <div id="playerModal" class="custom-modal">
         <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
