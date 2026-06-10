@@ -287,7 +287,7 @@
         .modal-number { font-size: 40px; font-weight: 900; color: rgba(255,255,255,0.15); margin: 0; line-height: 1; }
         .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
         .modal-position { font-size: 11px; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        
+       
         .modal-grid-stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -359,7 +359,7 @@
         <section id="news" class="app-section active">
             <h2 class="section-title">Destaques Principais</h2>
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
-            
+           
             <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
                 <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
                 <div class="news-content-area">
@@ -395,9 +395,9 @@
         <section id="squad" class="app-section">
             <h2 class="section-title">Plantel Principal</h2>
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
-            
+           
             <div class="card" style="padding: 10px 15px;">
-                
+               
                 <div class="squad-group-title">Guarda-Redes</div>
                 <div class="player-row" onclick="abrirJogador(40)">
                     <span class="p-number">40</span><span class="p-name">Renan Ribeiro</span><span class="p-age">36</span><span class="p-value">100 mil €</span>
@@ -463,4 +463,191 @@
     </div>
 
     <div id="playerModal" class="custom-modal">
-        <button class="modal-close-bt
+        <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
+       
+        <div class="modal-header-card">
+            <p id="modalNum" class="modal-number">#00</p>
+            <h2 id="modalName" class="modal-name">Nome do Jogador</h2>
+            <span id="modalPos" class="modal-position">Posição</span>
+        </div>
+
+        <div class="modal-grid-stats">
+            <div class="modal-stat-box"><span>Idade</span><strong id="modalAge">--</strong></div>
+            <div class="modal-stat-box"><span>Valor</span><strong id="modalVal">--</strong></div>
+            <div class="modal-stat-box"><span>País</span><strong id="modalNat">--</strong></div>
+        </div>
+
+        <div class="card">
+            <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
+            <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
+        </div>
+       
+        <div class="card">
+            <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
+            <p id="modalHistory" style="font-size:13px; line-height:1.6; color:var(--text-muted); margin:0;">Carregando...</p>
+        </div>
+    </div>
+
+    <div id="newsModal" class="custom-modal">
+        <button class="modal-close-btn" onclick="fecharNoticia()">✕</button>
+       
+        <div id="newsModalBanner" class="news-modal-banner"></div>
+       
+        <span id="newsModalTag" class="news-tag">Tag</span>
+        <h2 id="newsModalTitle" class="news-modal-title">Título da Notícia</h2>
+       
+        <div class="card" style="padding: 20px; background: rgba(255,255,255,0.02);">
+            <p id="newsModalFullText" style="font-size:14px; line-height:1.7; color:#E2E2EC; margin:0; white-space: pre-line;">Conteúdo...</p>
+        </div>
+    </div>
+
+    <script>
+        // EXECUÇÃO DO ECRÃ DE BOAS-VINDAS
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var splash = document.getElementById('splash-screen');
+                splash.style.opacity = '0';
+                setTimeout(function() {
+                    splash.style.visibility = 'hidden';
+                }, 500);
+            }, 2000); // Fica ativo por 2 segundos antes de sumir
+        });
+
+        // BASE DE DADOS DAS NOTÍCIAS EXPANDIDAS
+        var baseNoticias = {
+            "noticia1": {
+                titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
+                tag: "SAD Investimento",
+                corTag: "var(--primary-red)",
+                imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela.\n\nO plano prevê uma injeção de capital direta que pode ascender aos 45 milhões de euros no decorrer dos próximos três anos, focando-se na modernização total das infraestruturas e em contratações de peso.\n\nFiguras lendárias como Mats Hummels, Thomas Müller e o experiente guardião Yann Sommer surgem associados ao fundo de investimento como embaixadores e futuros consultores desportivos do projeto, o que promete colocar o emblema da Reboleira no mapa do futebol europeu a curto prazo."
+            },
+            "noticia2": {
+                titulo: "Assédio do Brasil: Vasco da Gama sonda Abraham Marcus",
+                tag: "Mercado",
+                corTag: "var(--primary-green)",
+                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
+            }
+        };
+
+        function abrirNoticia(idNoticia) {
+            var noticia = baseNoticias[idNoticia];
+            if(!noticia) return;
+
+            document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
+            document.getElementById('newsModalTag').innerText = noticia.tag;
+            document.getElementById('newsModalTag').style.background = noticia.corTag;
+            document.getElementById('newsModalTitle').innerText = noticia.titulo;
+            document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
+
+            document.getElementById('newsModal').style.display = 'block';
+        }
+
+        function fecharNoticia() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        var baseJogadores = {
+            "40": {
+                nome: "Renan Ribeiro", numero: "#40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
+                bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
+                historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
+            },
+            "1": {
+                nome: "Diogo Pinto", numero: "#1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
+                bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.",
+                historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
+            },
+            "25": {
+                nome: "Stefan Lekovic", numero: "#25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸",
+                bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo e com excelente visão de saída de bola.",
+                historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela."
+            },
+            "30": {
+                nome: "Luan Patrick", numero: "#30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷",
+                bio: "Central moderno, rápido na cobertura da profundidade e com posicionamento exímio.",
+                historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado."
+            },
+            "83": {
+                nome: "Otávio", numero: "#83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷",
+                bio: "Jovem defesa de perfil físico exuberante e muito agressivo nos duelos individuais.",
+                historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva."
+            },
+            "24": {
+                nome: "Bruno Langa", numero: "#24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿",
+                bio: "Lateral de passada larga e pulmão inesgotável, garantindo consistência defensiva total.",
+                historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira."
+            },
+            "19": {
+                nome: "Paulo Moreira", numero: "#19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹",
+                bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas e exímio na distribuição curta.",
+                historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa."
+            },
+            "10": {
+                nome: "Ianis Stoica", numero: "#10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴",
+                bio: "Criativo puro e desequilibrador nato. Combina visão de jogo em espaços curtos com drible forte.",
+                historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais."
+            },
+            "99": {
+                nome: "Abraham Marcus", numero: "#99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬",
+                bio: "Velocidade pura e verticalidade letal. Forte no um para um e no ataque à profundidade.",
+                historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama."
+            },
+            "20": {
+                nome: "S. van Hooijdonk", numero: "#20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱",
+                bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza e forte na finalização aérea.",
+                historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor."
+            }
+        };
+
+        function abrirJogador(numeroCamisola) {
+            var jogador = baseJogadores[numeroCamisola];
+            if(!jogador) return;
+
+            document.getElementById('modalNum').innerText = displayName(jogador.numero);
+            document.getElementById('modalName').innerText = displayName(jogador.nome);
+            document.getElementById('modalPos').innerText = jogador.posicao;
+            document.getElementById('modalAge').innerText = jogador.idade;
+            document.getElementById('modalVal').innerText = jogador.valor;
+            document.getElementById('modalNat').innerText = jogador.nacionalidade;
+            document.getElementById('modalBio').innerText = jogador.bio;
+            document.getElementById('modalHistory').innerText = jogador.historia;
+
+            document.getElementById('playerModal').style.display = 'block';
+        }
+
+        function displayName(name) { return name; }
+
+        function fecharJogador() {
+            document.getElementById('playerModal').style.display = 'none';
+        }
+
+        function irParaSecao(idSecao) {
+            var secoes = document.getElementsByClassName('app-section');
+            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
+           
+            var botoes = document.querySelectorAll('nav button');
+            for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
+           
+            document.getElementById(idSecao).classList.add('active');
+           
+            var idBotao = 'btn-' + idSecao;
+            if(idSecao === 'community') idBotao = 'btn-comm';
+            document.getElementById(idBotao).classList.add('active');
+        }
+
+        function enviarComentario() {
+            var campo = document.getElementById('commentInput');
+            var texto = campo.value.trim();
+            if(texto === "") return;
+            var lista = document.getElementById('commentList');
+            var elemento = document.createElement('div');
+            elemento.className = 'comment-item';
+            elemento.innerHTML = '<strong>@AdeptoTricolor:</strong> ' + texto;
+            lista.insertBefore(elemento, lista.firstChild);
+            campo.value = "";
+        }
+    </script>
+</body>
+</html>
