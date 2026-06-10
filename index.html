@@ -38,12 +38,15 @@
             align-items: center;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
-/* Contentor para alinhar as 3 estrelas */
+/* Contentor para alinhar as 3 estrelas ao centro */
         .splash-stars-container {
             display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center;     /* Centra verticalmente */
             gap: 15px;
             font-size: 55px;
-            margin-bottom: 5px;
+            margin-bottom: 15px;
+            width: 100%;             /* Garante que ocupa a largura total para alinhar bem */
             animation: pulseModern 1.8s infinite ease-in-out;
         }
         /* Cor da primeira estrela: Vermelha */
@@ -358,6 +361,21 @@
         .comment-btn { background: #FFFFFF; color: #000000; border: none; padding: 14px 24px; border-radius: 14px; cursor: pointer; font-weight: 800; font-size: 14px; margin-top: 12px; width: 100%; text-transform: uppercase; }
         .comment-list { margin-top: 30px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
+
+/* Ajustes para o texto não sair para fora do telemóvel */
+        .comment-item {
+            word-wrap: break-word;       /* Força o texto a quebrar a linha se for muito grande */
+            word-break: break-word;
+            overflow-wrap: break-word;
+            font-size: 14px;             /* Diminui um pouco o texto no telemóvel para caber melhor */
+            line-height: 1.4;
+            padding: 12px !important;    /* Ajusta o espaçamento interno */
+        }
+
+        .comment-input {
+            width: 100%;                 /* Garante que a caixa de texto não ultrapassa a largura */
+            box-sizing: border-box;      /* Inclui as bordas no cálculo da largura */
+        }
     </style>
 </head>
 <body>
