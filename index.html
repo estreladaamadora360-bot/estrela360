@@ -26,7 +26,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ECRÃ DE BOAS-VINDAS (SPLASH SCREEN CENTRADO TOTAL) */
+        /* ECRÃ DE BOAS-VINDAS */
         #splash-screen {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -51,18 +51,9 @@
             width: 100%;
             animation: pulseModern 1.8s infinite ease-in-out;
         }
-        .star-red {
-            color: var(--primary-red);
-            text-shadow: 0 0 25px rgba(210, 38, 48, 0.7);
-        }
-        .star-white {
-            color: #FFFFFF;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-        }
-        .star-green {
-            color: var(--primary-green);
-            text-shadow: 0 0 25px rgba(0, 135, 81, 0.7);
-        }
+        .star-red { color: var(--primary-red); text-shadow: 0 0 25px rgba(210, 38, 48, 0.7); }
+        .star-white { color: #FFFFFF; text-shadow: 0 0 25px rgba(255, 255, 255, 0.7); }
+        .star-green { color: var(--primary-green); text-shadow: 0 0 25px rgba(0, 135, 81, 0.7); }
         .splash-title {
             font-size: 24px;
             font-weight: 900;
@@ -93,14 +84,12 @@
             border-bottom: 1px solid var(--card-border);
             position: relative;
         }
-
         header::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; height: 5px;
             background: linear-gradient(90deg, var(--primary-green) 0%, #FFFFFF 50%, var(--primary-red) 100%);
         }
-
         header h1 {
             margin: 0;
             font-size: 34px;
@@ -111,7 +100,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         header p {
             margin: 4px 0 0 0;
             font-size: 11px;
@@ -133,7 +121,6 @@
             z-index: 999;
             border-bottom: 1px solid var(--card-border);
         }
-
         nav button {
             background: none;
             border: none;
@@ -148,7 +135,6 @@
             flex-grow: 1;
             text-align: center;
         }
-
         nav button.active {
             color: #FFFFFF;
             background: linear-gradient(135deg, var(--primary-green) 0%, rgba(0, 135, 81, 0.4) 100%);
@@ -161,7 +147,6 @@
             margin: 0 auto;
             padding-bottom: 80px;
         }
-
         .app-section { display: none; }
         .app-section.active { display: block; }
 
@@ -198,13 +183,11 @@
             transform: scale(1.01);
             background: rgba(30, 30, 38, 0.8);
         }
-
         .news-image-banner {
             height: 160px;
             background-size: cover;
             background-position: center;
         }
-
         .news-content-area { padding: 20px; }
         .news-tag {
             display: inline-block;
@@ -267,15 +250,13 @@
             transition: background 0.2s;
             border-radius: 8px;
         }
-        .player-row:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
+        .player-row:hover { background: rgba(255, 255, 255, 0.03); }
         .p-number { font-weight: 800; color: var(--text-muted); }
         .p-name { font-weight: 700; color: #FFF; }
         .p-age { color: var(--text-muted); text-align: center; }
         .p-value { font-weight: 800; text-align: right; color: #F59E0B; }
 
-        /* FLUTUANTES (MODAIS PREMIUM) */
+        /* MODAIS */
         .custom-modal {
             display: none;
             position: fixed;
@@ -307,82 +288,33 @@
             font-weight: 900;
             cursor: pointer;
             font-size: 16px;
-            transition: background 0.2s;
             z-index: 10001;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* DESIGN COMPONENTE DA FOTO DO JOGADOR NO MODAL CORRIGIDO */
-        .modal-photo-container {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 15px auto;
-        }
+        .modal-photo-container { position: relative; width: 110px; height: 110px; margin: 0 auto 15px auto; }
         .modal-player-img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #FFFFFF;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            background: #16161c;
-            display: block;
+            width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+            border: 3px solid #FFFFFF; box-shadow: 0 8px 20px rgba(0,0,0,0.4); background: #16161c; display: block;
         }
         .modal-number-badge {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            background: var(--primary-red);
-            color: white;
-            font-size: 14px;
-            font-weight: 900;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #FFFFFF;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: absolute; bottom: 0; right: 0; background: var(--primary-red); color: white;
+            font-size: 14px; font-weight: 900; width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
         .modal-position { font-size: 11px; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
        
-        .modal-grid-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-        .modal-stat-box {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 15px 5px;
-            text-align: center;
-        }
+        .modal-grid-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+        .modal-stat-box { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px 5px; text-align: center; }
         .modal-stat-box span { display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
         .modal-stat-box strong { font-size: 16px; color: #FFF; font-weight: 800; }
 
-        /* Design Expandido da Notícia */
-        .news-modal-banner {
-            height: 200px;
-            border-radius: 20px;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-        }
-        .news-modal-title {
-            font-size: 24px;
-            font-weight: 900;
-            margin: 15px 0;
-            line-height: 1.3;
-        }
+        .news-modal-banner { height: 200px; border-radius: 20px; background-size: cover; background-position: center; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .news-modal-title { font-size: 24px; font-weight: 900; margin: 15px 0; line-height: 1.3; }
 
         /* Análises */
         .stat-row { margin-bottom: 18px; }
@@ -390,11 +322,9 @@
         .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
         .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
 
-        /* Comentários */
         .comment-list { margin-top: 30px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
-        /* CORREÇÃO DE LARGURA PARA TELEMÓVEL */
         @media (max-width: 480px) {
             body, html { overflow-x: hidden; }
             .container { padding: 15px; box-sizing: border-box; }
@@ -435,11 +365,11 @@
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
             <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')" style="border: 1px solid rgba(245, 158, 11, 0.4); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(245, 158, 11, 0.05) 100%);">
-                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-image-banner" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>');"></div>
                 <div class="news-content-area">
                     <span class="news-tag" style="background: #F59E0B; color: #000;">⭐ Em Destaque</span>
                     <h3 class="news-title">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
-                    <p class="news-desc">O jovem médio do Estrela está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
+                    <p class="news-desc">O jovem internacional pela Costa do Marfim está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
                 </div>
             </div>
 
@@ -536,7 +466,7 @@
                     <div>
                         <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Eddy Doué</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Crescimento notável e impacto imediato nas competições internacionais.</p>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio de 21 anos apresentou uma valorização no mercado.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
                         <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 400 mil €</span>
@@ -550,7 +480,7 @@
                     <div>
                         <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Robinho</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Excelente consistência tática e valorização segura no mercado.</p>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O extremo de 21 anos apresentou uma valorização no mercado.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
                         <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 500 mil €</span>
@@ -564,7 +494,7 @@
                     <div>
                         <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Jovane Cabral</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Performance decisiva e desequilíbrios no ataque disparam cotação.</p>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado de 27 anos apresentou uma valorização no mercado.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
                         <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 1 milhão €</span>
@@ -578,7 +508,7 @@
                     <div>
                         <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Abraham Marcus</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Forte assédio externo eleva o estatuto financeiro do atleta.</p>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O extremo de 26 anos apresentou uma valorização no mercado.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
                         <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 1 milhão €</span>
@@ -661,20 +591,20 @@
         <div style="margin-bottom: 30px;">
             <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">🤾‍♂️ Modalidades</h3>
             <ul style="list-style: none; padding: 0; margin: 0; color: #fff; font-size: 14px;">
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🏀 Futsal</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🤾 Andebol</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🏓 Ténis de Mesa</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🥊 Boxe</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🩼 Futebol para Amputados</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">👩‍⚽ Futebol Feminino</li>
-                <li style="padding: 8px 0;">🌱 Formação</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Futsal</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Andebol</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Ténis de Mesa</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Boxe</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Futebol para Amputados</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Futebol Feminino</li>
+                <li style="padding: 8px 0;">Formação</li>
             </ul>
         </div>
 
         <div>
             <h3 style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">📩 Contactos</h3>
             <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
-                <p style="margin: 8px 0;"><strong>Instagram:</strong> <a href="https://instagram.com/teu_insta" target="_blank" style="color: #FFF; text-decoration: none;">@estrela360_pro</a></p>
+                <p style="margin: 8px 0;"><strong>Instagram:</strong> <a href="https://instagram.com/estreladamadora360" target="_blank" style="color: #FFF; text-decoration: none;">@estreladamadora360</a></p>
                 <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:teu_email@gmail.com" style="color: #FFF; text-decoration: none;">contacto@estrela360.pt</a></p>
             </div>
         </div>
@@ -687,20 +617,17 @@
             setTimeout(function() {
                 var splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
-                setTimeout(function() {
-                     splash.style.visibility = 'hidden';
-                }, 500);
+                setTimeout(function() { splash.style.visibility = 'hidden'; }, 500);
             }, 2000);
         });
 
-        // BASE DE DADOS DAS NOTÍCIAS EXPANDIDAS (INCLUINDO O EDDY DOUE NO TOULON)
         var baseNoticias = {
             "noticia_doue": {
                 titulo: "Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon",
                 tag: "⭐ Em Destaque",
                 corTag: "#F59E0B",
-                imagem: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o atleta tricolor tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus.\n\nCom exibições de gala e um controlo exímio a ditar o ritmo no meio-campo, a cotação e o mediatismo do jogador do Estrela dispararam instantaneamente nesta competição montra de jovens promessas mundiais."
+                imagem: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>",
+                textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o jovem internacional pela Costa do Marfim tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus.\n\nCom exibições de gala e um controlo exímio a ditar o ritmo no meio-campo, a cotação e o mediatismo do jogador do Estrela dispararam instantaneamente nesta competição montra de jovens promessas mundiais."
             },
             "noticia1": {
                 titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
@@ -714,7 +641,7 @@
                 tag: "Mercado",
                 corTag: "var(--primary-green)",
                 imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto del clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferência."
+                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
             }
         };
 
@@ -730,86 +657,63 @@
             document.getElementById('newsModal').style.display = 'block';
         }
 
-        function fecharNoticia() {
-            document.getElementById('newsModal').style.display = 'none';
-        }
+        function fecharNoticia() { document.getElementById('newsModal').style.display = 'none'; }
 
         var baseJogadores = {
             "40": {
                 nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
-                foto: "https://www.transfermarkt.pt/renan-ribeiro/profil/spieler/95142",
+                foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1",
                 bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
                 historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
             },
             "1": {
                 nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
-                foto: "",
-                bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.",
-                historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
+                foto: "", bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.", historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
             },
             "25": {
                 nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸",
-                foto: "",
-                bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo e com excelente visão de saída de bola.",
-                historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela."
+                foto: "", bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo e com excelente visão de saída de bola.", historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela."
             },
             "30": {
                 nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷",
-                foto: "",
-                bio: "Central moderno, rápido na cobertura da profundidade e com posicionamento exímio.",
-                historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado."
+                foto: "", bio: "Central moderno, rápido na cobertura da profundidade e com posicionamento exímio.", historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado."
             },
             "83": {
                 nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷",
-                foto: "",
-                bio: "Jovem defesa de perfil físico exuberante e muito agressivo nos duelos individuais.",
-                historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva."
+                foto: "", bio: "Jovem defesa de perfil físico exuberante e muito agressivo nos duelos individuais.", historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva."
             },
             "24": {
                 nome: "Bruno Langa", numero: "24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿",
-                foto: "",
-                bio: "Lateral de passada larga e pulmão inesgotável, garantindo consistência defensiva total.",
-                historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira."
+                foto: "", bio: "Lateral de passada larga e pulmão inesgotável, garantindo consistência defensiva total.", historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira."
             },
             "19": {
                 nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹",
-                foto: "",
-                bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas e exímio na distribuição curta.",
-                historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa."
+                foto: "", bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas e exímio na distribuição curta.", historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa."
             },
             "10": {
                 nome: "Ianis Stoica", numero: "10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴",
-                foto: "",
-                bio: "Criativo puro e desequilibrador nato. Combina visão de jogo em espaços curtos com drible forte.",
-                historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais."
+                foto: "", bio: "Criativo puro e desequilibrador nato. Combina visão de jogo em espaços curtos com drible forte.", historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais."
             },
             "99": {
                 nome: "Abraham Marcus", numero: "99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬",
-                foto: "",
-                bio: "Velocidade pura e verticalidade letal. Forte no um para um e no ataque à profundidade.",
-                historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama."
+                foto: "", bio: "Velocidade pura e verticalidade letal. Forte no um para um e no ataque à profundidade.", historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama."
             },
             "20": {
                 nome: "S. van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱",
-                foto: "",
-                bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza e forte na finalização aérea.",
-                historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor."
+                foto: "", bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza e forte na finalização aérea.", historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor."
             }
         };
 
         function abrirJogador(numeroCamisola) {
             var AppJogador = baseJogadores[numeroCamisola];
             if(!AppJogador) return;
-
             document.getElementById('modalNumBadge').innerText = AppJogador.numero;
-           
             var imgElement = document.getElementById('modalPhoto');
             if (AppJogador.foto && AppJogador.foto.trim() !== "") {
                 imgElement.src = AppJogador.foto;
             } else {
                 imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
             }
-
             document.getElementById('modalName').innerText = AppJogador.nome;
             document.getElementById('modalPos').innerText = AppJogador.posicao;
             document.getElementById('modalAge').innerText = AppJogador.idade;
@@ -817,21 +721,16 @@
             document.getElementById('modalNat').innerText = AppJogador.nacionalidade;
             document.getElementById('modalBio').innerText = AppJogador.bio;
             document.getElementById('modalHistory').innerText = AppJogador.historia;
-
             document.getElementById('playerModal').style.display = 'block';
         }
 
-        function fecharJogador() {
-            document.getElementById('playerModal').style.display = 'none';
-        }
+        function fecharJogador() { document.getElementById('playerModal').style.display = 'none'; }
 
         function irParaSecao(idSecao) {
             var secoes = document.getElementsByClassName('app-section');
             for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
-           
             var botoes = document.querySelectorAll('nav button');
             for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
-           
             document.getElementById(idSecao).classList.add('active');
             var idBotao = 'btn-' + idSecao;
             if(idSecao === 'community') idBotao = 'btn-comm';
@@ -842,7 +741,6 @@
             var sidebar = document.getElementById('sidebar-menu');
             var overlay = document.getElementById('sidebar-overlay');
             var btnFloat = document.getElementById('btn-hamburger-floating');
-           
             if (sidebar.style.right === '0px') {
                 sidebar.style.right = '-280px';
                 overlay.style.opacity = '0';
@@ -852,10 +750,7 @@
                 sidebar.style.display = 'block';
                 overlay.style.display = 'block';
                 if(btnFloat) btnFloat.style.transform = 'scale(0) rotate(90deg)';
-                setTimeout(function() {
-                    sidebar.style.right = '0px';
-                    overlay.style.opacity = '1';
-                }, 10);
+                setTimeout(function() { sidebar.style.right = '0px'; overlay.style.opacity = '1'; }, 10);
             }
         }
     </script>
