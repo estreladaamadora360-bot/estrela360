@@ -203,11 +203,11 @@
         .news-title { font-size: 20px; font-weight: 900; margin: 0 0 10px 0; line-height: 1.35; }
         .news-desc { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
 
-        /* Estrela de Novidade */
-        .badge-novidade {
+        /* Estrela Fixa Eterna */
+        .badge-estrela-fixa {
             background: #FFFFFF;
             color: #000000;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 900;
             padding: 3px 8px;
             border-radius: 5px;
@@ -216,12 +216,6 @@
             align-items: center;
             gap: 2px;
             vertical-align: middle;
-            animation: piscarEstrela 1.2s infinite;
-        }
-        @keyframes piscarEstrela {
-            0% { opacity: 0.4; }
-            50% { opacity: 1; }
-            100% { opacity: 0.4; }
         }
 
         /* Resultados */
@@ -370,7 +364,7 @@
         .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
         .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
 
-        /* Comentários / Comunidade */
+        /* Mercado / Transferências */
         .comment-list { margin-top: 10px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
@@ -416,7 +410,7 @@
             <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')">
                 <div class="news-image-banner" style="background-image: url('https://estrelamadora.pt/wp-content/uploads/2026/06/709078775_18096678815464829_3481980488222504349_n-2048x1448.jpg');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag">SAD Destaque<span id="badge-estrela" class="badge-novidade">★ NOVIDADE</span></span>
+                    <span class="news-tag">SAD Destaque<span class="badge-estrela-fixa">★</span></span>
                     <h3 class="news-title">Histórico: Estrela lança Secção de Futebol para Amputados</h3>
                     <p class="news-desc">O clube tricolor alarga o seu panorama inclusivo e assume o compromisso social e desportivo com novos atletas resilientes da nossa comunidade.</p>
                 </div>
@@ -431,21 +425,21 @@
                 </div>
             </div>
 
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-green);">Mercado</span>
+                    <h3 class="news-title">Promessa do Setor Recuado: Eddy Doué no Radar</h3>
+                    <p class="news-desc">O promissor jovem Eddy Doué continua a impressionar a equipa técnica tricolor e consolida o seu espaço nas opções táticas principais para a nova época.</p>
+                </div>
+            </div>
+
             <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
                 <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
                 <div class="news-content-area">
                     <span class="news-tag">SAD Investimento</span>
                     <h3 class="news-title">Revolução de 45M€: Hummels e Müller associados à compra do Estrela</h3>
                     <p class="news-desc">Estrelas globais como Mats Hummels, Thomas Müller e Yann Sommer estão ligados a um consórcio internacional para reestruturar financeiramente a SAD.</p>
-                </div>
-            </div>
-
-            <div class="news-card-modern" onclick="abrirNoticia('noticia2')">
-                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop');"></div>
-                <div class="news-content-area">
-                    <span class="news-tag" style="background: var(--primary-green);">Mercado</span>
-                    <h3 class="news-title">Assédio do Brasil: Vasco da Gama sonda Abraham Marcus</h3>
-                    <p class="news-desc">O extremo nigeriano de 26 anos está blindado pela direção tricolor, mas as excelentes exibições despertaram o forte interesse do clube brasileiro.</p>
                 </div>
             </div>
         </section>
@@ -465,7 +459,7 @@
 
         <section id="squad" class="app-section">
             <h2 class="section-title">Plantel Principal</h2>
-            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica completa.</p>
            
             <div class="card" style="padding: 10px 15px;">
                 <div class="squad-group-title">Guarda-Redes</div>
@@ -474,6 +468,12 @@
                 </div>
                 <div class="player-row" onclick="abrirJogador(1)">
                     <span class="p-number">1</span><span class="p-name">Diogo Pinto</span><span class="p-age">21</span><span class="p-value">300 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(93)">
+                    <span class="p-number">93</span><span class="p-name">Marko Gudžulić</span><span class="p-age">24</span><span class="p-value">150 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(31)">
+                    <span class="p-number">31</span><span class="p-name">Bruno Brígido</span><span class="p-age">35</span><span class="p-value">200 mil €</span>
                 </div>
 
                 <div class="squad-group-title">Defesas</div>
@@ -509,24 +509,46 @@
         </section>
 
         <section id="stats" class="app-section">
-            <h2 class="section-title">Performance Global & Mercado</h2>
+            <h2 class="section-title">Performance Global</h2>
             <div class="card">
                 <div class="stat-row">
                     <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
                     <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
                 </div>
-                <div class="stat-row">
-                    <div class="stat-labels"><span>Valorização Patrimonial (Época)</span> <span>+14.5%</span></div>
-                    <div class="stat-bar"><div class="stat-fill" style="width: 72%; background: linear-gradient(90deg, #F59E0B, #D97706);"></div></div>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 30px;">Atualizações de Valor de Mercado</h2>
+           
+            <div class="card" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; margin-bottom: 6px;">
+                    <span>Eddy Doué (Defesa)</span>
+                    <span style="color: #10B981;">Valor em Alta ▲</span>
                 </div>
-                <div class="stat-row">
-                    <div class="stat-labels"><span>Potencial de Revenda do Elenco</span> <span>Alto</span></div>
-                    <div class="stat-bar"><div class="stat-fill" style="width: 80%; background: linear-gradient(90deg, #3B82F6, #1D4ED8);"></div></div>
+                <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">O atleta apresentou índices táticos e físicos de excelência no panorama competitivo recente. O relatório técnico indica um desenvolvimento constante e uma sólida valorização no mercado desportivo nacional.</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; margin-bottom: 6px;">
+                    <span>Robinho (Médio)</span>
+                    <span style="color: #10B981;">Valor em Alta ▲</span>
                 </div>
-                <div class="stat-row">
-                    <div class="stat-labels"><span>Índice Desportivo vs Orçamento</span> <span>Excelente</span></div>
-                    <div class="stat-bar"><div class="stat-fill" style="width: 91%; background: linear-gradient(90deg, #10B981, #059669);"></div></div>
+                <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">O atleta apresentou índices táticos e físicos de excelência no panorama competitivo recente. O relatório técnico indica um desenvolvimento constante e uma sólida valorização no mercado desportivo nacional.</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; margin-bottom: 6px;">
+                    <span>Jovane Cabral (Avançado)</span>
+                    <span style="color: #10B981;">Valor em Alta ▲</span>
                 </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">O atleta apresentou índices táticos e físicos de excelência no panorama competitivo recente. O relatório técnico indica um desenvolvimento constante e uma sólida valorização no mercado desportivo nacional.</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 15px;">
+                <div style="display: flex; justify-content: space-between; font-size: 14px; font-weight: bold; margin-bottom: 6px;">
+                    <span>Abraham Marcus (Avançado)</span>
+                    <span style="color: #10B981;">Valor em Alta ▲</span>
+                </div>
+                <p style="font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5;">O atleta apresentou índices táticos e físicos de excelência no panorama competitivo recente. O relatório técnico indica um desenvolvimento constante e uma sólida valorização no mercado desportivo nacional.</p>
             </div>
         </section>
 
@@ -538,9 +560,9 @@
                         <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
                         <strong>Stefan Leković:</strong> Estrela da Amadora acionou oficialmente a opção de compra ao Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
                     </div>
-                    <div class="comment-item" style="border-left: 4px solid var(--primary-red);">
-                        <span style="color: var(--primary-red); font-size: 18px; font-weight: bold; margin-right: 8px; display: inline-block; transform: rotate(180deg);">➔</span>
-                        <strong>Oumar Ngom:</strong> Transferência oficializada para o Lecce de Itália. O negócio rendeu cerca de <strong>2M €</strong> aos cofres tricolores.
+                    <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
+                        <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Sola:</strong> Movimentações firmes no mercado garantem novos trunfos táticos na ala. Operação concluída com sucesso para reforçar as dinâmicas ofensivas da equipa tricolor.
                     </div>
                 </div>
             </div>
@@ -569,7 +591,7 @@
                 <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
             </div>
            
-            <div class="card">
+            <div class="card" style="border-top: 3px solid var(--primary-red);">
                 <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
                 <p id="modalHistory" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
             </div>
@@ -629,41 +651,34 @@
                 tag: "SAD Destaque",
                 corTag: "var(--primary-red)",
                 imagem: "https://estrelamadora.pt/wp-content/uploads/2026/06/709078775_18096678815464829_3481980488222504349_n-2048x1448.jpg",
-                textoCompleto: "O Estrela da Amadora deu hoje um passo gigante no desenvolvimento desportivo e no seu cariz de solidariedade social ao oficializar a criação da equipa de Futebol para Amputados.\n\nEste novo projeto visa dar palco e competir ao mais alto nível nacional, integrando atletas incríveis que superam barreiras diariamente. O clube fornecerá toda a estrutura médica, de treino e logística para afirmar o emblema da Reboleira como uma referência inequívoca de inclusão no desporto rei português."
+                textoCompleto: "O Estrela da Amadora deu hoje um passo gigante no desenvolvimento desportivo e no seu cariz de solidariedade social ao oficializar a criação da equipa de Futebol para Amputados.\n\nO clube fornecerá toda a estrutura médica, de treino e logística para afirmar o emblema da Reboleira como uma referência inequívoca de inclusão no desporto rei português."
             },
             "noticia_toulon": {
                 titulo: "Jovens Promessas Tricolores Brilham em Toulon",
                 tag: "Torneio de Toulon",
                 corTag: "var(--primary-green)",
                 imagem: "https://thumbs.web.sapo.io/?H=960&W=1920&crop=center&delay_optim=1&epic=V2%3AnYAq5y8os5ppprKGVjnJB25zkO7su4BLe71Vo3q8eRQGv8k1c5oS85JElT5C4LpKBkyP0WG3AcH1O46yis3YJpH137TfK9p20F2w3os8%2FMDij%2BVkaOQz6HFzrtVUA0gCdCaJ6WqwDq0rZ%2FMbvhPRfg%3D%3D&webp=1&Q=50&tv=1",
-                textoCompleto: "O prestigiado Torneio de Toulon serviu de montra perfeita para a nova vaga de talentos do Estrela da Amadora.\n\nCom exibições taticamente perfeitas e um forte pendor ofensivo, os jovens tricolores chamaram a atenção de vários olheiros internacionais da Premier League e da Serie A italiana. A direção garante estar atenta e pretende segurar as joias da coroa para integrar a equipa principal muito em breve."
+                textoCompleto: "O prestigiado Torneio de Toulon serviu de montra perfeita para a nova vaga de talentos do Estrela da Amadora.\n\nCom exibições taticamente perfeitas, os jovens tricolores chamaram a atenção de vários olheiros internacionais."
+            },
+            "noticia_doue": {
+                titulo: "Promessa do Setor Recuado: Eddy Doué no Radar",
+                tag: "Mercado",
+                corTag: "var(--primary-green)",
+                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "O lateral e defesa francês de 22 anos, Eddy Doué, continua sob intensa observação técnica. O seu excelente posicionamento e polivalência defensiva garantem ótimas projeções para o futuro da retaguarda tricolor."
             },
             "noticia1": {
                 titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
                 tag: "SAD Investimento",
                 corTag: "var(--primary-red)",
                 imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela.\n\nO plano prevê uma injeção de capital direta de 45 milhões de euros para infraestruturas. Figuras lendárias como Mats Hummels e Thomas Müller surgem ligadas ao fundo como embaixadores desportivos."
-            },
-            "noticia2": {
-                titulo: "Assédio do Brasil: Vasco da Gama sonda Abraham Marcus",
-                tag: "Mercado",
-                corTag: "var(--primary-green)",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela atraiu uma sondagem formal do Vasco da Gama do Brasil.\n\nA direção tricolor liderada remete qualquer saída para o valor total estipulado na cláusula de rescisão, blindando o avançado."
+                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela."
             }
         };
 
         function abrirNoticia(idNoticia) {
             var noticia = baseNoticias[idNoticia];
             if(!noticia) return;
-
-            // Se for a notícia de amputados, remove a estrela de novidade de vez
-            if (idNoticia === 'noticia_amputados') {
-                var badge = document.getElementById('badge-estrela');
-                if (badge) { badge.remove(); }
-            }
-
             document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
             document.getElementById('newsModalTag').innerText = noticia.tag;
             document.getElementById('newsModalTag').style.background = noticia.corTag;
@@ -671,21 +686,22 @@
             document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
             document.getElementById('newsModal').style.display = 'block';
         }
-
         function fecharNoticia() { document.getElementById('newsModal').style.display = 'none'; }
 
-        // BASE DE DADOS DOS JOGADORES (Histórico Recente preenchido por defeito)
+        // BASE DE DADOS DOS JOGADORES COMPLETA RESTAURADA
         var baseJogadores = {
-            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200", bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.", historia: "Titular experiente que assegurou pontos fulcrais nas últimas jornadas da temporada anterior." },
-            "1": { nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes.", historia: "Soma exibições seguras nas taças e demonstra ser o futuro dono das redes tricolores." },
-            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "", bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo.", historia: "Garantido a título definitivo após exibições soberbas na linha recuada tricolor." },
-            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "", bio: "Central moderno, rápido na cobertura da profundidade.", historia: "Consolidou-se no onze inicial com cortes providenciais em jogos de alto risco." },
-            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "", bio: "Jovem defesa de perfil físico exuberante e muito agressivo.", historia: "Evolução tática meteórica que atraiu sondagens de grandes clubes europeus." },
-            "24": { nome: "Bruno Langa", numero: "24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿", foto: "", bio: "Lateral de passada larga e pulmão inesgotável.", historia: "Dono indiscutível do corredor esquerdo tricolor pela sua enorme segurança." },
-            "19": { nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas.", historia: "Motor do meio-campo, liderou as estatísticas de desarmes e eficácia de passe." },
-            "10": { nome: "Ianis Stoica", numero: "10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴", foto: "", bio: "Criativo puro e desequilibrador nato. Combina drible e passe forte.", historia: "Camisola 10 que assinou assistências mágicas determinantes para a permanência." },
-            "99": { nome: "Abraham Marcus", numero: "99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬", foto: "", bio: "Velocidade pura e verticalidade letal.", historia: "Fez balançar as redes por várias vezes e é cobiçado pelo mercado sul-americano." },
-            "20": { nome: "S. van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱", foto: "", bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza.", historia: "Avançado possante de referência que garante golos decisivos na área adversária." }
+            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200", bio: "Guarda-redes experiente. Garante uma liderança vocal fortíssima dentro da área.", historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga." },
+            "1": { nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes.", historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira." },
+            "93": { nome: "Marko Gudžulić", numero: "93", posicao: "Guarda-Redes", idade: "24 anos", valor: "150 Mil €", nacionalidade: "Sérvia 🇷🇸", foto: "", bio: "Guarda-redes seguro, imponente nas bolas aéreas e de reflexos rápidos.", historia: "Reforço focado na estabilidade e competitividade interna da baliza tricolor." },
+            "31": { nome: "Bruno Brígido", numero: "31", posicao: "Guarda-Redes", idade: "35 anos", valor: "200 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "", bio: "Experiência comprovada, com grande agilidade e consistência técnica.", historia: "Dono das redes tricolores em momentos cruciais do histórico recente do clube." },
+            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "", bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo.", historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência." },
+            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "", bio: "Central moderno, rápido na cobertura da profundidade.", historia: "Formou uma dupla de betão com Lekovic na reta final da época." },
+            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "", bio: "Jovem defesa de perfil físico exuberante e muito agressivo.", historia: "Contratação estratégica de enorme margem de progressão desportiva." },
+            "24": { nome: "Bruno Langa", numero: "24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿", foto: "", bio: "Lateral de passada larga e pulmão inesgotável.", historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática." },
+            "19": { nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas.", historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa." },
+            "10": { nome: "Ianis Stoica", numero: "10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴", foto: "", bio: "Criativo puro e desequilibrador nato. Combina drible e visão curta.", historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas." },
+            "99": { nome: "Abraham Marcus", numero: "99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬", foto: "", bio: "Velocidade pura e verticalidade letal.", historia: "Pilar fundamental do ataque na Reboleira, com golos decisivos marcados." },
+            "20": { nome: "S. van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱", foto: "", bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza.", historia: "Trouxe faro de golo de nível internacional ao ataque do plantel tricolor." }
         };
 
         function abrirJogador(numeroCamisola) {
@@ -702,7 +718,7 @@
 
             document.getElementById('modalName').innerText = jogador.nome;
             document.getElementById('modalPos').innerText = jogador.posicao;
-            document.getElementById('modalAge').innerText = MedicalAgeCheck(jogador.idade);
+            document.getElementById('modalAge').innerText = jogador.idade;
             document.getElementById('modalVal').innerText = jogador.valor;
             document.getElementById('modalNat').innerText = jogador.nacionalidade;
             document.getElementById('modalBio').innerText = jogador.bio;
@@ -711,7 +727,6 @@
             document.getElementById('playerModal').style.display = 'block';
         }
 
-        function MedicalAgeCheck(ageString) { return ageString; }
         function fecharJogador() { document.getElementById('playerModal').style.display = 'none'; }
 
         function irParaSecao(idSecao) {
