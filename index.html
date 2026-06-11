@@ -41,6 +41,7 @@
             box-sizing: border-box;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
+       
         /* Contentor para alinhar as 3 estrelas */
         .splash-stars-container {
             display: flex;
@@ -52,6 +53,7 @@
             width: 100%;
             animation: pulseModern 1.8s infinite ease-in-out;
         }
+       
         /* Cor da primeira estrela: Vermelha */
         .star-red {
             color: var(--primary-red);
@@ -318,7 +320,6 @@
             justify-content: center;
         }
 
-        /* NOVO: DESIGN COMPONENTE DA FOTO DO JOGADOR NO MODAL */
         .modal-photo-container {
             position: relative;
             width: 110px;
@@ -387,25 +388,19 @@
             line-height: 1.3;
         }
 
-        /* Análises */
-        .stat-row { margin-bottom: 18px; }
-        .stat-labels { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-        .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
-        .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
-
-        /* Comentários */
-        .comment-input { width: 100%; padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--card-border); color: white; border-radius: 16px; box-sizing: border-box; font-size: 14px; resize: none; }
-        .comment-btn { background: #FFFFFF; color: #000000; border: none; padding: 14px 24px; border-radius: 14px; cursor: pointer; font-weight: 800; font-size: 14px; margin-top: 12px; width: 100%; text-transform: uppercase; }
-        .comment-list { margin-top: 30px; }
+        /* Comentários / Feed */
+        .comment-list { margin-top: 10px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
-        /* CORREÇÃO DE LARGURA PARA TELEMÓVEL */
+        /* CORREÇÃO DE LARGURA E ADAPTAÇÃO PARA TELEMÓVEL */
         @media (max-width: 480px) {
             body, html { overflow-x: hidden; }
             .container { padding: 15px; box-sizing: border-box; }
             .card { padding: 15px !important; box-sizing: border-box; width: 100% !important; }
             .comment-item { font-size: 13px !important; white-space: normal !important; word-break: break-word !important; padding: 10px !important; }
-            .comment-input { font-size: 13px !important; width: 100% !important; max-width: 100% !important; }
+           
+            nav { gap: 5px !important; padding: 5px !important; }
+            nav button { font-size: 10px !important; padding: 8px 4px !important; }
         }
     </style>
 </head>
@@ -432,8 +427,6 @@
         <button onclick="irParaSecao('squad')" id="btn-squad">Plantel</button>
         <button onclick="irParaSecao('stats')" id="btn-stats">Análises</button>
         <button onclick="irParaSecao('community')" id="btn-comm">Mercado</button>
-<!-- Botão Hambúrguer para abrir o menu lateral -->
-<button onclick="alternarMenuLateral()" id="btn-hamburger" style="font-size: 18px; padding: 8px 12px;">☰</button>
     </nav>
 
     <div class="container">
@@ -520,11 +513,39 @@
         </section>
 
         <section id="stats" class="app-section">
-            <h2 class="section-title">Performance Global</h2>
-            <div class="card">
-                <div class="stat-row">
-                    <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
-                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
+            <h2 class="section-title">Análises Económicas</h2>
+           
+            <div class="card" style="background: linear-gradient(135deg, rgba(0,135,81,0.15) 0%, rgba(210,38,48,0.1) 100%); border: 1px solid rgba(255,255,255,0.1); text-align: center; margin-bottom: 25px; padding: 20px; border-radius: 12px;">
+                <p style="margin: 0; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Valor de Mercado do Plantel Atual</p>
+                <h3 style="margin: 8px 0 4px 0; font-size: 32px; color: #FFF; font-weight: 800;">21.00 M €</h3>
+                <span style="font-size: 11px; color: var(--primary-green); font-weight: bold;">▲ +5.83M € de valorização nesta época</span>
+            </div>
+
+            <h3 style="font-size: 16px; margin-bottom: 15px; color: #FFF; font-weight: 600;">Últimas Atualizações Financeiras</h3>
+           
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold;">AUMENTO DE VALOR</span>
+                        <h4 style="margin: 8px 0 4px 0; font-size: 15px; color: #FFF;">Stefan Leković</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">A afirmação a titular e a compra definitiva dispararam a sua cotação.</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 16px;">▲ 2.50M €</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <span style="background: rgba(245,158,11,0.2); color: #F59E0B; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold;">VALORIZAÇÃO EM FOCO</span>
+                        <h4 style="margin: 8px 0 4px 0; font-size: 15px; color: #FFF;">Ianis Stoica</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Extremo mantém-se como um dos ativos mais valiosos do clube.</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="color: #F59E0B; font-weight: bold; font-size: 16px;">1.50M €</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -579,7 +600,6 @@
             <button class="modal-close-btn" onclick="fecharNoticia()">✕</button>
            
             <div id="newsModalBanner" class="news-modal-banner"></div>
-           
             <span id="newsModalTag" class="news-tag">Tag</span>
             <h2 id="newsModalTitle" class="news-modal-title">Título da Notícia</h2>
            
@@ -589,15 +609,17 @@
         </div>
 
     </div>
-<!-- MENU LATERAL (SIDEBAR) -->
+
+    <button onclick="alternarMenuLateral()" id="btn-hamburger-floating" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: #070709; color: #FFF; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 100000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease;">
+        ☰
+    </button>
+
     <div id="sidebar-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0b0c10; z-index: 100002; box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;">
        
-        <!-- Botão para fechar o menu lateral -->
         <div style="text-align: right; margin-bottom: 20px;">
             <button onclick="alternarMenuLateral()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
         </div>
 
-        <!-- Secção de Modalidades -->
         <div style="margin-bottom: 30px;">
             <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">🤾‍♂️ Modalidades</h3>
             <ul style="list-style: none; padding: 0; margin: 0; color: #fff; font-size: 14px;">
@@ -607,7 +629,6 @@
             </ul>
         </div>
 
-        <!-- Secção de Contactos -->
         <div>
             <h3 style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">📩 Contactos</h3>
             <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
@@ -617,7 +638,6 @@
         </div>
     </div>
 
-    <!-- Fundo escuro que bloqueia o resto da app quando o menu abre -->
     <div id="sidebar-overlay" onclick="alternarMenuLateral()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100001; display: none; opacity: 0; transition: opacity 0.3s ease;"></div>
 
     <script>
@@ -627,7 +647,7 @@
                 var splash = document.getElementById('splash-screen');
                 splash.style.opacity = '0';
                 setTimeout(function() {
-                    splash.style.visibility = 'hidden';
+                     splash.style.visibility = 'hidden';
                 }, 500);
             }, 2000);
         });
@@ -665,18 +685,17 @@
             document.getElementById('newsModal').style.display = 'none';
         }
 
-        // BASE DE DADOS DOS JOGADORES (CAMPOS DE FOTO ADICIONADOS)
-        // Substitui os links vazios abaixo pelos links reais das fotos (podes usar caminhos locais ou links da internet)
+        // BASE DE DADOS DOS JOGADORES
         var baseJogadores = {
             "40": {
                 nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
-                foto: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200", // Muda pelo link da foto real
+                foto: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=200",
                 bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
                 historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
             },
             "1": {
                 nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
-                foto: "", // Deixa vazio ou adiciona o link da imagem
+                foto: "",
                 bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.",
                 historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
             },
@@ -734,10 +753,7 @@
             var jogador = baseJogadores[numeroCamisola];
             if(!jogador) return;
 
-            // Define o número no círculo
-            document.getElementById('modalNumBadge').innerText = jogador.numero;
-           
-            // Tratamento da imagem: se não houver foto, mete um avatar cinzento por defeito
+            document.getElementById('modalNumBadge').innerText = '../../' + jogador.numero;
             var imgElement = document.getElementById('modalPhoto');
             if (jogador.foto && jogador.foto.trim() !== "") {
                 imgElement.src = jogador.foto;
@@ -745,7 +761,7 @@
                 imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
             }
 
-            document.getElementById('modalName').innerText = displayName(jogador.nome);
+            document.getElementById('modalName').innerText = jogador.nome;
             document.getElementById('modalPos').innerText = jogador.posicao;
             document.getElementById('modalAge').innerText = jogador.idade;
             document.getElementById('modalVal').innerText = jogador.valor;
@@ -756,18 +772,20 @@
             document.getElementById('playerModal').style.display = 'block';
         }
 
-        function displayName(name) { return name; }
-
         function fecharJogador() {
             document.getElementById('playerModal').style.display = 'none';
         }
 
         function irParaSecao(idSecao) {
             var secoes = document.getElementsByClassName('app-section');
-            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
+            for (var i = 0; i < secoes.length; i++) {
+                secoes[i].classList.remove('active');
+            }
            
             var botoes = document.querySelectorAll('nav button');
-            for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
+            for (var j = 0; j < botoes.length; j++) {
+                botoes[j].classList.remove('active');
+            }
            
             document.getElementById(idSecao).classList.add('active');
             var idBotao = 'btn-' + idSecao;
@@ -775,18 +793,21 @@
             document.getElementById(idBotao).classList.add('active');
         }
 
-// FUNÇÃO PARA ABRIR E FECHAR O MENU LATERAL
+        // FUNÇÃO ATUALIZADA PARA O MENU LATERAL E BOTÃO FLUTUANTE
         function alternarMenuLateral() {
             var sidebar = document.getElementById('sidebar-menu');
             var overlay = document.getElementById('sidebar-overlay');
+            var btnFloat = document.getElementById('btn-hamburger-floating');
            
             if (sidebar.style.right === '0px') {
                 sidebar.style.right = '-280px';
                 overlay.style.opacity = '0';
+                if(btnFloat) btnFloat.style.transform = 'scale(1) rotate(0deg)';
                 setTimeout(function() { overlay.style.display = 'none'; }, 300);
             } else {
                 sidebar.style.display = 'block';
                 overlay.style.display = 'block';
+                if(btnFloat) btnFloat.style.transform = 'scale(0) rotate(90deg)';
                 setTimeout(function() {
                     sidebar.style.right = '0px';
                     overlay.style.opacity = '1';
