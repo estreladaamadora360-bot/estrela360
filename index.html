@@ -41,7 +41,6 @@
             box-sizing: border-box;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
-        /* Contentor para alinhar as 3 estrelas */
         .splash-stars-container {
             display: flex;
             justify-content: center;
@@ -52,17 +51,14 @@
             width: 100%;
             animation: pulseModern 1.8s infinite ease-in-out;
         }
-        /* Cor da primeira estrela: Vermelha */
         .star-red {
             color: var(--primary-red);
             text-shadow: 0 0 25px rgba(210, 38, 48, 0.7);
         }
-        /* Cor da segunda estrela: Branca */
         .star-white {
             color: #FFFFFF;
             text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
         }
-        /* Cor da terceira estrela: Verde */
         .star-green {
             color: var(--primary-green);
             text-shadow: 0 0 25px rgba(0, 135, 81, 0.7);
@@ -329,7 +325,7 @@
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            object-fit: cover; /* Garante que a foto não fique esticada */
+            object-fit: cover;
             border: 3px solid #FFFFFF;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             background: #16161c;
@@ -438,6 +434,15 @@
             <h2 class="section-title">Destaques Principais</h2>
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')" style="border: 1px solid rgba(245, 158, 11, 0.4); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(245, 158, 11, 0.05) 100%);">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: #F59E0B; color: #000;">⭐ Em Destaque</span>
+                    <h3 class="news-title">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
+                    <p class="news-desc">O jovem médio do Estrela está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
+                </div>
+            </div>
+
             <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
                 <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
                 <div class="news-content-area">
@@ -530,11 +535,12 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
                         <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
-                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Stefan Leković</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">A afirmação a titular e a compra definitiva dispararam a sua cotação.</p>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Eddy Doué</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Crescimento notável e impacto imediato nas competições internacionais.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 2.50M €</span>
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 400 mil €</span>
+                        <span style="display:block; font-size:11px; color:#10B981;">(+33,33%)</span>
                     </div>
                 </div>
             </div>
@@ -542,12 +548,41 @@
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(245,158,11,0.2); color: #F59E0B; font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Valorização em Foco</span>
-                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Ianis Stoica</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Extremo mantém-se estável como um dos ativos mais valiosos do clube.</p>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Robinho</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Excelente consistência tática e valorização segura no mercado.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: #F59E0B; font-weight: bold; font-size: 15px;">1.50M €</span>
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 500 mil €</span>
+                        <span style="display:block; font-size:11px; color:#10B981;">(+20%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Jovane Cabral</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Performance decisiva e desequilíbrios no ataque disparam cotação.</p>
+                    </div>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 1 milhão €</span>
+                        <span style="display:block; font-size:11px; color:#10B981;">(+25%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Abraham Marcus</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Forte assédio externo eleva o estatuto financeiro do atleta.</p>
+                    </div>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 1 milhão €</span>
+                        <span style="display:block; font-size:11px; color:#10B981;">(+25%)</span>
                     </div>
                 </div>
             </div>
@@ -627,8 +662,12 @@
             <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">🤾‍♂️ Modalidades</h3>
             <ul style="list-style: none; padding: 0; margin: 0; color: #fff; font-size: 14px;">
                 <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🏀 Futsal</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🤾 Basquetebol</li>
-                <li style="padding: 8px 0;">🏐 Voleibol</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🤾 Andebol</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🏓 Ténis de Mesa</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🥊 Boxe</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">🩼 Futebol para Amputados</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">👩‍⚽ Futebol Feminino</li>
+                <li style="padding: 8px 0;">🌱 Formação</li>
             </ul>
         </div>
 
@@ -644,7 +683,6 @@
     <div id="sidebar-overlay" onclick="alternarMenuLateral()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100001; display: none; opacity: 0; transition: opacity 0.3s ease;"></div>
 
     <script>
-        // EXECUÇÃO DO ECRÃ DE BOAS-VINDAS
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var splash = document.getElementById('splash-screen');
@@ -655,8 +693,15 @@
             }, 2000);
         });
 
-        // BASE DE DADOS DAS NOTÍCIAS EXPANDIDAS
+        // BASE DE DADOS DAS NOTÍCIAS EXPANDIDAS (INCLUINDO O EDDY DOUE NO TOULON)
         var baseNoticias = {
+            "noticia_doue": {
+                titulo: "Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon",
+                tag: "⭐ Em Destaque",
+                corTag: "#F59E0B",
+                imagem: "https://images.unsplash.com/photo-1546519638-68e109498ffc?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o atleta tricolor tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus.\n\nCom exibições de gala e um controlo exímio a ditar o ritmo no meio-campo, a cotação e o mediatismo do jogador do Estrela dispararam instantaneamente nesta competição montra de jovens promessas mundiais."
+            },
             "noticia1": {
                 titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
                 tag: "SAD Investimento",
@@ -669,7 +714,7 @@
                 tag: "Mercado",
                 corTag: "var(--primary-green)",
                 imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
+                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto del clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferência."
             }
         };
 
@@ -679,6 +724,7 @@
             document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
             document.getElementById('newsModalTag').innerText = noticia.tag;
             document.getElementById('newsModalTag').style.background = noticia.corTag;
+            document.getElementById('newsModalTag').style.color = idNoticia === 'noticia_doue' ? '#000' : '#FFF';
             document.getElementById('newsModalTitle').innerText = noticia.titulo;
             document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
             document.getElementById('newsModal').style.display = 'block';
@@ -688,7 +734,6 @@
             document.getElementById('newsModal').style.display = 'none';
         }
 
-        // BASE DE DADOS DOS JOGADORES
         var baseJogadores = {
             "40": {
                 nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
@@ -756,7 +801,6 @@
             var AppJogador = baseJogadores[numeroCamisola];
             if(!AppJogador) return;
 
-            // Correção: exibe apenas o número original sem caminhos estranhos
             document.getElementById('modalNumBadge').innerText = AppJogador.numero;
            
             var imgElement = document.getElementById('modalPhoto');
@@ -794,7 +838,6 @@
             document.getElementById(idBotao).classList.add('active');
         }
 
-        // FUNÇÃO ATUALIZADA PARA O MENU LATERAL E BOTÃO FLUTUANTE
         function alternarMenuLateral() {
             var sidebar = document.getElementById('sidebar-menu');
             var overlay = document.getElementById('sidebar-overlay');
