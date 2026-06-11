@@ -325,6 +325,26 @@
         .comment-list { margin-top: 30px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
+        /* Estilos do Menu Lateral de Modalidades Individuais */
+        .sidebar-item-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 12px 15px;
+            text-align: left;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .sidebar-item-btn:hover {
+            background: rgba(0, 135, 81, 0.15);
+            border-color: var(--primary-green);
+        }
+
         @media (max-width: 480px) {
             body, html { overflow-x: hidden; }
             .container { padding: 15px; box-sizing: border-box; }
@@ -373,21 +393,21 @@
                 </div>
             </div>
 
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-green);">Futebol Amputados</span>
+                    <h3 class="news-title">Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal</h3>
+                    <p class="news-desc">A formação tricolor bateu o FC Famalicão por 4-1 num duelo pioneiro de responsabilidade social, consolidando a nova aposta inclusiva do clube.</p>
+                </div>
+            </div>
+
             <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
                 <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
                 <div class="news-content-area">
                     <span class="news-tag">SAD Investimento</span>
                     <h3 class="news-title">Revolução de 45M€: Hummels e Müller associados à compra do Estrela</h3>
                     <p class="news-desc">Estrelas globais como Mats Hummels, Thomas Müller e Yann Sommer estão ligados a um consórcio internacional para reestruturar financeiramente a SAD tricolor.</p>
-                </div>
-            </div>
-
-            <div class="news-card-modern" onclick="abrirNoticia('noticia2')">
-                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop');"></div>
-                <div class="news-content-area">
-                    <span class="news-tag" style="background: var(--primary-green);">Mercado</span>
-                    <h3 class="news-title">Assédio do Brasil: Vasco da Gama sonda Abraham Marcus</h3>
-                    <p class="news-desc">O extremo nigeriano de 26 anos está blindado pela direção tricolor, mas as excelentes exibições despertaram o forte interesse do clube brasileiro.</p>
                 </div>
             </div>
         </section>
@@ -414,6 +434,12 @@
                 <div class="player-row" onclick="abrirJogador(40)">
                     <span class="p-number">40</span><span class="p-name">Renan Ribeiro</span><span class="p-age">36</span><span class="p-value">100 mil €</span>
                 </div>
+                <div class="player-row" onclick="abrirJogador(13)">
+                    <span class="p-number">13</span><span class="p-name">Dudu</span><span class="p-age">27</span><span class="p-value">150 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(22)">
+                    <span class="p-number">22</span><span class="p-name">David Grilo</span><span class="p-age">29</span><span class="p-value">100 mil €</span>
+                </div>
                 <div class="player-row" onclick="abrirJogador(1)">
                     <span class="p-number">1</span><span class="p-name">Diogo Pinto</span><span class="p-age">21</span><span class="p-value">300 mil €</span>
                 </div>
@@ -428,24 +454,23 @@
                 <div class="player-row" onclick="abrirJogador(83)">
                     <span class="p-number">83</span><span class="p-name">Otávio</span><span class="p-age">20</span><span class="p-value">1.50 M €</span>
                 </div>
-                <div class="player-row" onclick="abrirJogador(24)">
-                    <span class="p-number">24</span><span class="p-name">Bruno Langa</span><span class="p-age">28</span><span class="p-value">1.00 M €</span>
+                <div class="player-row" onclick="abrirJogador(14)">
+                    <span class="p-number">14</span><span class="p-name">Bernardo Schappo</span><span class="p-age">27</span><span class="p-value">750 mil €</span>
                 </div>
-
-                <div class="squad-group-title">Médios</div>
-                <div class="player-row" onclick="abrirJogador(19)">
-                    <span class="p-number">19</span><span class="p-name">Paulo Moreira</span><span class="p-age">26</span><span class="p-value">1.50 M €</span>
+                <div class="player-row" onclick="abrirJogador(5)">
+                    <span class="p-number">5</span><span class="p-name">Issiar Dramé</span><span class="p-age">27</span><span class="p-value">300 mil €</span>
                 </div>
-                <div class="player-row" onclick="abrirJogador(10)">
-                    <span class="p-number">10</span><span class="p-name">Ianis Stoica</span><span class="p-age">23</span><span class="p-value">1.50 M €</span>
+                <div class="player-row" onclick="abrirJogador(3)">
+                    <span class="p-number">3</span><span class="p-name">Ni Rodrigues</span><span class="p-age">23</span><span class="p-value">100 mil €</span>
                 </div>
-
-                <div class="squad-group-title">Avançados</div>
-                <div class="player-row" onclick="abrirJogador(99)">
-                    <span class="p-number">99</span><span class="p-name">Abraham Marcus</span><span class="p-age">26</span><span class="p-value">1.00 M €</span>
+                <div class="player-row" onclick="abrirJogador(2)">
+                    <span class="p-number">2</span><span class="p-name">Yahya Kalley</span><span class="p-age">25</span><span class="p-value">300 mil €</span>
                 </div>
-                <div class="player-row" onclick="abrirJogador(20)">
-                    <span class="p-number">20</span><span class="p-name">S. van Hooijdonk</span><span class="p-age">26</span><span class="p-value">1.00 M €</span>
+                <div class="player-row" onclick="abrirJogador(17)">
+                    <span class="p-number">17</span><span class="p-name">Jefferson Encada</span><span class="p-age">28</span><span class="p-value">400 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(21)">
+                    <span class="p-number">21</span><span class="p-name">Max Scholze</span><span class="p-age">21</span><span class="p-value">400 mil €</span>
                 </div>
             </div>
         </section>
@@ -470,66 +495,61 @@
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
                         <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 400 mil €</span>
-                        <span style="display:block; font-size:11px; color:#10B981;">(+33,33%)</span>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-                    <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
-                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Robinho</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O extremo de 21 anos apresentou uma valorização no mercado.</p>
-                    </div>
-                    <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 500 mil €</span>
-                        <span style="display:block; font-size:11px; color:#10B981;">(+20%)</span>
-                    </div>
-                </div>
-            </div>
+        <section id="modalidade_futsal" class="app-section">
+            <h2 class="section-title">Futsal Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Futsal do Estrela.</p></div>
+        </section>
 
-            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-                    <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
-                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Jovane Cabral</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado de 27 anos apresentou uma valorização no mercado.</p>
-                    </div>
-                    <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 1 milhão €</span>
-                        <span style="display:block; font-size:11px; color:#10B981;">(+25%)</span>
-                    </div>
-                </div>
-            </div>
+        <section id="modalidade_andebol" class="app-section">
+            <h2 class="section-title">Andebol Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Andebol do Estrela.</p></div>
+        </section>
 
-            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-                    <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
-                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Abraham Marcus</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O extremo de 26 anos apresentou uma valorização no mercado.</p>
-                    </div>
-                    <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 1 milhão €</span>
-                        <span style="display:block; font-size:11px; color:#10B981;">(+25%)</span>
-                    </div>
-                </div>
+        <section id="modalidade_tenis" class="app-section">
+            <h2 class="section-title">Ténis de Mesa</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações e novidades sobre o Ténis de Mesa do Estrela.</p></div>
+        </section>
+
+        <section id="modalidade_boxe" class="app-section">
+            <h2 class="section-title">Boxe Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a combates, atletas e novidades do Boxe do Estrela da Amadora.</p></div>
+        </section>
+
+        <section id="modalidade_amputados" class="app-section">
+            <h2 class="section-title">Futebol para Amputados</h2>
+            <div class="card">
+                <h4 style="color:#FFF; margin: 0 0 10px 0;">História em Construção!</h4>
+                <p style="color: var(--text-muted); font-size: 13px; line-height: 1.5;">O Estrela da Amadora associou-se oficialmente à Futebol Amputados de Portugal. O projeto inovador de responsabilidade social treina no complexo tricolor e veste as cores e insígnias oficiais da Reboleira.</p>
             </div>
+        </section>
+
+        <section id="modalidade_feminino" class="app-section">
+            <h2 class="section-title">Futebol Feminino</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações, jogos e notícias da equipa feminina tricolor.</p></div>
+        </section>
+
+        <section id="modalidade_formacao" class="app-section">
+            <h2 class="section-title">Formação Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado ao acompanhamento e resultados dos nossos escalões jovens (Sub-23, Sub-19, Sub-17).</p></div>
         </section>
 
         <section id="community" class="app-section">
             <h2 class="section-title">Mercado de Transferências Tricolor</h2>
             <div class="card">
                 <div class="comment-list" id="commentList">
+                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
+                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Alex Sola:</strong> O ala direito/médio foi oficialmente cedido por empréstimo válido por 1 temporada (com duração de 1 ano) ao <strong>Kiryat Shmona FC</strong> do principal escalão de Israel.
+                    </div>
+
                     <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
                         <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
-                        <strong>Stefan Leković:</strong> Estrela da Amadora acionou oficialmente a opção de compra ao Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
-                    </div>
-                   
-                    <div class="comment-item" style="border-left: 4px solid var(--primary-red);">
-                        <span style="color: var(--primary-red); font-size: 18px; font-weight: bold; margin-right: 8px; display: inline-block; transform: rotate(180deg);">➔</span>
-                        <strong>Oumar Ngom:</strong> Transferência oficializada para o Lecce de Itália. O negócio rendeu cerca de <strong>2M €</strong> aos cofres tricolores.
+                        <strong>Stefan Leković:</strong> Opção de compra exercida junto do Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
                     </div>
                 </div>
             </div>
@@ -537,7 +557,6 @@
 
         <div id="playerModal" class="custom-modal">
             <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
-           
             <div class="modal-header-card">
                 <div class="modal-photo-container">
                     <img id="modalPhoto" src="" alt="Foto Jogador" class="modal-player-img">
@@ -546,31 +565,22 @@
                 <h2 id="modalName" class="modal-name">Nome do Jogador</h2>
                 <span id="modalPos" class="modal-position">Posição</span>
             </div>
-
             <div class="modal-grid-stats">
                 <div class="modal-stat-box"><span>Idade</span><strong id="modalAge">--</strong></div>
                 <div class="modal-stat-box"><span>Valor</span><strong id="modalVal">--</strong></div>
                 <div class="modal-stat-box"><span>País</span><strong id="modalNat">--</strong></div>
             </div>
-
             <div class="card">
                 <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
                 <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
-            </div>
-           
-            <div class="card">
-                <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
-                <p id="modalHistory" style="font-size:13px; line-height:1.6; color:var(--text-muted); margin:0;">Carregando...</p>
             </div>
         </div>
 
         <div id="newsModal" class="custom-modal">
             <button class="modal-close-btn" onclick="fecharNoticia()">✕</button>
-           
             <div id="newsModalBanner" class="news-modal-banner"></div>
             <span id="newsModalTag" class="news-tag">Tag</span>
             <h2 id="newsModalTitle" class="news-modal-title">Título da Notícia</h2>
-           
             <div class="card" style="padding: 20px; background: rgba(255,255,255,0.02);">
                 <p id="newsModalFullText" style="font-size:14px; line-height:1.7; color:#E2E2EC; margin:0; white-space: pre-line;">Conteúdo...</p>
             </div>
@@ -583,29 +593,27 @@
     </button>
 
     <div id="sidebar-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0b0c10; z-index: 100002; box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;">
-       
         <div style="text-align: right; margin-bottom: 20px;">
             <button onclick="alternarMenuLateral()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
         </div>
 
         <div style="margin-bottom: 30px;">
-            <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">🤾‍♂️ Modalidades</h3>
-            <ul style="list-style: none; padding: 0; margin: 0; color: #fff; font-size: 14px;">
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Futsal</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Andebol</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Ténis de Mesa</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Boxe</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Futebol para Amputados</li>
-                <li style="padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05);">Futebol Feminino</li>
-                <li style="padding: 8px 0;">Formação</li>
-            </ul>
+            <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Modalidades</h3>
+           
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_futsal')">Futsal</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_andebol')">Andebol</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_tenis')">Ténis de Mesa</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_boxe')">Boxe</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_amputados')">Futebol para Amputados</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_feminino')">Futebol Feminino</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_formacao')">Formação</button>
         </div>
 
         <div>
-            <h3 style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">📩 Contactos</h3>
+            <h3 style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Contactos</h3>
             <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                 <p style="margin: 8px 0;"><strong>Instagram:</strong> <a href="https://instagram.com/estreladamadora360" target="_blank" style="color: #FFF; text-decoration: none;">@estreladamadora360</a></p>
-                <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:teu_email@gmail.com" style="color: #FFF; text-decoration: none;">contacto@estrela360.pt</a></p>
+                <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:contacto@estrela360.pt" style="color: #FFF; text-decoration: none;">contacto@estrela360.pt</a></p>
             </div>
         </div>
     </div>
@@ -627,21 +635,21 @@
                 tag: "⭐ Em Destaque",
                 corTag: "#F59E0B",
                 imagem: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>",
-                textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o jovem internacional pela Costa do Marfim tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus.\n\nCom exibições de gala e um controlo exímio a ditar o ritmo no meio-campo, a cotação e o mediatismo do jogador do Estrela dispararam instantaneamente nesta competição montra de jovens promessas mundiais."
+                textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o jovem internacional pela Costa do Marfim tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus."
+            },
+            "noticia_amputados": {
+                titulo: "Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal",
+                tag: "Futebol Amputados",
+                corTag: "var(--primary-green)",
+                imagem: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "A equipa tricolor derrotou o FC Famalicão por 4-1, num histórico encontro disputado no Campo José Alegre.\n\nMais do que o excelente resultado desportivo construído dentro de campo, a partida representou um marco fundacional único para o desporto adaptado nacional, servindo como a primeira partida oficializada de futebol para amputados em solo português, apoiada ativamente por iniciativas de inclusão social da Associação de Futebol de Lisboa."
             },
             "noticia1": {
                 titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
                 tag: "SAD Investimento",
                 corTag: "var(--primary-red)",
                 imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela.\n\nO plano prevê uma injeção de capital direta que pode ascender aos 45 milhões de euros no decorrer dos próximos três anos, focando-se na modernização total das infraestruturas e em contratações de peso.\n\nFiguras lendárias como Mats Hummels, Thomas Müller e o experiente guardião Yann Sommer surgem associados ao fundo de investmento como embaixadores e futuros consultores desportivos do projeto, o que promete colocar o emblema da Reboleira no mapa do futebol europeu a curto prazo."
-            },
-            "noticia2": {
-                titulo: "Assédio do Brasil: Vasco da Gama sonda Abraham Marcus",
-                tag: "Mercado",
-                corTag: "var(--primary-green)",
-                imagem: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "O excelente rendimento de Abraham Marcus na ala do Estrela na reta final da temporada não passou despercebido além-fronteiras.\n\nO Vasco da Gama, gigante do futebol brasileiro, realizou uma sondagem formal junto do clube tricolor para perceber as condições de transferência do extremo nigeriano de 26 anos.\n\nA direção tricolor já fez saber que o jogador está totalmente blindado e é considerado inegociável nesta fase de reestruturação do plantel, remetendo qualquer negociação para o valor total da cláusula de rescisão.\n\nMarcus sente-se feliz na Reboleira, mas o forte poderio financeiro e o apelo do Brasileirão prometem animar as próximas semanas do mercado de transferências."
+                textoCompleto: "Um consórcio financeiro internacional alemão iniciou conversações para investimento de 45 milhões de euros no Estrela da Amadora, visando infraestruturas e reestruturação da SAD."
             }
         };
 
@@ -656,52 +664,22 @@
             document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
             document.getElementById('newsModal').style.display = 'block';
         }
-
         function fecharNoticia() { document.getElementById('newsModal').style.display = 'none'; }
 
         var baseJogadores = {
-            "40": {
-                nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷",
-                foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1",
-                bio: "Guarda-redes experiente (ex-Sporting CP). Garante uma liderança vocal fortíssima dentro da área.",
-                historia: "Peça essencial no balneário tricolor durante a luta pela manutenção na Primeira Liga."
-            },
-            "1": {
-                nome: "Diogo Pinto", numero: "1", posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹",
-                foto: "", bio: "Jovem guardião de enorme potencial, ágil nas saídas entre os postes e dotado de excelentes reflexos.", historia: "Formado nas escolas de elite, tem somado minutos cruciais de evolução na Reboleira."
-            },
-            "25": {
-                nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸",
-                foto: "", bio: "O ativo mais valioso do plantel. Imponente no jogo aéreo defensivo e com excelente visão de saída de bola.", historia: "Herói no fecho do campeonato, com golos capitais que ditaram a permanência direta do Estrela."
-            },
-            "30": {
-                nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷",
-                foto: "", bio: "Central moderno, rápido na cobertura da profundidade e com posicionamento exímio.", historia: "Formou uma dupla de betão com Lekovic na reta final da época, blindando o setor recuado."
-            },
-            "83": {
-                nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷",
-                foto: "", bio: "Jovem defesa de perfil físico exuberante e muito agressivo nos duelos individuais.", historia: "Contratação estratégica de enorme margem de progressão financeira e desportiva."
-            },
-            "24": {
-                nome: "Bruno Langa", numero: "24", posicao: "Defesa Esquerdo", idade: "28 anos", valor: "1.00 M €", nacionalidade: "Moçambique 🇲🇿",
-                foto: "", bio: "Lateral de passada larga e pulmão inesgotável, garantindo consistência defensiva total.", historia: "Internacional incontornável pelo seu país, adaptou-se com mestria tática à Reboleira."
-            },
-            "19": {
-                nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹",
-                foto: "", bio: "O verdadeiro pêndulo tricolor. Inteligente nas coberturas e exímio na distribuição curta.", historia: "Afirmou-se em absoluto como o cérebro e o motor do meio-campo da equipa."
-            },
-            "10": {
-                nome: "Ianis Stoica", numero: "10", posicao: "Médio Ofensivo", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴",
-                foto: "", bio: "Criativo puro e desequilibrador nato. Combina visão de jogo em espaços curtos com drible forte.", historia: "Assumiu a camisola 10 com personalidade, desbloqueando defesas cerradas com passes geniais."
-            },
-            "99": {
-                nome: "Abraham Marcus", numero: "99", posicao: "Extremo / Avançado", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬",
-                foto: "", bio: "Velocidade pura e verticalidade letal. Forte no um para um e no ataque à profundidade.", historia: "Pilar fundamental do ataque na Reboleira. O seu excelente momento atraiu sondagens do Vasco da Gama."
-            },
-            "20": {
-                nome: "S. van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱",
-                foto: "", bio: "Ponta de lança de área. Exímio no jogo de costas para a baliza e forte na finalização aérea.", historia: "Filho do lendário Pierre van Hooijdonk, trouxe faro de golo internacional ao ataque tricolor."
-            }
+            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica." },
+            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física." },
+            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional." },
+            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza." },
+            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva." },
+            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo." },
+            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos." },
+            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento." },
+            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo." },
+            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado." },
+            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz." },
+            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física." },
+            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior." }
         };
 
         function abrirJogador(numeroCamisola) {
@@ -718,12 +696,10 @@
             document.getElementById('modalPos').innerText = AppJogador.posicao;
             document.getElementById('modalAge').innerText = AppJogador.idade;
             document.getElementById('modalVal').innerText = AppJogador.valor;
-            document.getElementById('modalNat').innerText = AppJogador.nacionalidade;
+            document.getElementById('modalNat').innerText = AppDump = AppJogador.nacionalidade;
             document.getElementById('modalBio').innerText = AppJogador.bio;
-            document.getElementById('modalHistory').innerText = AppJogador.historia;
             document.getElementById('playerModal').style.display = 'block';
         }
-
         function fecharJogador() { document.getElementById('playerModal').style.display = 'none'; }
 
         function irParaSecao(idSecao) {
@@ -731,10 +707,25 @@
             for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
             var botoes = document.querySelectorAll('nav button');
             for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
-            document.getElementById(idSecao).classList.add('active');
+           
+            var targetSecao = document.getElementById(idSecao);
+            if(targetSecao) targetSecao.classList.add('active');
+           
             var idBotao = 'btn-' + idSecao;
             if(idSecao === 'community') idBotao = 'btn-comm';
-            document.getElementById(idBotao).classList.add('active');
+            var btnActive = document.getElementById(idBotao);
+            if(btnActive) btnActive.classList.add('active');
+        }
+
+        function irParaModalidade(idModalidadeSecao) {
+            alternarMenuLateral(); // Fecha a sidebar
+            var secoes = document.getElementsByClassName('app-section');
+            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
+            var botoes = document.querySelectorAll('nav button');
+            for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
+           
+            document.getElementById(idModalidadeSecao).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function alternarMenuLateral() {
