@@ -364,12 +364,12 @@
             <span class="star-white">★</span>
             <span class="star-green">★</span>
         </div>
-        <div class="splash-title">Estrela360 Pro</div>
-        <div class="splash-subtitle">A Comunidade Tricolor</div>
+        <div class="splash-title" id="sp-title">Estrela360 Pro</div>
+        <div class="splash-subtitle" id="sp-subtitle">A Comunidade Tricolor</div>
     </div>
 
     <header>
-        <h1>Estrela360</h1>
+        <h1 id="hd-title">Estrela360</h1>
         <p id="app-subtitle">A Comunidade Tricolor</p>
     </header>
 
@@ -384,56 +384,56 @@
     <div class="container">
 
         <section id="news" class="app-section active">
-            <h2 class="section-title">Destaques Principais</h2>
-            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
+            <h2 class="section-title" id="lbl-destaques">Destaques Principais</h2>
+            <p id="lbl-news-tip" style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
             <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')" style="border: 1px solid var(--primary-red); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(210, 38, 48, 0.05) 100%);">
                 <div class="news-image-banner" style="background-image: url('https://estrelamadora.pt/wp-content/uploads/2026/06/709078775_18096678815464829_3481980488222504349_n-2048x1448.jpg');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag" style="background: var(--primary-red); color: white;">⭐ Em Destaque</span>
-                    <h3 class="news-title">Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal</h3>
-                    <p class="news-desc">A formação tricolor bateu o FC Famalicão por 4-1 num duelo pioneiro de responsabilidade social, consolidando a nova aposta inclusiva do clube.</p>
+                    <span class="news-tag" id="tag-news-featured" style="background: var(--primary-red); color: white;">⭐ Em Destaque</span>
+                    <h3 class="news-title" id="tit-news-amp">Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal</h3>
+                    <p class="news-desc" id="desc-news-amp">A formação tricolor bateu o FC Famalicão por 4-1 num duelo pioneiro de responsabilidade social, consolidando a nova aposta inclusiva do clube.</p>
                 </div>
             </div>
 
             <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')">
                 <div class="news-image-banner" style="background-image: url('https://cdn.record.pt/images/2026-04/img_920x518uu2026-04-04-16-23-34-2431083-im-639165429184436300.jpg');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag" style="background: var(--primary-green); color: #fff;">Torneio Toulon</span>
-                    <h3 class="news-title">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
-                    <p class="news-desc">O jovem internacional pela Costa do Marfim está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
+                    <span class="news-tag" id="tag-news-toulon" style="background: var(--primary-green); color: #fff;">Torneio Toulon</span>
+                    <h3 class="news-title" id="tit-news-doue">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
+                    <p class="news-desc" id="desc-news-doue">O jovem internacional pela Costa do Marfim está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
                 </div>
             </div>
 
             <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
                 <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag">SAD Investimento</span>
-                    <h3 class="news-title">Revolução de 45M€: Hummels e Müller associados à compra do Estrela</h3>
-                    <p class="news-desc">Estrelas globais como Mats Hummels, Thomas Müller e Yann Sommer estão ligados a um consórcio internacional para reestruturar financeiramente a SAD tricolor.</p>
+                    <span class="news-tag" id="tag-news-sad">SAD Investimento</span>
+                    <h3 class="news-title" id="tit-news-sad">Revolução de 45M€: Hummels e Müller associados à compra do Estrela</h3>
+                    <p class="news-desc" id="desc-news-sad">Estrelas globais como Mats Hummels, Thomas Müller e Yann Sommer estão ligados a um consórcio internacional para reestruturar financeiramente a SAD tricolor.</p>
                 </div>
             </div>
         </section>
 
         <section id="results" class="app-section">
-            <h2 class="section-title">Época Competitiva</h2>
-            <div class="alert-card">⚠️ Ainda não há calendário definido para a temporada 2026/2027</div>
+            <h2 class="section-title" id="lbl-results-title">Época Competitiva</h2>
+            <div class="alert-card" id="lbl-results-alert">⚠️ Ainda não há calendário definido para a temporada 2026/2027</div>
             <div class="card match-card">
                 <div class="match-flex">
                     <span class="team-name team-left">SC Braga</span>
                     <span class="score-box">2 - 2</span>
                     <span class="team-name team-right">Estrela Amadora</span>
                 </div>
-                <div class="match-info">Liga Portugal • Manutenção Assegurada • Terminado</div>
+                <div class="match-info" id="lbl-match-info">Liga Portugal • Manutenção Assegurada • Terminado</div>
             </div>
         </section>
 
         <section id="squad" class="app-section">
-            <h2 class="section-title">Plantel Principal</h2>
-            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
+            <h2 class="section-title" id="lbl-squad-title">Plantel Principal</h2>
+            <p id="lbl-squad-tip" style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
            
             <div class="card" style="padding: 10px 15px;">
-                <div class="squad-group-title">Guarda-Redes</div>
+                <div class="squad-group-title" id="lbl-gk">Guarda-Redes</div>
                 <div class="player-row" onclick="abrirJogador(40)">
                     <span class="p-number">40</span><span class="p-name">Renan Ribeiro</span><span class="p-age">36</span><span class="p-value">100 mil €</span>
                 </div>
@@ -447,7 +447,7 @@
                     <span class="p-number">1</span><span class="p-name">Diogo Pinto</span><span class="p-age">21</span><span class="p-value">300 mil €</span>
                 </div>
 
-                <div class="squad-group-title">Defesas</div>
+                <div class="squad-group-title" id="lbl-df">Defesas</div>
                 <div class="player-row" onclick="abrirJogador(25)">
                     <span class="p-number">25</span><span class="p-name">Stefan Lekovic</span><span class="p-age">22</span><span class="p-value">2.50 M €</span>
                 </div>
@@ -479,25 +479,25 @@
         </section>
 
         <section id="stats" class="app-section">
-            <h2 class="section-title">Performance Global</h2>
+            <h2 class="section-title" id="lbl-stats-title">Performance Global</h2>
             <div class="card">
                 <div class="stat-row">
-                    <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
+                    <div class="stat-labels"><span id="lbl-sad-val">Valor Mercado SAD</span> <span>21.35 M €</span></div>
                     <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
                 </div>
             </div>
 
-            <h3 style="font-size: 15px; margin: 25px 0 12px 0; color: #FFF; font-weight: 600; border-left: 3px solid var(--primary-green); padding-left: 8px;">Últimas Atualizações Financeiras</h3>
+            <h3 id="lbl-fin-updates" style="font-size: 15px; margin: 25px 0 12px 0; color: #FFF; font-weight: 600; border-left: 3px solid var(--primary-green); padding-left: 8px;">Últimas Atualizações Financeiras</h3>
            
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <span class="lbl-up-tag" style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Eddy Doué</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio de 21 anos apresentou uma valorização no mercado.</p>
+                        <p class="lbl-up-desc1" style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio aumentou o seu valor de mercado de 300 mil € para 400 mil €.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 400 mil €</span>
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 100 mil € (+33,33%)</span>
                     </div>
                 </div>
             </div>
@@ -505,12 +505,12 @@
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <span class="lbl-up-tag" style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Robinho</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio apresentou um rendimento consistente nas últimas jornadas.</p>
+                        <p class="lbl-up-desc2" style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio aumentou o seu valor de mercado para 600 mil €.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 150 mil €</span>
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 100 mil € (+20%)</span>
                     </div>
                 </div>
             </div>
@@ -518,12 +518,12 @@
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <span class="lbl-up-tag" style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Jovane</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado destaca-se pela sua capacidade ofensiva e golos decisivos.</p>
+                        <p class="lbl-up-desc3" style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado aumentou o seu valor de mercado para 1 milhão €.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 250 mil €</span>
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 200 mil € (+25%)</span>
                     </div>
                 </div>
             </div>
@@ -531,12 +531,12 @@
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <span class="lbl-up-tag" style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
                         <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Abraham Marcus</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado tem ganho protagonismo com exibições de grande velocidade.</p>
+                        <p class="lbl-up-desc4" style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado aumentou o seu valor de mercado para 1 milhão €.</p>
                     </div>
                     <div style="text-align: right; flex-shrink: 0;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 200 mil €</span>
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 200 mil € (+25%)</span>
                     </div>
                 </div>
             </div>
@@ -544,44 +544,44 @@
 
         <section id="modalidade_futsal" class="app-section">
             <h2 class="section-title">Futsal Tricolor</h2>
-            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Futsal do Estrela.</p></div>
+            <div class="card"><p class="lbl-mod-desc" style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Futsal do Estrela.</p></div>
         </section>
 
         <section id="modalidade_andebol" class="app-section">
             <h2 class="section-title">Andebol Tricolor</h2>
-            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Andebol do Estrela.</p></div>
+            <div class="card"><p class="lbl-mod-desc" style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Andebol do Estrela.</p></div>
         </section>
 
         <section id="modalidade_tenis" class="app-section">
             <h2 class="section-title">Ténis de Mesa</h2>
-            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações e novidades sobre o Ténis de Mesa do Estrela.</p></div>
+            <div class="card"><p class="lbl-mod-desc" style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações e novidades sobre o Ténis de Mesa do Estrela.</p></div>
         </section>
 
         <section id="modalidade_boxe" class="app-section">
             <h2 class="section-title">Boxe Tricolor</h2>
-            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a combates, atletas e novidades do Boxe do Estrela da Amadora.</p></div>
+            <div class="card"><p class="lbl-mod-desc" style="color: var(--text-muted); font-size: 13px;">Espaço reservado a combates, atletas e novidades do Boxe do Estrela da Amadora.</p></div>
         </section>
 
         <section id="modalidade_amputados" class="app-section">
             <h2 class="section-title">Futebol para Amputados</h2>
             <div class="card">
-                <h4 style="color:#FFF; margin: 0 0 10px 0;">História em Construção!</h4>
-                <p style="color: var(--text-muted); font-size: 13px; line-height: 1.5;">O Estrela da Amadora associou-se oficialmente à Futebol Amputados de Portugal. O projeto inovador de responsabilidade social treina no complexo tricolor e veste as cores e insígnias oficiais da Reboleira.</p>
+                <h4 id="lbl-amp-hist-title" style="color:#FFF; margin: 0 0 10px 0;">História em Construção!</h4>
+                <p id="lbl-amp-hist-desc" style="color: var(--text-muted); font-size: 13px; line-height: 1.5;">O Estrela da Amadora associou-se oficialmente à Futebol Amputados de Portugal. O projeto inovador de responsabilidade social treina no complexo tricolor e veste as cores e insígnias oficiais da Reboleira.</p>
             </div>
         </section>
 
         <section id="modalidade_feminino" class="app-section">
             <h2 class="section-title">Futebol Feminino</h2>
-            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações, jogos e notícias da equipa feminina tricolor.</p></div>
+            <div class="card"><p class="lbl-mod-desc" style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações, jogos e notícias da equipa feminina tricolor.</p></div>
         </section>
 
         <section id="modalidade_formacao" class="app-section">
             <h2 class="section-title">Formação Tricolor</h2>
-            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado ao acompanhamento e resultados dos nossos escalões jovens (Sub-23, Sub-19, Sub-17).</p></div>
+            <div class="card"><p class="lbl-mod-desc" style="color: var(--text-muted); font-size: 13px;">Espaço reservado ao acompanhamento e resultados dos nossos escalões jovens (Sub-23, Sub-19, Sub-17).</p></div>
         </section>
 
         <section id="community" class="app-section">
-            <h2 class="section-title">Mercado de Transferências Tricolor</h2>
+            <h2 class="section-title" id="lbl-comm-title">Mercado de Transferências Tricolor</h2>
             <div class="card">
                 <div class="comment-list" id="commentList">
                     <div class="comment-item" style="border-left: 4px solid #E11D48;">
@@ -608,16 +608,16 @@
                 <span id="modalPos" class="modal-position">Posição</span>
             </div>
             <div class="modal-grid-stats">
-                <div class="modal-stat-box"><span>Idade</span><strong id="modalAge">--</strong></div>
-                <div class="modal-stat-box"><span>Valor</span><strong id="modalVal">--</strong></div>
-                <div class="modal-stat-box"><span>País</span><strong id="modalNat">--</strong></div>
+                <div class="modal-stat-box"><span class="lbl-md-age">Idade</span><strong id="modalAge">--</strong></div>
+                <div class="modal-stat-box"><span class="lbl-md-val">Valor</span><strong id="modalVal">--</strong></div>
+                <div class="modal-stat-box"><span class="lbl-md-nat">País</span><strong id="modalNat">--</strong></div>
             </div>
             <div class="card">
-                <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
+                <h3 id="lbl-md-tech" style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
                 <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
             </div>
             <div class="card" style="border: 1px solid var(--primary-red); background: rgba(210, 38, 48, 0.05); padding: 20px;">
-                <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
+                <h3 id="lbl-md-hist" style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
                 <p id="modalHist" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
             </div>
         </div>
@@ -639,10 +639,10 @@
     </button>
 
     <div id="sidebar-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0b0c10; z-index: 100002; box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;">
-       
+        
         <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between;">
-            <span style="font-size:13px; font-weight:700; color:#fff;">Idioma / Language</span>
-            <button onclick="alert('Funcionalidade de idioma: Alternando entre PT / EN')" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: bold;">
+            <span id="lbl-lang-title" style="font-size:13px; font-weight:700; color:#fff;">Idioma / Language</span>
+            <button id="btn-lang-toggle" onclick="alternarIdioma()" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: bold;">
                 🌐 PT ⇄ EN
             </button>
         </div>
@@ -652,7 +652,7 @@
         </div>
 
         <div style="margin-bottom: 30px;">
-            <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Modalidades</h3>
+            <h3 id="lbl-side-mod" style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Modalidades</h3>
            
             <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_futsal')">Futsal</button>
             <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_andebol')">Andebol</button>
@@ -664,7 +664,7 @@
         </div>
 
         <div>
-            <h3 style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Contactos</h3>
+            <h3 id="lbl-side-cont" style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Contactos</h3>
             <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
                 <p style="margin: 8px 0;"><strong>Instagram:</strong> <a href="https://instagram.com/estreladamadora360" target="_blank" style="color: #FFF; text-decoration: none;">@estreladamadora360</a></p>
                 <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:contacto@estrela360.pt" style="color: #FFF; text-decoration: none;">contacto@estrela360.pt</a></p>
@@ -675,6 +675,8 @@
     <div id="sidebar-overlay" onclick="alternarMenuLateral()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100001; display: none; opacity: 0; transition: opacity 0.3s ease;"></div>
 
     <script>
+        var idiomaAtual = "pt";
+
         window.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 var splash = document.getElementById('splash-screen');
@@ -720,20 +722,21 @@
         }
         function fecharNoticia() { document.getElementById('newsModal').style.display = 'none'; }
 
+        // Alterado o campo "historico" para representar os clubes anteriores por onde passou
         var baseJogadores = {
-            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica.", historico: "Registou exibições sólidas na reta final do último campeonato, garantindo a permanência." },
-            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física.", historico: "Atuou em partidas importantes da Taça, demonstrando total fiabilidade." },
-            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional.", historico: "Mantém-se regular nos planos de treino e com forte compromisso com o grupo." },
-            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza.", historico: "Evolução notável ao longo da época nas camadas de transição para os seniores." },
-            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva.", historico: "Opção de compra exercida em definitivo por 1M € fruto do seu forte impacto tático." },
-            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo.", historico: "Titular indiscutível em vários eixos táticos aplicados durante o ano transato." },
-            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos.", historico: "Subida acentuada de rendimento que despertou o interesse de vários observadores." },
-            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento.", historico: "Efetuou uma série de desarmes providenciais em jogos de alto risco em casa." },
-            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo.", historico: "Dominou os duelos nas bolas paradas nos momentos cruciais da última época." },
-            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado.", historico: "Chamado a intervir com foco absoluto sempre que a rotação defensiva exigiu." },
-            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz.", historico: "Protagonista em transições rápidas pelos flancos com assistências de relevo." },
-            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física.", historico: "Forte intensidade demonstrada nas suas representações internacionais e no clube." },
-            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior.", historico: "Rigor defensivo assinalável nos minutos concedidos ao longo do ano competitivo." }
+            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica.", historico: "Passou por: Atlético Mineiro (Brasil), São Paulo (Brasil), Sporting CP (Portugal) e Al-Ahli (Arábia Saudita)." },
+            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física.", historico: "Passou por: Coritiba (Brasil), Santa Cruz (Brasil) e Londrina (Brasil)." },
+            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional.", historico: "Passou por: Formação do Sporting CP, Real SC, Mafra e Oriental." },
+            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza.", historico: "Passou por: Formação do Sporting CP e equipa secundária antes de ingressar no projeto tricolor." },
+            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva.", historico: "Passou por: Estrela Vermelha de Belgrado (Sérvia) e Graficar (Sérvia)." },
+            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo.", historico: "Passou por: Athletico Paranaense (Brasil), América Mineiro (Brasil) e Red Bull Bragantino (Brasil)." },
+            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos.", historico: "Passou por: Formação do Flamengo (Brasil) e Palmeiras (Brasil)." },
+            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento.", historico: "Passou por: Ituano (Brasil) e Fortaleza (Brasil)." },
+            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo.", historico: "Passou por: Lyon B (França), Olimpik Donetsk (Ucrânia), New York Red Bulls (EUA) e Bastia (França)." },
+            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado.", historico: "Passou por: Sanjoanense, Louletano e Vila Meã." },
+            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz.", historico: "Passou por: IFK Göteborg (Suécia), FC Groningen (Países Baixos) e IFK Norrköping (Suécia)." },
+            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física.", historico: "Passou por: Formação do Sporting CP, Olhanense, Vitória de Guimarães B e Leixões SC." },
+            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior.", historico: "Passou por: Formação do Bayern de Munique (Alemanha) e representações da equipa secundária bávara." }
         };
 
         function abrirJogador(numeroCamisola) {
@@ -752,7 +755,17 @@
             document.getElementById('modalVal').innerText = AppJogador.valor;
             document.getElementById('modalNat').innerText = AppJogador.nacionalidade;
             document.getElementById('modalBio').innerText = AppJogador.bio;
-            document.getElementById('modalHist').innerText = AppJogador.historico || "Sem histórico recente registado para esta época.";
+            document.getElementById('modalHist').innerText = AppJogador.historico || "Sem histórico de clubes registado.";
+            
+            // Ajustar dinamicamente os cabeçalhos do modal com base no idioma ativo
+            if(idiomaAtual === "en") {
+                document.getElementById('lbl-md-tech').innerText = "TECHNICAL REPORT";
+                document.getElementById('lbl-md-hist').innerText = "PAST CLUBS / CAREER";
+            } else {
+                document.getElementById('lbl-md-tech').innerText = "RELATÓRIO TÉCNICO";
+                document.getElementById('lbl-md-hist').innerText = "HISTÓRICO RECENTE";
+            }
+            
             document.getElementById('playerModal').style.display = 'block';
         }
         function fecharJogador() { document.getElementById('playerModal').style.display = 'none'; }
@@ -797,6 +810,126 @@
                 overlay.style.display = 'block';
                 if(btnFloat) btnFloat.style.transform = 'scale(0) rotate(90deg)';
                 setTimeout(function() { sidebar.style.right = '0px'; overlay.style.opacity = '1'; }, 10);
+            }
+        }
+
+        // Função para traduzir o ecrã completo dinamicamente
+        function alternarIdioma() {
+            if (idiomaAtual === "pt") {
+                idiomaAtual = "en";
+                document.getElementById('btn-lang-toggle').innerHTML = "🌐 EN ⇄ PT";
+                
+                // Mudar abas de navegação
+                document.getElementById('btn-news').innerText = "News";
+                document.getElementById('btn-results').innerText = "Results";
+                document.getElementById('btn-squad').innerText = "Squad";
+                document.getElementById('btn-stats').innerText = "Analytics";
+                document.getElementById('btn-comm').innerText = "Market";
+                
+                // Mudar cabeçalhos gerais
+                document.getElementById('sp-title').innerText = "Estrela360 Pro";
+                document.getElementById('sp-subtitle').innerText = "The Tricolor Community";
+                document.getElementById('hd-title').innerText = "Estrela360";
+                document.getElementById('app-subtitle').innerText = "The Tricolor Community";
+                
+                // Notícias
+                document.getElementById('lbl-destaques').innerText = "Main Highlights";
+                document.getElementById('lbl-news-tip').innerText = "💡 Click on any news article to expand and read full story.";
+                document.getElementById('tag-news-featured').innerText = "⭐ Featured";
+                document.getElementById('tag-news-sad').innerText = "SAD Investment";
+                
+                // Resultados
+                document.getElementById('lbl-results-title').innerText = "Competitive Season";
+                document.getElementById('lbl-results-alert').innerText = "⚠️ No schedule defined yet for the 2026/2027 season";
+                document.getElementById('lbl-match-info').innerText = "Liga Portugal • Maintenance Secured • Finished";
+                
+                // Plantel
+                document.getElementById('lbl-squad-title').innerText = "First Team Squad";
+                document.getElementById('lbl-squad-tip').innerText = "💡 Click on any player to open technical details.";
+                document.getElementById('lbl-gk').innerText = "Goalkeepers";
+                document.getElementById('lbl-df').innerText = "Defenders";
+                
+                // Análises
+                document.getElementById('lbl-stats-title').innerText = "Global Performance";
+                document.getElementById('lbl-sad-val').innerText = "SAD Market Value";
+                document.getElementById('lbl-fin-updates').innerText = "Latest Financial Updates";
+                
+                var tags = document.getElementsByClassName('lbl-up-tag');
+                for(var i=0; i<tags.length; i++) { tags[i].innerText = "Value Increase"; }
+                
+                // Mercado
+                document.getElementById('lbl-comm-title').innerText = "Tricolor Transfer Market";
+                
+                // Modais (Labels base)
+                var ageLabels = document.getElementsByClassName('lbl-md-age');
+                for(var a=0; a<ageLabels.length; a++) { ageLabels[a].innerText = "Age"; }
+                var valLabels = document.getElementsByClassName('lbl-md-val');
+                for(var v=0; v<valLabels.length; v++) { valLabels[v].innerText = "Value"; }
+                var natLabels = document.getElementsByClassName('lbl-md-nat');
+                for(var n=0; n<natLabels.length; n++) { natLabels[n].innerText = "Country"; }
+                
+                // Sidebar
+                document.getElementById('lbl-lang-title').innerText = "Language / Idioma";
+                document.getElementById('lbl-side-mod').innerText = "Sports Sections";
+                document.getElementById('lbl-side-cont').innerText = "Contacts";
+                
+            } else {
+                idiomaAtual = "pt";
+                document.getElementById('btn-lang-toggle').innerHTML = "🌐 PT ⇄ EN";
+                
+                // Restaurar abas de navegação
+                document.getElementById('btn-news').innerText = "Notícias";
+                document.getElementById('btn-results').innerText = "Resultados";
+                document.getElementById('btn-squad').innerText = "Plantel";
+                document.getElementById('btn-stats').innerText = "Análises";
+                document.getElementById('btn-comm').innerText = "Mercado";
+                
+                // Restaurar cabeçalhos gerais
+                document.getElementById('sp-title').innerText = "Estrela360 Pro";
+                document.getElementById('sp-subtitle').innerText = "A Comunidade Tricolor";
+                document.getElementById('hd-title').innerText = "Estrela360";
+                document.getElementById('app-subtitle').innerText = "A Comunidade Tricolor";
+                
+                // Notícias
+                document.getElementById('lbl-destaques').innerText = "Destaques Principais";
+                document.getElementById('lbl-news-tip').innerText = "💡 Clica em qualquer notícia para ampliar e ler o artigo completo.";
+                document.getElementById('tag-news-featured').innerText = "⭐ Em Destaque";
+                document.getElementById('tag-news-sad').innerText = "SAD Investimento";
+                
+                // Resultados
+                document.getElementById('lbl-results-title').innerText = "Época Competitiva";
+                document.getElementById('lbl-results-alert').innerText = "⚠️ Ainda não há calendário definido para a temporada 2026/2027";
+                document.getElementById('lbl-match-info').innerText = "Liga Portugal • Manutenção Assegurada • Terminado";
+                
+                // Plantel
+                document.getElementById('lbl-squad-title').innerText = "Plantel Principal";
+                document.getElementById('lbl-squad-tip').innerText = "💡 Clica em cima de qualquer jogador para abrir a aba técnica.";
+                document.getElementById('lbl-gk').innerText = "Guarda-Redes";
+                document.getElementById('lbl-df').innerText = "Defesas";
+                
+                // Análises
+                document.getElementById('lbl-stats-title').innerText = "Performance Global";
+                document.getElementById('lbl-sad-val').innerText = "Valor Mercado SAD";
+                document.getElementById('lbl-fin-updates').innerText = "Últimas Atualizações Financeiras";
+                
+                var tagsPT = document.getElementsByClassName('lbl-up-tag');
+                for(var j=0; j<tagsPT.length; j++) { tagsPT[j].innerText = "Aumento de Valor"; }
+                
+                // Mercado
+                document.getElementById('lbl-comm-title').innerText = "Mercado de Transferências Tricolor";
+                
+                // Modais Labels
+                var ageLabelsPT = document.getElementsByClassName('lbl-md-age');
+                for(var aG=0; aG<ageLabelsPT.length; aG++) { ageLabelsPT[aG].innerText = "Idade"; }
+                var valLabelsPT = document.getElementsByClassName('lbl-md-val');
+                for(var vL=0; vL<valLabelsPT.length; vL++) { valLabelsPT[vL].innerText = "Valor"; }
+                var natLabelsPT = document.getElementsByClassName('lbl-md-nat');
+                for(var nL=0; nL<natLabelsPT.length; nL++) { natLabelsPT[nL].innerText = "País"; }
+                
+                // Sidebar
+                document.getElementById('lbl-lang-title').innerText = "Idioma / Language";
+                document.getElementById('lbl-side-mod').innerText = "Modalidades";
+                document.getElementById('lbl-side-cont').innerText = "Contactos";
             }
         }
     </script>
