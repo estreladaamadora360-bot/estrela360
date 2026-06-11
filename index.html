@@ -1,3 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrela360 Pro</title>
+    <style>
+        :root {
+            --primary-green: #008751;
+            --primary-red: #D22630;
+            --bg-dark: #070709;
+            --card-bg: rgba(22, 22, 28, 0.8);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-light: #FFFFFF;
+            --text-muted: #A5A5B5;
+        }
+
+        body {
+            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at top right, rgba(0, 135, 81, 0.15), transparent 300px),
+                              radial-gradient(circle at top left, rgba(210, 38, 48, 0.15), transparent 300px);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ECRÃ DE BOAS-VINDAS */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #070709;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        .splash-stars-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            font-size: 50px;
+            margin-bottom: 15px;
+            width: 100%;
+            animation: pulseModern 1.8s infinite ease-in-out;
+        }
+        .star-red { color: var(--primary-red); text-shadow: 0 0 25px rgba(210, 38, 48, 0.7); }
+        .star-white { color: #FFFFFF; text-shadow: 0 0 25px rgba(255, 255, 255, 0.7); }
+        .star-green { color: var(--primary-green); text-shadow: 0 0 25px rgba(0, 135, 81, 0.7); }
+        .splash-title {
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            margin-top: 15px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #B5B5B5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .splash-subtitle {
+            font-size: 11px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+            margin-top: 5px;
+        }
+        @keyframes pulseModern {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+
+        header {
+            padding: 30px 20px 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--card-border);
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 5px;
+            background: linear-gradient(90deg, var(--primary-green) 0%, #FFFFFF 50%, var(--primary-red) 100%);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #FFFFFF 0%, #B5B5B5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            margin: 4px 0 0 0;
+            font-size: 11px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            background: rgba(13, 13, 16, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px 4px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 1px solid var(--card-border);
+        }
+        nav button {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+            padding: 10px 6px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2px;
+            flex-grow: 1;
+            text-align: center;
+        }
+        nav button.active {
+            color: #FFFFFF;
+            background: linear-gradient(135deg, var(--primary-green) 0%, rgba(0, 135, 81, 0.4) 100%);
+            box-shadow: 0 4px 10px rgba(0, 135, 81, 0.25);
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            padding-bottom: 80px;
+        }
+        .app-section { display: none; }
+        .app-section.active { display: block; }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 10px 0 20px 0;
+            letter-spacing: -0.5px;
+            border-left: 4px solid var(--primary-red);
+            padding-left: 10px;
+        }
+
+        /* Notícias Interativas */
+        .news-card-modern {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 25px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .news-card-modern:hover {
+            transform: scale(1.01);
+            background: rgba(30, 30, 38, 0.8);
+        }
+        .news-image-banner {
+            height: 160px;
+            background-size: cover;
+            background-position: center;
+        }
+        .news-content-area { padding: 20px; }
+        .news-tag {
+            display: inline-block;
+            background: var(--primary-red);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .news-title { font-size: 20px; font-weight: 900; margin: 0 0 10px 0; line-height: 1.35; }
+        .news-desc { font-size: 13px; color: var(--text-muted); margin: 0; line-height: 1.5; }
+
+        /* Resultados */
+        .alert-card {
+            background: rgba(210, 38, 48, 0.1);
+            border: 1px dashed var(--primary-red);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            color: #FFA3A3;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .match-card { background: linear-gradient(145deg, rgba(28,28,35,0.9), rgba(16,16,20,0.9)); }
+        .match-flex { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; gap: 8px; }
+        .team-name { font-weight: 800; font-size: 13px; width: 40%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .team-left { text-align: left; color: #FFF; }
+        .team-right { text-align: right; color: #FFF; }
+        .score-box {
+            background: linear-gradient(135deg, var(--primary-green) 0%, #064E3B 100%);
+            padding: 6px 14px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+        .match-info { text-align: center; color: var(--text-muted); font-size: 11px; margin-top: 15px; font-weight: 600; text-transform: uppercase; }
+
+        /* Plantel Interativo */
+        .squad-group-title {
+            font-size: 12px;
+            color: var(--primary-green);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 20px 0 10px 0;
+            font-weight: 800;
+        }
+        .player-row {
+            display: grid;
+            grid-template-columns: 12% 48% 12% 28%;
+            align-items: center;
+            padding: 14px 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 13px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-radius: 8px;
+        }
+        .player-row:hover { background: rgba(255, 255, 255, 0.03); }
+        .p-number { font-weight: 800; color: var(--text-muted); }
+        .p-name { font-weight: 700; color: #FFF; }
+        .p-age { color: var(--text-muted); text-align: center; }
+        .p-value { font-weight: 800; text-align: right; color: #F59E0B; }
+
+        /* MODAIS */
+        .custom-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(7, 7, 9, 0.96);
+            z-index: 10000;
+            padding: 20px;
+            overflow-y: auto;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+        }
+        .modal-header-card {
+            background: linear-gradient(135deg, var(--primary-green) 0%, rgba(210, 38, 48, 0.3) 100%);
+            border-radius: 24px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 15px; right: 15px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            font-weight: 900;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-photo-container { position: relative; width: 110px; height: 110px; margin: 0 auto 15px auto; }
+        .modal-player-img {
+            width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+            border: 3px solid #FFFFFF; box-shadow: 0 8px 20px rgba(0,0,0,0.4); background: #16161c; display: block;
+        }
+        .modal-number-badge {
+            position: absolute; bottom: 0; right: 0; background: var(--primary-red); color: white;
+            font-size: 14px; font-weight: 900; width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
+        .modal-position { font-size: 11px; background: rgba(255,255,255,0.15); display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+       
+        .modal-grid-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+        .modal-stat-box { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px 5px; text-align: center; }
+        .modal-stat-box span { display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+        .modal-stat-box strong { font-size: 16px; color: #FFF; font-weight: 800; }
+
+        .news-modal-banner { height: 200px; border-radius: 20px; background-size: cover; background-position: center; margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.5); }
+        .news-modal-title { font-size: 24px; font-weight: 900; margin: 15px 0; line-height: 1.3; }
+
+        /* Análises */
+        .stat-row { margin-bottom: 18px; }
+        .stat-labels { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
+        .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
+
+        .comment-list { margin-top: 30px; }
+        .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
+
+        /* Estilos do Menu Lateral de Modalidades Individuais */
+        .sidebar-item-btn {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: #fff;
+            padding: 12px 15px;
+            text-align: left;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: background 0.2s, border-color 0.2s;
+        }
+        .sidebar-item-btn:hover {
+            background: rgba(0, 135, 81, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        @media (max-width: 480px) {
+            body, html { overflow-x: hidden; }
+            .container { padding: 15px; box-sizing: border-box; }
+            .card { padding: 15px !important; box-sizing: border-box; width: 100% !important; }
+            .comment-item { font-size: 13px !important; white-space: normal !important; word-break: break-word !important; padding: 10px !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="splash-stars-container">
+            <span class="star-red">★</span>
+            <span class="star-white">★</span>
+            <span class="star-green">★</span>
+        </div>
+        <div class="splash-title">Estrela360 Pro</div>
+        <div class="splash-subtitle">A Comunidade Tricolor</div>
+    </div>
+
+    <header>
+        <h1>Estrela360</h1>
+        <p id="app-subtitle">A Comunidade Tricolor</p>
+    </header>
+
+    <nav>
+        <button onclick="irParaSecao('news')" id="btn-news" class="active">Notícias</button>
+        <button onclick="irParaSecao('results')" id="btn-results">Resultados</button>
+        <button onclick="irParaSecao('squad')" id="btn-squad">Plantel</button>
+        <button onclick="irParaSecao('stats')" id="btn-stats">Análises</button>
+        <button onclick="irParaSecao('community')" id="btn-comm">Mercado</button>
+    </nav>
+
+    <div class="container">
+
+        <section id="news" class="app-section active">
+            <h2 class="section-title">Destaques Principais</h2>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
+           
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')" style="border: 1px solid rgba(245, 158, 11, 0.4); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(245, 158, 11, 0.05) 100%);">
+                <div class="news-image-banner" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: #F59E0B; color: #000;">⭐ Em Destaque</span>
+                    <h3 class="news-title">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
+                    <p class="news-desc">O jovem internacional pela Costa do Marfim está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
+                </div>
+            </div>
+
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-green);">Futebol Amputados</span>
+                    <h3 class="news-title">Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal</h3>
+                    <p class="news-desc">A formação tricolor bateu o FC Famalicão por 4-1 num duelo pioneiro de responsabilidade social, consolidando a nova aposta inclusiva do clube.</p>
+                </div>
+            </div>
+
+            <div class="news-card-modern" onclick="abrirNoticia('noticia1')">
+                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag">SAD Investimento</span>
+                    <h3 class="news-title">Revolução de 45M€: Hummels e Müller associados à compra do Estrela</h3>
+                    <p class="news-desc">Estrelas globais como Mats Hummels, Thomas Müller e Yann Sommer estão ligados a um consórcio internacional para reestruturar financeiramente a SAD tricolor.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="results" class="app-section">
+            <h2 class="section-title">Época Competitiva</h2>
+            <div class="alert-card">⚠️ Ainda não há calendário definido para a temporada 2026/2027</div>
+            <div class="card match-card">
+                <div class="match-flex">
+                    <span class="team-name team-left">SC Braga</span>
+                    <span class="score-box">2 - 2</span>
+                    <span class="team-name team-right">Estrela Amadora</span>
+                </div>
+                <div class="match-info">Liga Portugal • Manutenção Assegurada • Terminado</div>
+            </div>
+        </section>
+
+        <section id="squad" class="app-section">
+            <h2 class="section-title">Plantel Principal</h2>
+            <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em cima de qualquer jogador para abrir a aba técnica.</p>
+           
+            <div class="card" style="padding: 10px 15px;">
+                <div class="squad-group-title">Guarda-Redes</div>
+                <div class="player-row" onclick="abrirJogador(40)">
+                    <span class="p-number">40</span><span class="p-name">Renan Ribeiro</span><span class="p-age">36</span><span class="p-value">100 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(13)">
+                    <span class="p-number">13</span><span class="p-name">Dudu</span><span class="p-age">27</span><span class="p-value">150 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(22)">
+                    <span class="p-number">22</span><span class="p-name">David Grilo</span><span class="p-age">29</span><span class="p-value">100 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(1)">
+                    <span class="p-number">1</span><span class="p-name">Diogo Pinto</span><span class="p-age">21</span><span class="p-value">300 mil €</span>
+                </div>
+
+                <div class="squad-group-title">Defesas</div>
+                <div class="player-row" onclick="abrirJogador(25)">
+                    <span class="p-number">25</span><span class="p-name">Stefan Lekovic</span><span class="p-age">22</span><span class="p-value">2.50 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(30)">
+                    <span class="p-number">30</span><span class="p-name">Luan Patrick</span><span class="p-age">24</span><span class="p-value">2.00 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(83)">
+                    <span class="p-number">83</span><span class="p-name">Otávio</span><span class="p-age">20</span><span class="p-value">1.50 M €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(14)">
+                    <span class="p-number">14</span><span class="p-name">Bernardo Schappo</span><span class="p-age">27</span><span class="p-value">750 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(5)">
+                    <span class="p-number">5</span><span class="p-name">Issiar Dramé</span><span class="p-age">27</span><span class="p-value">300 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(3)">
+                    <span class="p-number">3</span><span class="p-name">Ni Rodrigues</span><span class="p-age">23</span><span class="p-value">100 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(2)">
+                    <span class="p-number">2</span><span class="p-name">Yahya Kalley</span><span class="p-age">25</span><span class="p-value">300 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(17)">
+                    <span class="p-number">17</span><span class="p-name">Jefferson Encada</span><span class="p-age">28</span><span class="p-value">400 mil €</span>
+                </div>
+                <div class="player-row" onclick="abrirJogador(21)">
+                    <span class="p-number">21</span><span class="p-name">Max Scholze</span><span class="p-age">21</span><span class="p-value">400 mil €</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="app-section">
+            <h2 class="section-title">Performance Global</h2>
+            <div class="card">
+                <div class="stat-row">
+                    <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
+                </div>
+            </div>
+
+            <h3 style="font-size: 15px; margin: 25px 0 12px 0; color: #FFF; font-weight: 600; border-left: 3px solid var(--primary-green); padding-left: 8px;">Últimas Atualizações Financeiras</h3>
+           
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Eddy Doué</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio de 21 anos apresentou uma valorização no mercado.</p>
+                    </div>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 400 mil €</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modalidade_futsal" class="app-section">
+            <h2 class="section-title">Futsal Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Futsal do Estrela.</p></div>
+        </section>
+
+        <section id="modalidade_andebol" class="app-section">
+            <h2 class="section-title">Andebol Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a atualizações desportivas, resultados e notícias sobre o Andebol do Estrela.</p></div>
+        </section>
+
+        <section id="modalidade_tenis" class="app-section">
+            <h2 class="section-title">Ténis de Mesa</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações e novidades sobre o Ténis de Mesa do Estrela.</p></div>
+        </section>
+
+        <section id="modalidade_boxe" class="app-section">
+            <h2 class="section-title">Boxe Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a combates, atletas e novidades do Boxe do Estrela da Amadora.</p></div>
+        </section>
+
+        <section id="modalidade_amputados" class="app-section">
+            <h2 class="section-title">Futebol para Amputados</h2>
+            <div class="card">
+                <h4 style="color:#FFF; margin: 0 0 10px 0;">História em Construção!</h4>
+                <p style="color: var(--text-muted); font-size: 13px; line-height: 1.5;">O Estrela da Amadora associou-se oficialmente à Futebol Amputados de Portugal. O projeto inovador de responsabilidade social treina no complexo tricolor e veste as cores e insígnias oficiais da Reboleira.</p>
+            </div>
+        </section>
+
+        <section id="modalidade_feminino" class="app-section">
+            <h2 class="section-title">Futebol Feminino</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado a classificações, jogos e notícias da equipa feminina tricolor.</p></div>
+        </section>
+
+        <section id="modalidade_formacao" class="app-section">
+            <h2 class="section-title">Formação Tricolor</h2>
+            <div class="card"><p style="color: var(--text-muted); font-size: 13px;">Espaço reservado ao acompanhamento e resultados dos nossos escalões jovens (Sub-23, Sub-19, Sub-17).</p></div>
+        </section>
+
+        <section id="community" class="app-section">
+            <h2 class="section-title">Mercado de Transferências Tricolor</h2>
+            <div class="card">
+                <div class="comment-list" id="commentList">
+                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
+                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Alex Sola:</strong> O ala direito/médio foi oficialmente cedido por empréstimo válido por 1 temporada (com duração de 1 ano) ao <strong>Kiryat Shmona FC</strong> do principal escalão de Israel.
+                    </div>
+
+                    <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
+                        <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Stefan Leković:</strong> Opção de compra exercida junto do Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="playerModal" class="custom-modal">
+            <button class="modal-close-btn" onclick="fecharJogador()">✕</button>
+            <div class="modal-header-card">
+                <div class="modal-photo-container">
+                    <img id="modalPhoto" src="" alt="Foto Jogador" class="modal-player-img">
+                    <div id="modalNumBadge" class="modal-number-badge">00</div>
+                </div>
+                <h2 id="modalName" class="modal-name">Nome do Jogador</h2>
+                <span id="modalPos" class="modal-position">Posição</span>
+            </div>
+            <div class="modal-grid-stats">
+                <div class="modal-stat-box"><span>Idade</span><strong id="modalAge">--</strong></div>
+                <div class="modal-stat-box"><span>Valor</span><strong id="modalVal">--</strong></div>
+                <div class="modal-stat-box"><span>País</span><strong id="modalNat">--</strong></div>
+            </div>
+            <div class="card">
+                <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
+                <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
+            </div>
+        </div>
+
+        <div id="newsModal" class="custom-modal">
+            <button class="modal-close-btn" onclick="fecharNoticia()">✕</button>
+            <div id="newsModalBanner" class="news-modal-banner"></div>
+            <span id="newsModalTag" class="news-tag">Tag</span>
+            <h2 id="newsModalTitle" class="news-modal-title">Título da Notícia</h2>
+            <div class="card" style="padding: 20px; background: rgba(255,255,255,0.02);">
+                <p id="newsModalFullText" style="font-size:14px; line-height:1.7; color:#E2E2EC; margin:0; white-space: pre-line;">Conteúdo...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <button onclick="alternarMenuLateral()" id="btn-hamburger-floating" style="position: fixed; bottom: 20px; right: 20px; width: 50px; height: 50px; background-color: #070709; color: #FFF; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; font-size: 20px; cursor: pointer; z-index: 100000; box-shadow: 0 4px 12px rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease;">
+        ☰
+    </button>
+
+    <div id="sidebar-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0b0c10; z-index: 100002; box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;">
+        <div style="text-align: right; margin-bottom: 20px;">
+            <button onclick="alternarMenuLateral()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <h3 style="color: var(--primary-green); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Modalidades</h3>
+           
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_futsal')">Futsal</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_andebol')">Andebol</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_tenis')">Ténis de Mesa</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_boxe')">Boxe</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_amputados')">Futebol para Amputados</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_feminino')">Futebol Feminino</button>
+            <button class="sidebar-item-btn" onclick="irParaModalidade('modalidade_formacao')">Formação</button>
+        </div>
+
+        <div>
+            <h3 style="color: var(--primary-red); border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; margin-bottom: 15px; font-size: 16px;">Contactos</h3>
+            <div style="font-size: 13px; color: var(--text-muted); line-height: 1.6;">
+                <p style="margin: 8px 0;"><strong>Instagram:</strong> <a href="https://instagram.com/estreladamadora360" target="_blank" style="color: #FFF; text-decoration: none;">@estreladamadora360</a></p>
+                <p style="margin: 8px 0;"><strong>Email:</strong> <a href="mailto:contacto@estrela360.pt" style="color: #FFF; text-decoration: none;">contacto@estrela360.pt</a></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebar-overlay" onclick="alternarMenuLateral()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 100001; display: none; opacity: 0; transition: opacity 0.3s ease;"></div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                var splash = document.getElementById('splash-screen');
+                splash.style.opacity = '0';
+                setTimeout(function() { splash.style.visibility = 'hidden'; }, 500);
+            }, 2000);
+        });
+
+        var baseNoticias = {
+            "noticia_doue": {
+                titulo: "Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon",
+                tag: "⭐ Em Destaque",
+                corTag: "#F59E0B",
+                imagem: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>",
+                textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o jovem internacional pela Costa do Marfim tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus."
+            },
+            "noticia_amputados": {
+                titulo: "Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal",
+                tag: "Futebol Amputados",
+                corTag: "var(--primary-green)",
+                imagem: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "A equipa tricolor derrotou o FC Famalicão por 4-1, num histórico encontro disputado no Campo José Alegre.\n\nMais do que o excelente resultado desportivo construído dentro de campo, a partida representou um marco fundacional único para o desporto adaptado nacional, servindo como a primeira partida oficializada de futebol para amputados em solo português, apoiada ativamente por iniciativas de inclusão social da Associação de Futebol de Lisboa."
+            },
+            "noticia1": {
+                titulo: "Revolução de 45M€: Hummels e Müller associados à compra do Estrela",
+                tag: "SAD Investimento",
+                corTag: "var(--primary-red)",
+                imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
+                textoCompleto: "Um consórcio financeiro internacional alemão iniciou conversações para investimento de 45 milhões de euros no Estrela da Amadora, visando infraestruturas e reestruturação da SAD."
+            }
+        };
+
+        function abrirNoticia(idNoticia) {
+            var noticia = baseNoticias[idNoticia];
+            if(!noticia) return;
+            document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
+            document.getElementById('newsModalTag').innerText = noticia.tag;
+            document.getElementById('newsModalTag').style.background = noticia.corTag;
+            document.getElementById('newsModalTag').style.color = idNoticia === 'noticia_doue' ? '#000' : '#FFF';
+            document.getElementById('newsModalTitle').innerText = noticia.titulo;
+            document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
+            document.getElementById('newsModal').style.display = 'block';
+        }
+        function fecharNoticia() { document.getElementById('newsModal').style.display = 'none'; }
+
+        var baseJogadores = {
+            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica." },
+            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física." },
+            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional." },
+            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza." },
+            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva." },
+            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo." },
+            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos." },
+            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento." },
+            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo." },
+            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado." },
+            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz." },
+            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física." },
+            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior." }
+        };
+
+        function abrirJogador(numeroCamisola) {
+            var AppJogador = baseJogadores[numeroCamisola];
+            if(!AppJogador) return;
+            document.getElementById('modalNumBadge').innerText = AppJogador.numero;
+            var imgElement = document.getElementById('modalPhoto');
+            if (AppJogador.foto && AppJogador.foto.trim() !== "") {
+                imgElement.src = AppJogador.foto;
+            } else {
+                imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
+            }
+            document.getElementById('modalName').innerText = AppJogador.nome;
+            document.getElementById('modalPos').innerText = AppJogador.posicao;
+            document.getElementById('modalAge').innerText = AppJogador.idade;
+            document.getElementById('modalVal').innerText = AppJogador.valor;
+            document.getElementById('modalNat').innerText = AppDump = AppJogador.nacionalidade;
+            document.getElementById('modalBio').innerText = AppJogador.bio;
+            document.getElementById('playerModal').style.display = 'block';
+        }
+        function fecharJogador() { document.getElementById('playerModal').style.display = 'none'; }
+
+        function irParaSecao(idSecao) {
+            var secoes = document.getElementsByClassName('app-section');
+            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
+            var botoes = document.querySelectorAll('nav button');
+            for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
+           
+            var targetSecao = document.getElementById(idSecao);
+            if(targetSecao) targetSecao.classList.add('active');
+           
+            var idBotao = 'btn-' + idSecao;
+            if(idSecao === 'community') idBotao = 'btn-comm';
+            var btnActive = document.getElementById(idBotao);
+            if(btnActive) btnActive.classList.add('active');
+        }
+
+        function irParaModalidade(idModalidadeSecao) {
+            alternarMenuLateral(); // Fecha a sidebar
+            var secoes = document.getElementsByClassName('app-section');
+            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
+            var botoes = document.querySelectorAll('nav button');
             for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
            
             document.getElementById(idModalidadeSecao).classList.add('active');
