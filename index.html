@@ -41,7 +41,6 @@
             box-sizing: border-box;
             transition: opacity 0.5s ease, visibility 0.5s;
         }
-       
         /* Contentor para alinhar as 3 estrelas */
         .splash-stars-container {
             display: flex;
@@ -53,7 +52,6 @@
             width: 100%;
             animation: pulseModern 1.8s infinite ease-in-out;
         }
-       
         /* Cor da primeira estrela: Vermelha */
         .star-red {
             color: var(--primary-red);
@@ -320,6 +318,7 @@
             justify-content: center;
         }
 
+        /* DESIGN COMPONENTE DA FOTO DO JOGADOR NO MODAL CORRIGIDO */
         .modal-photo-container {
             position: relative;
             width: 110px;
@@ -327,13 +326,14 @@
             margin: 0 auto 15px auto;
         }
         .modal-player-img {
-            width: 100%;
-            height: 100%;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            object-fit: cover;
+            object-fit: cover; /* Garante que a foto não fique esticada */
             border: 3px solid #FFFFFF;
             box-shadow: 0 8px 20px rgba(0,0,0,0.4);
             background: #16161c;
+            display: block;
         }
         .modal-number-badge {
             position: absolute;
@@ -388,19 +388,22 @@
             line-height: 1.3;
         }
 
-        /* Comentários / Feed */
-        .comment-list { margin-top: 10px; }
+        /* Análises */
+        .stat-row { margin-bottom: 18px; }
+        .stat-labels { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+        .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
+        .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
+
+        /* Comentários */
+        .comment-list { margin-top: 30px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
-        /* CORREÇÃO DE LARGURA E ADAPTAÇÃO PARA TELEMÓVEL */
+        /* CORREÇÃO DE LARGURA PARA TELEMÓVEL */
         @media (max-width: 480px) {
             body, html { overflow-x: hidden; }
             .container { padding: 15px; box-sizing: border-box; }
             .card { padding: 15px !important; box-sizing: border-box; width: 100% !important; }
             .comment-item { font-size: 13px !important; white-space: normal !important; word-break: break-word !important; padding: 10px !important; }
-           
-            nav { gap: 5px !important; padding: 5px !important; }
-            nav button { font-size: 10px !important; padding: 8px 4px !important; }
         }
     </style>
 </head>
@@ -513,38 +516,38 @@
         </section>
 
         <section id="stats" class="app-section">
-            <h2 class="section-title">Análises Económicas</h2>
-           
-            <div class="card" style="background: linear-gradient(135deg, rgba(0,135,81,0.15) 0%, rgba(210,38,48,0.1) 100%); border: 1px solid rgba(255,255,255,0.1); text-align: center; margin-bottom: 25px; padding: 20px; border-radius: 12px;">
-                <p style="margin: 0; font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Valor de Mercado do Plantel Atual</p>
-                <h3 style="margin: 8px 0 4px 0; font-size: 32px; color: #FFF; font-weight: 800;">21.00 M €</h3>
-                <span style="font-size: 11px; color: var(--primary-green); font-weight: bold;">▲ +5.83M € de valorização nesta época</span>
+            <h2 class="section-title">Performance Global</h2>
+            <div class="card">
+                <div class="stat-row">
+                    <div class="stat-labels"><span>Valor Mercado SAD</span> <span>21.35 M €</span></div>
+                    <div class="stat-bar"><div class="stat-fill" style="width: 88%"></div></div>
+                </div>
             </div>
 
-            <h3 style="font-size: 16px; margin-bottom: 15px; color: #FFF; font-weight: 600;">Últimas Atualizações Financeiras</h3>
+            <h3 style="font-size: 15px; margin: 25px 0 12px 0; color: #FFF; font-weight: 600; border-left: 3px solid var(--primary-green); padding-left: 8px;">Últimas Atualizações Financeiras</h3>
            
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold;">AUMENTO DE VALOR</span>
-                        <h4 style="margin: 8px 0 4px 0; font-size: 15px; color: #FFF;">Stefan Leković</h4>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Stefan Leković</h4>
                         <p style="margin: 0; font-size: 12px; color: var(--text-muted);">A afirmação a titular e a compra definitiva dispararam a sua cotação.</p>
                     </div>
-                    <div style="text-align: right;">
-                        <span style="color: var(--primary-green); font-weight: bold; font-size: 16px;">▲ 2.50M €</span>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 2.50M €</span>
                     </div>
                 </div>
             </div>
 
             <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                     <div>
-                        <span style="background: rgba(245,158,11,0.2); color: #F59E0B; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: bold;">VALORIZAÇÃO EM FOCO</span>
-                        <h4 style="margin: 8px 0 4px 0; font-size: 15px; color: #FFF;">Ianis Stoica</h4>
-                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Extremo mantém-se como um dos ativos mais valiosos do clube.</p>
+                        <span style="background: rgba(245,158,11,0.2); color: #F59E0B; font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Valorização em Foco</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Ianis Stoica</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">Extremo mantém-se estável como um dos ativos mais valiosos do clube.</p>
                     </div>
-                    <div style="text-align: right;">
-                        <span style="color: #F59E0B; font-weight: bold; font-size: 16px;">1.50M €</span>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: #F59E0B; font-weight: bold; font-size: 15px;">1.50M €</span>
                     </div>
                 </div>
             </div>
@@ -659,7 +662,7 @@
                 tag: "SAD Investimento",
                 corTag: "var(--primary-red)",
                 imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela.\n\nO plano prevê uma injeção de capital direta que pode ascender aos 45 milhões de euros no decorrer dos próximos três anos, focando-se na modernização total das infraestruturas e em contratações de peso.\n\nFiguras lendárias como Mats Hummels, Thomas Müller e o experiente guardião Yann Sommer surgem associados ao fundo de investimento como embaixadores e futuros consultores desportivos do projeto, o que promete colocar o emblema da Reboleira no mapa do futebol europeu a curto prazo."
+                textoCompleto: "Um consórcio financeiro internacional com forte ligação ao futebol alemão iniciou conversações preliminares para a aquisição da maioria do capital social da SAD do Estrela.\n\nO plano prevê uma injeção de capital direta que pode ascender aos 45 milhões de euros no decorrer dos próximos três anos, focando-se na modernização total das infraestruturas e em contratações de peso.\n\nFiguras lendárias como Mats Hummels, Thomas Müller e o experiente guardião Yann Sommer surgem associados ao fundo de investmento como embaixadores e futuros consultores desportivos do projeto, o que promete colocar o emblema da Reboleira no mapa do futebol europeu a curto prazo."
             },
             "noticia2": {
                 titulo: "Assédio do Brasil: Vasco da Gama sonda Abraham Marcus",
@@ -750,24 +753,26 @@
         };
 
         function abrirJogador(numeroCamisola) {
-            var jogador = baseJogadores[numeroCamisola];
-            if(!jogador) return;
+            var AppJogador = baseJogadores[numeroCamisola];
+            if(!AppJogador) return;
 
-            document.getElementById('modalNumBadge').innerText = '../../' + jogador.numero;
+            // Correção: exibe apenas o número original sem caminhos estranhos
+            document.getElementById('modalNumBadge').innerText = AppJogador.numero;
+           
             var imgElement = document.getElementById('modalPhoto');
-            if (jogador.foto && jogador.foto.trim() !== "") {
-                imgElement.src = jogador.foto;
+            if (AppJogador.foto && AppJogador.foto.trim() !== "") {
+                imgElement.src = AppJogador.foto;
             } else {
                 imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
             }
 
-            document.getElementById('modalName').innerText = jogador.nome;
-            document.getElementById('modalPos').innerText = jogador.posicao;
-            document.getElementById('modalAge').innerText = jogador.idade;
-            document.getElementById('modalVal').innerText = jogador.valor;
-            document.getElementById('modalNat').innerText = jogador.nacionalidade;
-            document.getElementById('modalBio').innerText = jogador.bio;
-            document.getElementById('modalHistory').innerText = jogador.historia;
+            document.getElementById('modalName').innerText = AppJogador.nome;
+            document.getElementById('modalPos').innerText = AppJogador.posicao;
+            document.getElementById('modalAge').innerText = AppJogador.idade;
+            document.getElementById('modalVal').innerText = AppJogador.valor;
+            document.getElementById('modalNat').innerText = AppJogador.nacionalidade;
+            document.getElementById('modalBio').innerText = AppJogador.bio;
+            document.getElementById('modalHistory').innerText = AppJogador.historia;
 
             document.getElementById('playerModal').style.display = 'block';
         }
@@ -778,14 +783,10 @@
 
         function irParaSecao(idSecao) {
             var secoes = document.getElementsByClassName('app-section');
-            for (var i = 0; i < secoes.length; i++) {
-                secoes[i].classList.remove('active');
-            }
+            for (var i = 0; i < secoes.length; i++) { secoes[i].classList.remove('active'); }
            
             var botoes = document.querySelectorAll('nav button');
-            for (var j = 0; j < botoes.length; j++) {
-                botoes[j].classList.remove('active');
-            }
+            for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
            
             document.getElementById(idSecao).classList.add('active');
             var idBotao = 'btn-' + idSecao;
