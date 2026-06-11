@@ -296,13 +296,16 @@
 
         .modal-photo-container { position: relative; width: 110px; height: 110px; margin: 0 auto 15px auto; }
         .modal-player-img {
-            width: 110px; height: 110px; border-radius: 50%; object-fit: cover;
+            width: 110px;
+            height: 110px; border-radius: 50%; object-fit: cover;
             border: 3px solid #FFFFFF; box-shadow: 0 8px 20px rgba(0,0,0,0.4); background: #16161c; display: block;
         }
         .modal-number-badge {
-            position: absolute; bottom: 0; right: 0; background: var(--primary-red); color: white;
+            position: absolute;
+            bottom: 0; right: 0; background: var(--primary-red); color: white;
             font-size: 14px; font-weight: 900; width: 32px; height: 32px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; border: 2px solid #FFFFFF; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center; justify-content: center; border: 2px solid #FFFFFF; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .modal-name { font-size: 28px; font-weight: 900; margin: 5px 0; text-transform: uppercase; }
@@ -384,21 +387,21 @@
             <h2 class="section-title">Destaques Principais</h2>
             <p style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
-            <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')" style="border: 1px solid rgba(245, 158, 11, 0.4); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(245, 158, 11, 0.05) 100%);">
-                <div class="news-image-banner" style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>');"></div>
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')" style="border: 1px solid var(--primary-red); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(210, 38, 48, 0.05) 100%);">
+                <div class="news-image-banner" style="background-image: url('https://estrelamadora.pt/wp-content/uploads/2026/06/709078775_18096678815464829_3481980488222504349_n-2048x1448.jpg');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag" style="background: #F59E0B; color: #000;">⭐ Em Destaque</span>
-                    <h3 class="news-title">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
-                    <p class="news-desc">O jovem internacional pela Costa do Marfim está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
+                    <span class="news-tag" style="background: var(--primary-red); color: white;">⭐ Em Destaque</span>
+                    <h3 class="news-title">Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal</h3>
+                    <p class="news-desc">A formação tricolor bateu o FC Famalicão por 4-1 num duelo pioneiro de responsabilidade social, consolidando a nova aposta inclusiva do clube.</p>
                 </div>
             </div>
 
-            <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')">
-                <div class="news-image-banner" style="background-image: url('https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop');"></div>
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_doue')">
+                <div class="news-image-banner" style="background-image: url('https://cdn.record.pt/images/2026-04/img_920x518uu2026-04-04-16-23-34-2431083-im-639165429184436300.jpg');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag" style="background: var(--primary-green);">Futebol Amputados</span>
-                    <h3 class="news-title">Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal</h3>
-                    <p class="news-desc">A formação tricolor bateu o FC Famalicão por 4-1 num duelo pioneiro de responsabilidade social, consolidando a nova aposta inclusiva do clube.</p>
+                    <span class="news-tag" style="background: var(--primary-green); color: #fff;">Torneio Toulon</span>
+                    <h3 class="news-title">Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon</h3>
+                    <p class="news-desc">O jovem internacional pela Costa do Marfim está a encantar os olheiros mundiais no prestigiado torneio Maurice Revello. Exibições de gala aceleram a sua subida de cotação.</p>
                 </div>
             </div>
 
@@ -498,6 +501,45 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Robinho</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O médio apresentou um rendimento consistente nas últimas jornadas.</p>
+                    </div>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 150 mil €</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Jovane</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado destaca-se pela sua capacidade ofensiva e golos decisivos.</p>
+                    </div>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 250 mil €</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="margin-bottom: 12px; padding: 15px; border-radius: 12px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                    <div>
+                        <span style="background: rgba(0,135,81,0.2); color: var(--primary-green); font-size: 10px; padding: 3px 8px; border-radius: 4px; font-weight: bold; text-transform: uppercase;">Aumento de Valor</span>
+                        <h4 style="margin: 6px 0 4px 0; font-size: 14px; color: #FFF;">Abraham Marcus</h4>
+                        <p style="margin: 0; font-size: 12px; color: var(--text-muted);">O avançado tem ganho protagonismo com exibições de grande velocidade.</p>
+                    </div>
+                    <div style="text-align: right; flex-shrink: 0;">
+                        <span style="color: var(--primary-green); font-weight: bold; font-size: 15px;">▲ 200 mil €</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="modalidade_futsal" class="app-section">
@@ -574,6 +616,10 @@
                 <h3 style="margin-top:0; font-size:15px; color:var(--primary-green); text-transform:uppercase;">Relatório Técnico</h3>
                 <p id="modalBio" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
             </div>
+            <div class="card" style="border: 1px solid var(--primary-red); background: rgba(210, 38, 48, 0.05); padding: 20px;">
+                <h3 style="margin-top:0; font-size:15px; color:var(--primary-red); text-transform:uppercase;">Histórico Recente</h3>
+                <p id="modalHist" style="font-size:13px; line-height:1.6; color:#E2E2EC; margin:0;">Carregando...</p>
+            </div>
         </div>
 
         <div id="newsModal" class="custom-modal">
@@ -593,6 +639,14 @@
     </button>
 
     <div id="sidebar-menu" style="position: fixed; top: 0; right: -280px; width: 280px; height: 100%; background: #0b0c10; z-index: 100002; box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.3s ease; padding: 20px; box-sizing: border-box; overflow-y: auto;">
+       
+        <div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size:13px; font-weight:700; color:#fff;">Idioma / Language</span>
+            <button onclick="alert('Funcionalidade de idioma: Alternando entre PT / EN')" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: white; padding: 6px 12px; border-radius: 8px; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-weight: bold;">
+                🌐 PT ⇄ EN
+            </button>
+        </div>
+
         <div style="text-align: right; margin-bottom: 20px;">
             <button onclick="alternarMenuLateral()" style="background: none; border: none; color: white; font-size: 24px; cursor: pointer;">✕</button>
         </div>
@@ -632,16 +686,16 @@
         var baseNoticias = {
             "noticia_doue": {
                 titulo: "Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon",
-                tag: "⭐ Em Destaque",
-                corTag: "#F59E0B",
-                imagem: "data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'800\' height=\'450\'><rect width=\'100%\' height=\'100%\' fill=\'%2316161c\'/><text x=\'50%\' y=\'50%\' font-size=\'30\' fill=\'%23a5a5b5\' text-anchor=\'middle\' font-family=\'sans-serif\'>Estrela Amadora</text></svg>",
+                tag: "Torneio Toulon",
+                corTag: "var(--primary-green)",
+                imagem: "https://cdn.record.pt/images/2026-04/img_920x518uu2026-04-04-16-23-34-2431083-im-639165429184436300.jpg",
                 textoCompleto: "O jovem médio centro do Estrela da Amadora, Eddy Doué, está a dar muito que falar além-fronteiras.\n\nAtualmente a representar a seleção nacional no prestigiado Torneio Internacional de Toulon (Torneio Maurice Revello) em França, o jovem internacional pela Costa do Marfim tem realizado exibições defensivas e de distribuição que saltaram à vista de inúmeros olheiros europeus."
             },
             "noticia_amputados": {
                 titulo: "Histórico: Estrela vence primeiro jogo de Futebol para Amputados em Portugal",
-                tag: "Futebol Amputados",
-                corTag: "var(--primary-green)",
-                imagem: "https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800&auto=format&fit=crop",
+                tag: "⭐ Em Destaque",
+                corTag: "var(--primary-red)",
+                imagem: "https://estrelamadora.pt/wp-content/uploads/2026/06/709078775_18096678815464829_3481980488222504349_n-2048x1448.jpg",
                 textoCompleto: "A equipa tricolor derrotou o FC Famalicão por 4-1, num histórico encontro disputado no Campo José Alegre.\n\nMais do que o excelente resultado desportivo construído dentro de campo, a partida representou um marco fundacional único para o desporto adaptado nacional, servindo como a primeira partida oficializada de futebol para amputados em solo português, apoiada ativamente por iniciativas de inclusão social da Associação de Futebol de Lisboa."
             },
             "noticia1": {
@@ -659,7 +713,7 @@
             document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
             document.getElementById('newsModalTag').innerText = noticia.tag;
             document.getElementById('newsModalTag').style.background = noticia.corTag;
-            document.getElementById('newsModalTag').style.color = idNoticia === 'noticia_doue' ? '#000' : '#FFF';
+            document.getElementById('newsModalTag').style.color = '#FFF';
             document.getElementById('newsModalTitle').innerText = noticia.titulo;
             document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
             document.getElementById('newsModal').style.display = 'block';
@@ -667,19 +721,19 @@
         function fecharNoticia() { document.getElementById('newsModal').style.display = 'none'; }
 
         var baseJogadores = {
-            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica." },
-            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física." },
-            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional." },
-            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza." },
-            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva." },
-            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo." },
-            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos." },
-            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento." },
-            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo." },
-            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado." },
-            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz." },
-            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física." },
-            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior." }
+            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica.", historico: "Registou exibições sólidas na reta final do último campeonato, garantindo a permanência." },
+            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física.", historico: "Atuou em partidas importantes da Taça, demonstrando total fiabilidade." },
+            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional.", historico: "Mantém-se regular nos planos de treino e com forte compromisso com o grupo." },
+            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza.", historico: "Evolução notável ao longo da época nas camadas de transição para os seniores." },
+            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva.", historico: "Opção de compra exercida em definitivo por 1M € fruto do seu forte impacto tático." },
+            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo.", historico: "Titular indiscutível em vários eixos táticos aplicados durante o ano transato." },
+            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos.", historico: "Subida acentuada de rendimento que despertou o interesse de vários observadores." },
+            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento.", historico: "Efetuou uma série de desarmes providenciais em jogos de alto risco em casa." },
+            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo.", historico: "Dominou os duelos nas bolas paradas nos momentos cruciais da última época." },
+            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado.", historico: "Chamado a intervir com foco absoluto sempre que a rotação defensiva exigiu." },
+            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz.", historico: "Protagonista em transições rápidas pelos flancos com assistências de relevo." },
+            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física.", historico: "Forte intensidade demonstrada nas suas representações internacionais e no clube." },
+            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior.", historico: "Rigor defensivo assinalável nos minutos concedidos ao longo do ano competitivo." }
         };
 
         function abrirJogador(numeroCamisola) {
@@ -696,8 +750,9 @@
             document.getElementById('modalPos').innerText = AppJogador.posicao;
             document.getElementById('modalAge').innerText = AppJogador.idade;
             document.getElementById('modalVal').innerText = AppJogador.valor;
-            document.getElementById('modalNat').innerText = AppDump = AppJogador.nacionalidade;
+            document.getElementById('modalNat').innerText = AppJogador.nacionalidade;
             document.getElementById('modalBio').innerText = AppJogador.bio;
+            document.getElementById('modalHist').innerText = AppJogador.historico || "Sem histórico recente registado para esta época.";
             document.getElementById('playerModal').style.display = 'block';
         }
         function fecharJogador() { document.getElementById('playerModal').style.display = 'none'; }
