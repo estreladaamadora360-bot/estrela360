@@ -397,9 +397,9 @@
             </div>
 
             <div class="news-card-modern" onclick="abrirNoticia('rumor_pepa')">
-                <div class="news-image-banner" style="background-image: url('https://img.asmedia.epimg.net/resizer/v2/W72Y676CHJNLHMRIDRMX6XEDPY.jpg?auth=62649a207604be1d95eeaa2bc0b7df1d3824ee18776b9e28f219ce8d5469ecfc&width=1476&height=830&smart=true');"></div>
+                <div class="news-image-banner" style="background-image: url('https://thumbs.web.sapo.io/?W=1550&H=0&delay_optim=1&webp=1&epic=ODM4HIuUJRAiegPQxfTzSE7sfs+yWpl8HA1qXeIEziSfI71aR0OIGJ6o3pcDyxFadaDBJcm21JXjtUhIYT7f5BLRLcPK6gGtx7v0UetOn1Bpi1Y=');"></div>
                 <div class="news-content-area">
-                    <span class="news-tag" id="tag-news-rumor" style="background: #F59E0B; color: black;">⚠️ Rumor Técnico</span>
+                    <span class="news-tag" id="tag-news-rumor" style="background: var(--primary-green); color: white;">Rumor</span>
                     <h3 class="news-title">Pepa apontado como forte candidato ao comando técnico do Estrela da Amadora</h3>
                     <p class="news-desc">O experiente treinador português está no topo da lista de prioridades da administração tricolor para liderar a equipa principal na nova época desportiva.</p>
                 </div>
@@ -752,9 +752,9 @@
         var baseNoticias = {
             "rumor_pepa": {
                 titulo: "Pepa apontado como forte candidato ao comando técnico do Estrela da Amadora",
-                tag: "⚠️ Rumor Técnico",
-                corTag: "#F59E0B",
-                imagem: "https://img.asmedia.epimg.net/resizer/v2/W72Y676CHJNLHMRIDRMX6XEDPY.jpg?auth=62649a207604be1d95eeaa2bc0b7df1d3824ee18776b9e28f219ce8d5469ecfc&width=1476&height=830&smart=true",
+                tag: "Rumor",
+                corTag: "var(--primary-green)",
+                imagem: "https://thumbs.web.sapo.io/?W=1550&H=0&delay_optim=1&webp=1&epic=ODM4HIuUJRAiegPQxfTzSE7sfs+yWpl8HA1qXeIEziSfI71aR0OIGJ6o3pcDyxFadaDBJcm21JXjtUhIYT7f5BLRLcPK6gGtx7v0UetOn1Bpi1Y=",
                 textoCompleto: "O experiente timoneiro Pedro Miguel Dias Gonçalves, conhecido no futebol mundial por Pepa, está a ganhar forte tração nos bastidores da Reboleira para assumir a equipa técnica principal tricolor.\n\nCom passagens marcantes e sólidas pelo panorama português (Paços de Ferreira, Vitória de Guimarães) e aventuras no estrangeiro (Al-Tai, Cruzeiro, Sport Recife), o técnico agrada de sobremaneira à estrutura administrativa pela sua visão tática ofensiva e exímio trabalho no desenvolvimento de jovens ativos."
             },
             "noticia_doue": {
@@ -776,7 +776,7 @@
                 tag: "SAD Investimento",
                 corTag: "var(--primary-red)",
                 imagem: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop",
-                textoCompleto: "Um consórcio financeiro internacional com ligações ao futebol alemão iniciou conversações para comprar a maioria da SAD do Estrela.\n\nO plano prevê uma injeção de até 45 milhões de euros em três anos para modernizar infraestruturas e contratar jogadores de peso. Hummels e Müller, antigos internacionais, surgem como embaixadores e futuros consultores desportivos.\n\nÉ basicamente o resumo da notícia que saiu na A Bola e no Record há umas semanas: o grupo de investidores ligado ao Müller, Hummels e Sommer quer entrar no Estrela com 40-45M€.Um consórcio financeiro internacional alemão iniciou conversações para investimento de 45 milhões de euros no Estrela da Amadora, visando infraestruturas e reestruturação da SAD."
+                textoCompleto: "Um consórcio financeiro internacional com ligações ao futebol alemão iniciou conversações para comprar a maioria da SAD do Estrela.\n\nO plano prevê uma injeção de até 45 milhões de euros em três anos para modernizar infraestruturas e contratar jogadores de peso. Hummels e Müller, antigos internacionais, surgem como embaixadores e futuros consultores desportivos.\n\nÉ basicamente o resumo da notícia que saiu na A Bola e no Record há umas semanas: o group de investidores ligado ao Müller, Hummels e Sommer quer entrar no Estrela com 40-45M€.Um consórcio financeiro internacional alemão iniciou conversações para investimento de 45 milhões de euros no Estrela da Amadora, visando infraestruturas e reestruturação da SAD."
             }
         };
 
@@ -786,7 +786,14 @@
             document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
             document.getElementById('newsModalTag').innerText = noticia.tag;
             document.getElementById('newsModalTag').style.background = noticia.corTag;
-            document.getElementById('newsModalTag').style.color = '#FFF';
+            
+            // Tratamento especial para o rumor do pepa não perder a cor do texto branco na abertura do modal
+            if(idNoticia === 'rumor_pepa') {
+                document.getElementById('newsModalTag').style.color = '#FFF';
+            } else {
+                document.getElementById('newsModalTag').style.color = (noticia.corTag === '#F59E0B') ? 'black' : '#FFF';
+            }
+            
             document.getElementById('newsModalTitle').innerText = noticia.titulo;
             document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
             document.getElementById('newsModal').style.display = 'block';
@@ -795,40 +802,40 @@
 
         // Alterado o campo "historico" para representar os clubes anteriores por onde passou
         var baseJogadores = {
-            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica.", historico: "Passou por: Atlético Mineiro (Brasil), São Paulo (Brasil), Sporting CP (Portugal) e Al-Ahli (Arábia Saudita)." },
-            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física.", historico: "Passou por: Coritiba (Brasil), Santa Cruz (Brasil) e Londrina (Brasil)." },
-            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional.", historico: "Passou por: Formação do Sporting CP, Real SC, Mafra e Oriental." },
-            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza.", historico: "Passou por: Formação do Sporting CP e equipa secundária antes de ingressar no projeto tricolor." },
-            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva.", historico: "Passou por: Estrela Vermelha de Belgrado (Sérvia) e Graficar (Sérvia)." },
-            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo.", historico: "Passou por: Athletico Paranaense (Brasil), América Mineiro (Brasil) e Red Bull Bragantino (Brasil)." },
-            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos.", historico: "Passou por: Formação do Flamengo (Brasil) e Palmeiras (Brasil)." },
-            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro com ótima capacidade de desarme e posicionamento.", historico: "Passou por: Ituano (Brasil) e Fortaleza (Brasil)." },
-            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo.", historico: "Passou por: Lyon B (França), Olimpik Donetsk (Ucrânia), New York Red Bulls (EUA) e Bastia (França)." },
-            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "", bio: "Firme no choque e de foco tático relevante no setor recuado.", historico: "Passou por: Sanjoanense, Louletano e Vila Meã." },
-            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz.", historico: "Passou por: IFK Göteborg (Suécia), FC Groningen (Países Baixos) e IFK Norrköping (Suécia)." },
-            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", foto: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física.", historico: "Passou por: Formação do Sporting CP, Olhanense, Vitória de Guimarães B e Leixões SC." },
-            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior.", historico: "Passou por: Formação do Bayern de Munique (Alemanha) e representações da equipa secundária bávara." },
+            "40": { nome: "Renan Ribeiro", numero: "40", posicao: "Guarda-Redes", idade: "36 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/95142-1713107249.jpg?lm=1", bio: "Guarda-redes experiente e líder de balneário tido como referência técnica.", historico: "Passou por: Atlético Mineiro (Brasil), São Paulo (Brasil), Sporting CP (Portugal) e Al-Ahli (Arábia Saudita)." },
+            "13": { nome: "Dudu", numero: "13", posicao: "Guarda-Redes", idade: "27 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/369258-1752756448.jpg?lm=1", bio: "Guarda-redes seguro com excelentes reflexos e imponência física.", historico: "Passou por: Coritiba (Brasil), Santa Cruz (Brasil) e Londrina (Brasil)." },
+            "22": { nome: "David Grilo", numero: "22", posicao: "Guarda-Redes", idade: "29 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", photo: "https://img.a.transfermarkt.technology/portrait/header/372468-1638712058.jpg?lm=1", bio: "Guardião de consistência assinalável no panorama nacional.", historico: "Passou por: Formação do Sporting CP, Real SC, Mafra e Oriental." },
+            "1": {  nome: "Diogo Pinto", numero: "1",  posicao: "Guarda-Redes", idade: "21 anos", valor: "300 Mil €", nacionalidade: "Portugal 🇵🇹", photo: "https://img.a.transfermarkt.technology/portrait/medium/670711-1689275244.jpg?lm=1", bio: "Jovem talento de enorme agilidade e projeção futura de baliza.", historico: "Passou por: Formação do Sporting CP e equipa secundária antes de ingressar no projeto tricolor." },
+            "25": { nome: "Stefan Lekovic", numero: "25", posicao: "Defesa Central", idade: "22 anos", valor: "2.50 M €", nacionalidade: "Sérvia 🇷🇸", photo: "https://img.a.transfermarkt.technology/portrait/header/797572-1739282472.jpg?lm=1", bio: "Defesa imponente e peça de grande projeção e solidez defensiva.", historico: "Passou por: Estrela Vermelha de Belgrado (Sérvia) e Graficar (Sérvia)." },
+            "30": { nome: "Luan Patrick", numero: "30", posicao: "Defesa Central", idade: "24 anos", valor: "2.00 M €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/658674-1682527289.jpg?lm=1", bio: "Central veloz na antecipação e de apurada qualidade na saída de jogo.", historico: "Passou por: Athletico Paranaense (Brasil), América Mineiro (Brasil) e Red Bull Bragantino (Brasil)." },
+            "83": { nome: "Otávio", numero: "83", posicao: "Defesa Central", idade: "20 anos", valor: "1.50 M €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/1094885-1767963953.jpg?lm=1", bio: "Central jovem de excelente dote físico e combatividade individual nos duelos.", historico: "Passou por: Formação do Flamengo (Brasil) e Palmeiras (Brasil)." },
+            "14": { nome: "Bernardo Schappo", numero: "14", posicao: "Defesa Central", idade: "27 anos", valor: "750 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/699679-1666299634.jpg?lm=1", bio: "Defesa canhoto seguro with ótima capacidade de desarme e posicionamento.", historico: "Passou por: Ituano (Brasil) e Fortaleza (Brasil)." },
+            "5": { nome: "Issiar Dramé", numero: "5", posicao: "Defesa Central", idade: "27 anos", valor: "300 Mil €", nacionalidade: "França 🇫🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/461582-1743698274.jpg?lm=1", bio: "Central imponente e forte no jogo aéreo defensivo.", historico: "Passou por: Lyon B (França), Olimpik Donetsk (Ucrânia), New York Red Bulls (EUA) e Bastia (França)." },
+            "3": { nome: "Ni Rodrigues", numero: "3", posicao: "Defesa Central", idade: "23 anos", valor: "100 Mil €", nacionalidade: "Portugal 🇵🇹", photo: "", bio: "Firme no choque e de foco tático relevante no setor recuado.", historico: "Passou por: Sanjoanense, Louletano e Vila Meã." },
+            "2": { nome: "Yahya Kalley", numero: "2", posicao: "Defesa Esquerdo", idade: "25 anos", valor: "300 Mil €", nacionalidade: "Suécia 🇸🇪", photo: "https://img.a.transfermarkt.technology/portrait/header/593410-1630507412.jpg?lm=1", bio: "Lateral de grande projeção ofensiva e corredor veloz.", historico: "Passou por: IFK Göteborg (Suécia), FC Groningen (Países Baixos) e IFK Norrköping (Suécia)." },
+            "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", photo: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física.", historico: "Passou por: Formação do Sporting CP, Olhanense, Vitória de Guimarães B e Leixões SC." },
+            "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", photo: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior.", historico: "Passou por: Formação do Bayern de Munique (Alemanha) e representações da equipa secundária bávara." },
             
             // Novos Médios adicionados
-            "6": { nome: "Kevin Jansson", numero: "6", posicao: "Médio Defensivo", idade: "25 anos", valor: "400 Mil €", nacionalidade: "Suécia 🇸🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/626854-1613147297.png?lm=1", bio: "Trinco de grande raio de ação e precisão posicional.", historico: "Passou por: Mjällby AIF (Suécia), Örebro SK (Suécia) e Kalmar FF (Suécia)." },
-            "39": { nome: "Eddy Doué", numero: "39", posicao: "Médio Centro", idade: "20 anos", valor: "400 Mil €", nacionalidade: "Costa do Marfim 🇨🇮", foto: "", bio: "Jovem médio dinâmico com refinada qualidade de passe e retenção de bola.", historico: "Formado localmente e projetado no futebol profissional através das seleções jovens marfinesas." },
-            "19": { nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/375392-1743699836.jpg?lm=1", bio: "Médio criativo com excelente visão de jogo e ligação rápida ao ataque.", historico: "Passou por: Varzim SC e Felgueiras antes de se afirmar ao mais alto nível." },
-            "8": { nome: "Robinho", numero: "8", posicao: "Médio Ofensivo", idade: "23 anos", valor: "600 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1093626-1711599066.jpg?lm=1", bio: "Médio ofensivo ágil, forte no drible curto e na rutura de linhas.", historico: "Desenvolveu carreira no futebol canarinho antes de abraçar o desafio europeu." },
-            "28": { nome: "Tom Moustier", numero: "28", posicao: "Médio Centro", idade: "24 anos", valor: "400 Mil €", nacionalidade: "França 🇫🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/782889-1753388045.jpg?lm=1", bio: "Médio centro rigoroso na pressão, equilibrado taticamente e bom batedor.", historico: "Passou pelas escolas do Marseille (França) e Hannover 96 (Alemanha)." },
-            "63": { nome: "Alex Sola", numero: "63", posicao: "Médio / Ala Direito", idade: "22 anos", valor: "300 Mil €", nacionalidade: "Espanha 🇪🇸", foto: "https://img.a.transfermarkt.technology/portrait/header/1216111-1743700735.jpg?lm=1", bio: "Ala polivalente de muita entrega e cruzamento tenso.", historico: "Formado no futebol espanhol antes da sua transferência por cedência temporária." },
+            "6": { nome: "Kevin Jansson", numero: "6", posicao: "Médio Defensivo", idade: "25 anos", valor: "400 Mil €", nacionalidade: "Suécia 🇸🇪", photo: "https://img.a.transfermarkt.technology/portrait/header/626854-1613147297.png?lm=1", bio: "Trinco de grande raio de ação e precisão posicional.", historico: "Passou por: Mjällby AIF (Suécia), Örebro SK (Suécia) e Kalmar FF (Suécia)." },
+            "39": { nome: "Eddy Doué", numero: "39", posicao: "Médio Centro", idade: "20 anos", valor: "400 Mil €", nacionalidade: "Costa do Marfim 🇨🇮", photo: "", bio: "Jovem médio dinâmico com refinada qualidade de passe e retenção de bola.", historico: "Formado localmente e projetado no futebol profissional através das seleções jovens marfinesas." },
+            "19": { nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹", photo: "https://img.a.transfermarkt.technology/portrait/header/375392-1743699836.jpg?lm=1", bio: "Médio criativo com excelente visão de jogo e ligação rápida ao ataque.", historico: "Passou por: Varzim SC e Felgueiras antes de se afirmar ao mais alto nível." },
+            "8": { nome: "Robinho", numero: "8", posicao: "Médio Ofensivo", idade: "23 anos", valor: "600 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/1093626-1711599066.jpg?lm=1", bio: "Médio ofensivo ágil, forte no drible curto e na rutura de linhas.", historico: "Desenvolveu carreira no futebol canarinho antes de abraçar o desafio europeu." },
+            "28": { nome: "Tom Moustier", numero: "28", posicao: "Médio Centro", idade: "24 anos", valor: "400 Mil €", nacionalidade: "França 🇫🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/782889-1753388045.jpg?lm=1", bio: "Médio centro rigoroso na pressão, equilibrado taticamente e bom batedor.", historico: "Passou pelas escolas do Marseille (França) e Hannover 96 (Alemanha)." },
+            "63": { nome: "Alex Sola", numero: "63", posicao: "Médio / Ala Direito", idade: "22 anos", valor: "300 Mil €", nacionalidade: "Espanha 🇪🇸", photo: "https://img.a.transfermarkt.technology/portrait/header/1216111-1743700735.jpg?lm=1", bio: "Ala polivalente de muita entrega e cruzamento tenso.", historico: "Formado no futebol espanhol antes da sua transferência por cedência temporária." },
             
             // Novos Avançados adicionados
-            "10": { nome: "Ianis Stoica", numero: "10", posicao: "Extremo / Avançado", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴", foto: "https://img.a.transfermarkt.technology/portrait/header/547754-1753432042.png?lm=1", bio: "Avançado móvel com excelente capacidade de finalização e drible.", historico: "Passou por: FCSB (Roménia), U Cluj (Roménia) e Hermannstadt (Roménia)." },
-            "11": { nome: "Jovane Cabral", numero: "11", posicao: "Extremo Esquerdo", idade: "27 anos", valor: "1.00 M €", nacionalidade: "Cabo Verde 🇨🇻", foto: "https://img.a.transfermarkt.technology/portrait/header/448466-1743699997.jpg?lm=1", bio: "Extremo explosivo dotado de remate potente e drible vertiginoso no um para um.", historico: "Passou por: Sporting CP (Portugal), Lazio (Itália), Salernitana (Itália) e Olympiacos (Grécia)." },
-            "18": { nome: "Jorge Meireles", numero: "18", posicao: "Avançado Centro", idade: "22 anos", valor: "600 Mil €", nacionalidade: "Portugal 🇵🇹", foto: "https://img.a.transfermarkt.technology/portrait/header/742454-1689275346.jpg?lm=1", bio: "Ponta de lança de área com forte instinto posicional e faro de golo.", historico: "Formação completa de relevo no FC Porto, integrando os bês antes do salto sénior." },
-            "212": { nome: "Alisson Souza", numero: "21", posicao: "Extremo", idade: "21 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/1270605-1767963706.jpg?lm=1", bio: "Jovem ala irreverente de velocidade pura nos corredores exteriores.", historico: "Desenvolvido nas categorias de base do futebol paulista e brasileiro." },
-            "26": { nome: "Bilal Brahimi", numero: "26", posicao: "Extremo Direito", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Argélia 🇩🇿", foto: "https://img.a.transfermarkt.technology/portrait/header/543051-1756806904.jpg?lm=1", bio: "Extremo desequilibrador canhoto que gosta de fletir para o centro do terreno.", historico: "Passou por: Reims (França), Nice (França) e Stade Brestois (França)." },
-            "99": { nome: "Abraham Marcus", numero: "99", posicao: "Extremo Esquerdo", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬", foto: "https://img.a.transfermarkt.technology/portrait/header/699632-1612876843.jpg?lm=1", bio: "Ala vertical rápido com excelente passada e apetência ofensiva.", historico: "Passou por: Feirense, Radomiak Radom (Polónia) e FC Porto B." },
-            "20": { nome: "Sydney van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱", foto: "https://img.a.transfermarkt.technology/portrait/header/439292-1755785236.jpg?lm=1", bio: "Ponta de lança corpulento com forte presença física e exímio no jogo aéreo.", historico: "Passou por: NAC Breda (Holanda), Bologna (Itália), Heerenveen (Holanda) e Norwich City (Inglaterra)." },
-            "172": { nome: "Mathew Gbomadu", numero: "17", posicao: "Avançado", idade: "21 anos", valor: "200 Mil €", nacionalidade: "Nigéria 🇳🇬", foto: "https://img.a.transfermarkt.technology/portrait/header/1159175-1757593860.png?lm=1", bio: "Avançado jovem e versátil focado na profundidade e velocidade.", historico: "Recrutado de academias nigerianas de alto rendimento para o panorama europeu." },
-            "70": { nome: "Chilohem Onuoha", numero: "70", posicao: "Médio Ofensivo / Avançado", idade: "21 anos", valor: "200 Mil €", nacionalidade: "Alemanha 🇩🇪", foto: "https://img.a.transfermarkt.technology/portrait/header/905013-1752744716.jpg?lm=1", bio: "Médio ofensivo de grande envergadura física e inteligência tática entrelinhas.", historico: "Formado na Alemanha com passagens pelas camadas jovens do RB Leipzig e FC Köln." },
-            "77": { nome: "Leandro Antonetti", numero: "77", posicao: "Ponta de Lança", idade: "23 anos", valor: "200 Mil €", nacionalidade: "Porto Rico 🇵🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/892926-1750365255.jpg?lm=1", bio: "Internacional portorriquenho combativo, forte no choque com os defesas.", historico: "Formado e rodado em Espanha com exibições de destaque no CD Lugo e Fuenlabrada." },
-            "9": { nome: "Rodrigo Pinho", numero: "9", posicao: "Ponta de Lança", idade: "35 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", foto: "https://img.a.transfermarkt.technology/portrait/header/366278-1743700311.jpg?lm=1", bio: "Ponta de lança altamente experiente com posicionamento exímio na pequena área.", historico: "Passou por: Marítimo, SC Braga, SL Benfica e Coritiba (Brasil)." }
+            "10": { nome: "Ianis Stoica", numero: "10", posicao: "Extremo / Avançado", idade: "23 anos", valor: "1.50 M €", nacionalidade: "Roménia 🇷🇴", photo: "https://img.a.transfermarkt.technology/portrait/header/547754-1753432042.png?lm=1", bio: "Avançado móvel com excelente capacidade de finalização e drible.", historico: "Passou por: FCSB (Roménia), U Cluj (Roménia) e Hermannstadt (Roménia)." },
+            "11": { nome: "Jovane Cabral", numero: "11", posicao: "Extremo Esquerdo", idade: "27 anos", valor: "1.00 M €", nacionalidade: "Cabo Verde 🇨🇻", photo: "https://img.a.transfermarkt.technology/portrait/header/448466-1743699997.jpg?lm=1", bio: "Extremo explosivo dotado de remate potente e drible vertiginoso no um para um.", historico: "Passou por: Sporting CP (Portugal), Lazio (Itália), Salernitana (Itália) e Olympiacos (Grécia)." },
+            "18": { nome: "Jorge Meireles", numero: "18", posicao: "Avançado Centro", idade: "22 anos", valor: "600 Mil €", nacionalidade: "Portugal 🇵🇹", photo: "https://img.a.transfermarkt.technology/portrait/header/742454-1689275346.jpg?lm=1", bio: "Ponta de lança de área com forte instinto posicional e faro de golo.", historico: "Formação completa de relevo no FC Porto, integrando os bês antes do salto sénior." },
+            "212": { nome: "Alisson Souza", numero: "21", posicao: "Extremo", idade: "21 anos", valor: "100 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/1270605-1767963706.jpg?lm=1", bio: "Jovem ala irreverente de velocidade pura nos corredores exteriores.", historico: "Desenvolvido nas categorias de base do futebol paulista e brasileiro." },
+            "26": { nome: "Bilal Brahimi", numero: "26", posicao: "Extremo Direito", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Argélia 🇩🇿", photo: "https://img.a.transfermarkt.technology/portrait/header/543051-1756806904.jpg?lm=1", bio: "Extremo desequilibrador canhoto que gosta de fletir para o centro do terreno.", historico: "Passou por: Reims (França), Nice (França) e Stade Brestois (França)." },
+            "99": { nome: "Abraham Marcus", numero: "99", posicao: "Extremo Esquerdo", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Nigéria 🇳🇬", photo: "https://img.a.transfermarkt.technology/portrait/header/699632-1612876843.jpg?lm=1", bio: "Ala vertical rápido com excelente passada e apetência ofensiva.", historico: "Passou por: Feirense, Radomiak Radom (Polónia) e FC Porto B." },
+            "20": { nome: "Sydney van Hooijdonk", numero: "20", posicao: "Ponta de Lança", idade: "26 anos", valor: "1.00 M €", nacionalidade: "Países Baixos 🇳🇱", photo: "https://img.a.transfermarkt.technology/portrait/header/439292-1755785236.jpg?lm=1", bio: "Ponta de lança corpulento com forte presença física e exímio no jogo aéreo.", historico: "Passou por: NAC Breda (Holanda), Bologna (Itália), Heerenveen (Holanda) e Norwich City (Inglaterra)." },
+            "172": { nome: "Mathew Gbomadu", numero: "17", posicao: "Avançado", idade: "21 anos", valor: "200 Mil €", nacionalidade: "Nigéria 🇳🇬", photo: "https://img.a.transfermarkt.technology/portrait/header/1159175-1757593860.png?lm=1", bio: "Avançado jovem e versátil focado na profundidade e velocidade.", historico: "Recrutado de academias nigerianas de alto rendimento para o panorama europeu." },
+            "70": { nome: "Chilohem Onuoha", numero: "70", posicao: "Médio Ofensivo / Avançado", idade: "21 anos", valor: "200 Mil €", nacionalidade: "Alemanha 🇩🇪", photo: "https://img.a.transfermarkt.technology/portrait/header/905013-1752744716.jpg?lm=1", bio: "Médio ofensivo de grande envergadura física e inteligência tática entrelinhas.", historico: "Formado na Alemanha com passagens pelas camadas jovens do RB Leipzig e FC Köln." },
+            "77": { nome: "Leandro Antonetti", numero: "77", posicao: "Ponta de Lança", idade: "23 anos", valor: "200 Mil €", nacionalidade: "Porto Rico 🇵🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/892926-1750365255.jpg?lm=1", bio: "Internacional portorriquenho combativo, forte no choque com os defesas.", historico: "Formado e rodado em Espanha com exibições de destaque no CD Lugo e Fuenlabrada." },
+            "9": { nome: "Rodrigo Pinho", numero: "9", posicao: "Ponta de Lança", idade: "35 anos", valor: "150 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/366278-1743700311.jpg?lm=1", bio: "Ponta de lança altamente experiente com posicionamento exímio na pequena área.", historico: "Passou por: Marítimo, SC Braga, SL Benfica e Coritiba (Brasil)." }
         };
 
         function abrirJogador(numeroCamisola) {
@@ -836,8 +843,8 @@
             if(!AppJogador) return;
             document.getElementById('modalNumBadge').innerText = AppJogador.numero;
             var imgElement = document.getElementById('modalPhoto');
-            if (AppJogador.foto && AppJogador.foto.trim() !== "") {
-                imgElement.src = AppJogador.foto;
+            if (AppJogador.photo && AppJogador.photo.trim() !== "") {
+                imgElement.src = AppJogador.photo;
             } else {
                 imgElement.src = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%' height='100%' fill='%231f1f27'/><text x='50%' y='55%' font-size='20' font-family='sans-serif' font-weight='bold' fill='%23a5a5b5' text-anchor='middle'>FT</text></svg>";
             }
@@ -1024,6 +1031,72 @@
                 document.getElementById('lbl-side-cont').innerText = "Contactos";
             }
         }
+
+        // ==========================================
+        // SISTEMA DE PUXAR PARA ATUALIZAR (PULL TO REFRESH)
+        // ==========================================
+        let touchStartPercent = 0;
+        let pullElement = null;
+
+        function criarBolinhaAtualizar() {
+            pullElement = document.createElement('div');
+            pullElement.style.position = 'fixed';
+            pullElement.style.top = '-50px';
+            pullElement.style.left = '50%';
+            pullElement.style.transform = 'translateX(-50%)';
+            pullElement.style.width = '40px';
+            pullElement.style.height = '40px';
+            pullElement.style.backgroundColor = 'var(--primary-green)'; 
+            pullElement.style.borderRadius = '50%';
+            pullElement.style.boxShadow = '0 3px 10px rgba(0,0,0,0.5)';
+            pullElement.style.zIndex = '99999';
+            pullElement.style.display = 'flex';
+            pullElement.style.alignItems = 'center';
+            pullElement.style.justifyContent = 'center';
+            pullElement.style.transition = 'top 0.1s ease, transform 0.2s ease';
+            pullElement.innerHTML = '🔄'; 
+            pullElement.style.fontSize = '16px';
+            document.body.appendChild(pullElement);
+        }
+
+        window.addEventListener('touchstart', function(e) {
+            if (window.scrollY === 0) {
+                touchStartPercent = e.touches[0].clientY;
+            } else {
+                touchStartPercent = 0;
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchmove', function(e) {
+            if (touchStartPercent <= 0) return;
+            let currentTouchPercent = e.touches[0].clientY;
+            let changePercent = currentTouchPercent - touchStartPercent;
+            if (changePercent > 0 && changePercent < 150) {
+                if (!pullElement) criarBolinhaAtualizar();
+                let topPosition = -50 + (changePercent / 1.5);
+                pullElement.style.top = topPosition + 'px';
+                pullElement.style.transform = `translateX(-50%) rotate(${changePercent * 2}deg)`;
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchend', function(e) {
+            if (!pullElement) return;
+            let topNow = parseInt(pullElement.style.top);
+            if (topNow > 20) {
+                pullElement.style.top = '30px'; 
+                pullElement.style.animation = 'spin 1s linear infinite';
+                let style = document.createElement('style');
+                style.innerHTML = '@keyframes spin { 0% { transform: translateX(-50%) rotate(0deg); } 100% { transform: translateX(-50%) rotate(360deg); } }';
+                document.head.appendChild(style);
+                setTimeout(function() {
+                    window.location.href = window.location.pathname + '?refresh=' + new Date().getTime();
+                }, 600); 
+            } else {
+                pullElement.style.top = '-50px';
+                setTimeout(() => { if(pullElement) { pullElement.remove(); pullElement = null; } }, 200);
+            }
+            touchStartPercent = 0;
+        });
     </script>
 </body>
 </html>
