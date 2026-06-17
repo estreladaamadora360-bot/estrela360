@@ -387,6 +387,24 @@
             <h2 class="section-title" id="lbl-destaques">Destaques Principais</h2>
             <p id="lbl-news-tip" style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_per')">
+                <div class="news-image-banner" style="background-image: url('https://staticx.noticiasilimitadas.pt/oj/image.jpg?brand=oj&type=generate&guid=9f17955f-fccd-4cc0-a04a-77376fc0abc1&w=1200&h=675');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" id="tag-news-per" style="background: var(--primary-green); color: white;">Oficial</span>
+                    <h3 class="news-title">PER do Estrela da Amadora aprovado por larga maioria</h3>
+                    <p class="news-desc">O Processo de Revitalização Especial recebeu luz verde dos credores com mais de 90% de votos favoráveis, garantindo a estabilidade financeira e o futuro da SAD tricolor.</p>
+                </div>
+            </div>
+
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_langa')">
+                <div class="news-image-banner" style="background-image: url('https://sportal365images.com/process/smp-images-production/abola.pt/03082024/a96f52a3-7644-4b8c-92a2-279d1fb11bdc.jpg?operations=crop(0:455:5568:3587),autocrop(1200:630)');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" id="tag-news-langa" style="background: var(--primary-green); color: white;">Oficial</span>
+                    <h3 class="news-title">Bruno Langa termina empréstimo e ruma ao Azerbaijão</h3>
+                    <p class="news-desc">O defesa esquerdo moçambicano encerra a sua ligação contratual e ruma ao futebol do Azerbaijão para iniciar uma nova etapa na sua carreira desportiva.</p>
+                </div>
+            </div>
+
             <div class="news-card-modern" onclick="abrirNoticia('noticia_amputados')" style="border: 1px solid var(--primary-red); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(210, 38, 48, 0.05) 100%);">
                 <div class="news-image-banner" style="background-image: url('https://estrelamadora.pt/wp-content/uploads/2026/06/709078775_18096678815464829_3481980488222504349_n-2048x1448.jpg');"></div>
                 <div class="news-content-area">
@@ -750,12 +768,26 @@
         });
 
         var baseNoticias = {
+            "noticia_per": {
+                titulo: "PER do Estrela da Amadora aprovado por larga maioria",
+                tag: "Oficial",
+                corTag: "var(--primary-green)",
+                imagem: "https://staticx.noticiasilimitadas.pt/oj/image.jpg?brand=oj&type=generate&guid=9f17955f-fccd-4cc0-a04a-77376fc0abc1&w=1200&h=675",
+                textoCompleto: "O Processo de Revitalização Especial (PER) apresentado pela SAD do Estrela da Amadora foi aprovado de forma expressiva pelos credores.\n\nA votação favorável superou os 90%, garantindo uma reestruturação financeira sólida e viabilizando o plano estratégico e desportivo do clube tricolor para as próximas temporadas ao mais alto nível do futebol português."
+            },
+            "noticia_langa": {
+                titulo: "Bruno Langa termina empréstimo e ruma ao Azerbaijão",
+                tag: "Oficial",
+                corTag: "var(--primary-green)",
+                imagem: "https://sportal365images.com/process/smp-images-production/abola.pt/03082024/a96f52a3-7644-4b8c-92a2-279d1fb11bdc.jpg?operations=crop(0:455:5568:3587),autocrop(1200:630)",
+                textoCompleto: "O defesa esquerdo internacional moçambicano Bruno Langa concluiu formalmente o seu período de empréstimo ao serviço do Estrela da Amadora.\n\nO jogador já selou o seu ingresso definitivo no futebol do Azerbaijão, onde irá dar continuidade à sua carreira profissional numa nova liga, despedindo-se assim do plantel e do universo tricolor."
+            },
             "rumor_pepa": {
                 titulo: "Pepa é oficialmente o novo treinador do Estrela da Amadora",
                 tag: "Oficial",
                 corTag: "var(--primary-green)",
                 imagem: "https://thumbs.web.sapo.io/?W=1550&H=0&delay_optim=1&webp=1&epic=ODM4HIuUJRAiegPQxfTzSE7sfs+yWpl8HA1qXeIEziSfI71aR0OIGJ6o3pcDyxFadaDBJcm21JXjtUhIYT7f5BLRLcPK6gGtx7v0UetOn1Bpi1Y=",
-                textoCompleto: "É oficial: o experiente timoneiro Pedro Miguel Dias Gonçalves, conhecido no futebol mundial por Pepa, assume o comando técnico principal tricolor para as próximas duas temporadas.\n\nO treinador regressa a Portugal altamente motivado e focado em elevar o patamar do clube na I Liga, deixando uma mensagem forte de compromisso para todos os adeptos tricolores na Reboleira: \"Por uma cidade vamos fazer história\"."
+                textoCompleto: "É oficial: o experiente timoneiro Pedro Miguel Dias Gonçalves, conhecido no futebol mundial por Pepa, assume o comando técnico principal tricolor para as próximas duas temporadas.\n\nO treinador regressa a Portugal altamente motivado e focado em elevar o patamar do clube na I Liga, deixando uma message forte de compromisso para todos os adeptos tricolores na Reboleira: \"Por uma cidade vamos fazer história\"."
             },
             "noticia_doue": {
                 titulo: "Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon",
@@ -788,7 +820,7 @@
             document.getElementById('newsModalTag').style.background = noticia.corTag;
             
             // Tratamento especial para o rumor do pepa não perder a cor do texto branco na abertura do modal
-            if(idNoticia === 'rumor_pepa') {
+            if(idNoticia === 'rumor_pepa' || idNoticia === 'noticia_per' || idNoticia === 'noticia_langa') {
                 document.getElementById('newsModalTag').style.color = '#FFF';
             } else {
                 document.getElementById('newsModalTag').style.color = (noticia.corTag === '#F59E0B') ? 'black' : '#FFF';
