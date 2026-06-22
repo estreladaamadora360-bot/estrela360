@@ -493,6 +493,26 @@
             <h2 class="section-title" id="lbl-destaques">Destaques Principais</h2>
             <p id="lbl-news-tip" style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
+            <!-- NOVA NOTÍCIA: BENI SOUSA EM DESTAQUE -->
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_beni_sousa')" style="border: 1px solid var(--primary-red); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(210, 38, 48, 0.05) 100%);">
+                <div class="news-image-banner" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbNLrsHmVxHDdFFwJsLlqsxX40lniTzDfBXnfdbk-OGA&s=10');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-red); color: white;">⭐ Em Destaque</span>
+                    <h3 class="news-title">Beni Sousa muito perto de ser reforço do Estrela da Amadora</h3>
+                    <p class="news-desc">O extremo franco-congolês de 22 anos está muito perto de assinar pelo Estrela em definitivo depois de uma passagem pela Académica por empréstimo na temporada passada.</p>
+                </div>
+            </div>
+
+            <!-- NOVA NOTÍCIA: SAÍDA DE LUÍS SILVA -->
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_luis_silva')">
+                <div class="news-image-banner" style="background-image: url('https://staticx.noticiasilimitadas.pt/oj/image.webp?brand=oj&type=generate&guid=5431229d-1213-45a5-8047-95d4c10019f2&w=1200&h=675');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-green); color: white;">Oficial</span>
+                    <h3 class="news-title">Luís Silva deixa a equipa técnica do Estrela da Amadora</h3>
+                    <p class="news-desc">O treinador adjunto cessa as suas funções na estrutura tricolor da Reboleira. O técnico ruma a um novo desafio na sua carreira profissional.</p>
+                </div>
+            </div>
+
             <!-- NOTÍCIA EDITADA: RENAN RIBEIRO NÃO RENOVOU -->
             <div class="news-card-modern" onclick="abrirNoticia('noticia_renan_renovacao')">
                 <div class="news-image-banner" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJSsCt9Haqpaaem845jS66C8DSWftOjUE7v497mYOGVVC-jSOd-XUSkM8&s=10');"></div>
@@ -789,7 +809,7 @@
 
                     <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
                         <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
-                        <strong>Stefan Leković:</strong> Opção de compra exercida junto do Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
+                        <strong>Stefan Leković:</strong> Opção de compra exerceta junto do Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
                     </div>
 
                     <div class="comment-item" style="border-left: 4px solid #E11D48;">
@@ -898,6 +918,20 @@
         });
 
         var baseNoticias = {
+            "noticia_beni_sousa": {
+                titulo: "Beni Sousa muito perto de ser reforço do Estrela da Amadora",
+                tag: "⭐ Em Destaque",
+                corTag: "var(--primary-red)",
+                imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbNLrsHmVxHDdFFwJsLlqsxX40lniTzDfBXnfdbk-OGA&s=10",
+                textoCompleto: "O extremo franco-congolês de 22 anos está muito perto de assinar pelo Estrela em definitivo depois de uma passagem pela Académica por empréstimo na temporada passada onde realizou 30 jogos, somando 7 golos e 3 assistências.\n\nO extremo pertencente aos quadros dos encarnados, tinha sido contratado em 24/25 por 250 mil euros ao Amora FC e prepara-se agora para assinar um contrato de 3 a 4 anos segundo apurou o jornal Abola.\n\nO Estrela prepara-se assim para assegurar um jogador bastante promissor, tendo ultrapassado uma enorme concorrência pela sua contratação."
+            },
+            "noticia_luis_silva": {
+                titulo: "Luís Silva deixa a equipa técnica do Estrela da Amadora",
+                tag: "Oficial",
+                corTag: "var(--primary-green)",
+                imagem: "https://staticx.noticiasilimitadas.pt/oj/image.webp?brand=oj&type=generate&guid=5431229d-1213-45a5-8047-95d4c10019f2&w=1200&h=675",
+                textoCompleto: "O técnico Luís Silva, que integrava a estrutura da Reboleira, deixa de fazer parte dos quadros técnicos do Estrela da Amadora.\n\nA saída foi consumada após o fecho da temporada, com o treinador adjunto a desligar-se das suas funções tricolores para abraçar um novo projeto desportivo na sua carreira."
+            },
             "noticia_renan_renovacao": {
                 titulo: "Renan Ribeiro não renova contrato com o Estrela da Amadora",
                 tag: "Oficial",
@@ -956,8 +990,22 @@
             var modal = document.getElementById('newsModal');
             document.getElementById('newsModalBanner').style.backgroundImage = "url('" + noticia.imagem + "')";
             document.getElementById('newsModalTag').innerText = noticia.tag;
+            
+            // Alterar cor de fundo da tag caso seja a notícia específica do Luís Silva para ficar verde
+            if (idNoticia === 'noticia_luis_silva') {
+                document.getElementById('newsModalTag').style.backgroundColor = 'var(--primary-green)';
+            } else {
+                document.getElementById('newsModalTag').style.backgroundColor = 'var(--primary-red)';
+            }
+            
             document.getElementById('newsModalTitle').innerText = noticia.titulo;
-            document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
+            
+            // Aplicar itálico a "Abola" no corpo do modal se for a notícia do Beni Sousa
+            if (idNoticia === 'noticia_beni_sousa') {
+                document.getElementById('newsModalFullText').innerHTML = noticia.textoCompleto.replace('Abola', '<em>Abola</em>');
+            } else {
+                document.getElementById('newsModalFullText').innerText = noticia.textoCompleto;
+            }
             
             // Novas Animações Modernas e Atrativas ao Abrir
             modal.style.display = 'block';
@@ -988,7 +1036,7 @@
             "17": { nome: "Jefferson Encada", numero: "17", posicao: "Defesa Direito", idade: "28 anos", valor: "400 Mil €", nacionalidade: "Guiné-Bissau 🇬🇼", photo: "https://img.a.transfermarkt.technology/portrait/header/448468-1547563286.png?lm=1", bio: "Lateral internacional dinâmico com grande capacidade física.", historico: "Passou por: Formação do Sporting CP, Olhanense, Vitória de Guimarães B e Leixões SC." },
             "21": { nome: "Max Scholze", numero: "21", posicao: "Defesa Direito", idade: "21 anos", valor: "400 Mil €", nacionalidade: "Alemanha 🇩🇪", photo: "https://img.a.transfermarkt.technology/portrait/header/707350-1753735529.jpg?lm=1", bio: "Ala de cariz evolutivo, rigoroso no posicionamento tático exterior.", historico: "Passou por: Formação do Bayern de Munique (Alemanha) e representações da equipa secundária bávara." },
             "6": { nome: "Kevin Jansson", numero: "6", posicao: "Médio Defensivo", idade: "25 anos", valor: "400 Mil €", nacionalidade: "Suécia 🇸🇪", photo: "https://img.a.transfermarkt.technology/portrait/header/626854-1613147297.png?lm=1", bio: "Trinco de grande raio de ação e precisão posicional.", historico: "Passou por: Mjällby AIF (Suécia), Örebro SK (Suécia) e Kalmar FF (Suécia)." },
-            "39": { nome: "Eddy Doué", numero: "39", posicao: "Médio Centro", idade: "20 anos", valor: "400 Mil €", nacionalidade: "Costa do Marfim 🇨🇮", photo: "", bio: "Jovem médio dinâmico com refinada qualidade de passe e retenção de bola.", historico: "Formado localmente e projetado no futebol profissional através das seleções jovens marfinesas." },
+            "39": { nome: "Eddy Doué", numero: "39", posicao: "Médio Centro", idade: "20 anos", valor: "400 Mil €", nacionalidade: "Costa do Marfim 🇨🇮", photo: "", bio: "Jovem médio dinâmico com refinada qualidade de passe e ligação rápida ao ataque.", historico: "Formado localmente e projetado no futebol profissional através das seleções jovens marfinesas." },
             "19": { nome: "Paulo Moreira", numero: "19", posicao: "Médio Centro", idade: "26 anos", valor: "1.50 M €", nacionalidade: "Portugal 🇵🇹", photo: "https://img.a.transfermarkt.technology/portrait/header/375392-1743699836.jpg?lm=1", bio: "Médio criativo com excelente visão de jogo e ligação rápida ao ataque.", historico: "Passou por: Varzim SC e Felgueiras antes de se afirmar ao mais alto nível." },
             "8": { nome: "Robinho", numero: "8", posicao: "Médio Ofensivo", idade: "23 anos", valor: "600 Mil €", nacionalidade: "Brasil 🇧🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/1093626-1711599066.jpg?lm=1", bio: "Médio ofensivo ágil, forte no drible curto e na rutura de linhas.", historico: "Desenvolveu carreira no futebol canarinho antes de abraçar o desafio europeu." },
             "28": { nome: "Tom Moustier", numero: "28", posicao: "Médio Centro", idade: "24 anos", valor: "400 Mil €", nacionalidade: "França 🇫🇷", photo: "https://img.a.transfermarkt.technology/portrait/header/782889-1753388045.jpg?lm=1", bio: "Médio centro rigoroso na pressão, equilibrado taticamente e bom batedor.", historico: "Passou pelas escolas do Marseille (França) e Hannover 96 (Alemanha)." },
