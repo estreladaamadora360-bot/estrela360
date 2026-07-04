@@ -147,8 +147,19 @@
             margin: 0 auto;
             padding-bottom: 80px;
         }
-        .app-section { display: none; }
-        .app-section.active { display: block; }
+        
+        /* ANIMAÇÃO MODERNA DE TRANSIÇÃO ENTRE SECÇÕES */
+        .app-section { 
+            display: none; 
+            opacity: 0;
+            transform: translateX(15px);
+            transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .app-section.active { 
+            display: block; 
+            opacity: 1;
+            transform: translateX(0);
+        }
 
         .card {
             background: var(--card-bg);
@@ -166,6 +177,18 @@
             letter-spacing: -0.5px;
             border-left: 4px solid var(--primary-red);
             padding-left: 10px;
+        }
+        
+        .market-sub-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 15px 0 12px 0;
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: inline-block;
         }
 
         /* Notícias Interativas */
@@ -318,7 +341,7 @@
             font-size: 18px;
             cursor: pointer;
             display: flex; align-items: center; justify-content: center;
-            z-index: 10010;
+            z-index: 10100;
             backdrop-filter: blur(5px);
             transition: background 0.2s;
         }
@@ -431,7 +454,7 @@
         .stat-bar { background: rgba(255,255,255,0.06); border-radius: 10px; height: 12px; overflow: hidden; }
         .stat-fill { background: linear-gradient(90deg, var(--primary-green), #10B981); height: 100%; }
 
-        .comment-list { margin-top: 30px; }
+        .comment-list { margin-top: 5px; }
         .comment-item { background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 14px; border-radius: 14px; margin-bottom: 12px; font-size: 14px; }
 
         /* Estilos do Menu Lateral de Modalidades Individuais */
@@ -493,6 +516,16 @@
             <h2 class="section-title" id="lbl-destaques">Destaques Principais</h2>
             <p id="lbl-news-tip" style="font-size:12px; color:var(--text-muted); margin-top:-10px; margin-bottom:20px;">💡 Clica em qualquer notícia para ampliar e ler o artigo completo.</p>
            
+            <!-- NOVA NOTÍCIA: SANTIAGO SERRA REFORÇA O ESTRELA DA AMADORA -->
+            <div class="news-card-modern" onclick="abrirNoticia('noticia_santiago_serra')" style="border: 1px solid var(--primary-green); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(0, 135, 81, 0.05) 100%);">
+                <div class="news-image-banner" style="background-image: url('https://cdmafrasad.pt/wp-content/uploads/2026/07/Captura-de-ecra-2026-07-01-as-10.35.49.png');"></div>
+                <div class="news-content-area">
+                    <span class="news-tag" style="background: var(--primary-green); color: white;">✍️ Oficial</span>
+                    <h3 class="news-title">Santiago Serra Reforça o Estrela da Amadora ‼️✍️</h3>
+                    <p class="news-desc">O Estrela da Amadora assegurou a contratação de Santiago Serra, médio de 19 anos que chega proveniente do Mafra a custo zero com divisão de passe.</p>
+                </div>
+            </div>
+
             <!-- NOVA NOTÍCIA: MAXIMILIAN HENNIG EM DESTAQUE -->
             <div class="news-card-modern" onclick="abrirNoticia('noticia_maximilian_hennig')" style="border: 1px solid var(--primary-red); background: linear-gradient(180deg, rgba(22, 22, 28, 0.8) 0%, rgba(210, 38, 48, 0.05) 100%);">
                 <div class="news-image-banner" style="background-image: url('https://sportal365images.com/process/smp-images-production/abola.pt/27062026/18644d33-645b-47d2-a7f0-964116607974.jpg?operations=crop(0:0:7763:5175)');"></div>
@@ -547,7 +580,7 @@
                 <div class="news-content-area">
                     <span class="news-tag" id="tag-news-per" style="background: var(--primary-green); color: white;">Oficial</span>
                     <h3 class="news-title">PER do Estrela da Amadora aprovado por larga maioria</h3>
-                    <p class="news-desc">O Processo de Revitalização Especial recebeu luz verde dos credores with mais de 90% de votos favoráveis, garantindo a estabilidade financeira e o futuro da SAD tricolor.</p>
+                    <p class="news-desc">O Processo de Revitalização Especial recebeu luz verde dos credores com mais de 90% de votos favoráveis, garantindo a estabilidade financeira e o futuro da SAD tricolor.</p>
                 </div>
             </div>
 
@@ -819,21 +852,53 @@
 
         <section id="community" class="app-section">
             <h2 class="section-title" id="lbl-comm-title">Mercado de Transferências Tricolor</h2>
+            
             <div class="card">
-                <div class="comment-list" id="commentList">
-                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
-                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
-                        <strong>Alex Sola:</strong> O ala direito/médio foi oficialmente cedido por empréstimo válido por 1 temporada (com duração de 1 ano) ao <strong>Kiryat Shmona FC</strong> do principal escalão de Israel.
+                <!-- SUB-SECÇÃO: ENTRADAS -->
+                <div class="market-sub-title" style="background: rgba(0, 135, 81, 0.2); border-left: 4px solid var(--primary-green);">▲ Entradas</div>
+                <div class="comment-list" style="margin-bottom: 25px;">
+                    <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
+                        <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Stefan Leković:</strong> Opção de compra exercida junto do Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
+                    </div>
+                    
+                    <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
+                        <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Santiago Serra:</strong> Contratação assegurada a <strong>custo zero</strong> vindo do Mafra. Os dois clubes acordaram a divisão dos direitos económicos do passe.
                     </div>
 
                     <div class="comment-item" style="border-left: 4px solid var(--primary-green);">
                         <span style="color: var(--primary-green); font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
-                        <strong>Stefan Leković:</strong> Opção de compra exerceta junto do Estrela Vermelha. Central garantido em definitivo por <strong>1M €</strong>.
+                        <strong>Beni Souza:</strong> Contratação assegurada a <strong>custo zero</strong> junto do Benfica, também salvaguardando a divisão dos direitos económicos do passe.
+                    </div>
+                </div>
+
+                <!-- SUB-SECÇÃO: SAÍDAS -->
+                <div class="market-sub-title" style="background: rgba(210, 38, 48, 0.15); border-left: 4px solid var(--primary-red);">▼ Saídas</div>
+                <div class="comment-list">
+                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
+                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Alex Sola:</strong> O ala direito/médio foi oficialmente cedido por empréstimo válido por 1 temporada ao <strong>Kiryat Shmona FC</strong> de Israel.
                     </div>
 
                     <div class="comment-item" style="border-left: 4px solid #E11D48;">
                         <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
-                        <strong>João Resende:</strong> Saída confirmada para o <strong>Farense</strong> a custo zero, salvaguardando uma divisão dos direitos económicos do passe (divisão do passe) entre os dois emblemas para futuras negociações.
+                        <strong>João Resende:</strong> Saída confirmada para o <strong>Farense</strong> a custo zero, com divisão do passe entre os dois emblemas para futuras negociações.
+                    </div>
+
+                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
+                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Semeu Commey:</strong> Saída confirmada rumo ao <strong>Leixões</strong>.
+                    </div>
+
+                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
+                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Manu:</strong> Transferência oficializada para o <strong>Radomiak Radom</strong> da Polónia.
+                    </div>
+
+                    <div class="comment-item" style="border-left: 4px solid #E11D48;">
+                        <span style="color: #E11D48; font-size: 18px; font-weight: bold; margin-right: 8px;">➔</span>
+                        <strong>Assane Ndiaye:</strong> Mudança oficializada para o <strong>Cultural Leonesa</strong> de Espanha.
                     </div>
                 </div>
             </div>
@@ -937,6 +1002,13 @@
         });
 
         var baseNoticias = {
+            "noticia_santiago_serra": {
+                titulo: "Santiago Serra Reforça o Estrela da Amadora",
+                tag: "Oficial",
+                corTag: "var(--primary-green)",
+                imagem: "https://cdmafrasad.pt/wp-content/uploads/2026/07/Captura-de-ecra-2026-07-01-as-10.35.49.png",
+                textoCompleto: "O Estrela da Amadora assegurou a contratação de Santiago Serra, médio de 19 anos que chega proveniente do Mafra. O negócio foi concretizado a custo zero, com os dois clubes a acordarem a divisão do passe do jogador.\n\nInternacional jovem por Portugal, Santiago Serra é um médio defensivo que pode atuar também como médio centro. Apresenta enorme qualidade na construção, inteligência tática e capacidade de recuperação de bola, sendo visto como um jogador com uma enorme margem de progressão.\n\nNa temporada passada realizou 22 jogos pelos Sub-19 do Mafra, apontando 8 golos, chegando ainda a fazer a sua estreia na Liga3 pelo Mafra somando ainda 5 jogos pela equipa principal.\n\nA aposta do Estrela passa pelo desenvolvimento do jovem médio, que poderá vir a conquistar espaço na equipa principal ao longo das próximas temporadas."
+            },
             "noticia_maximilian_hennig": {
                 titulo: "Maximilian Hennig muito perto do Estrela da Amadora",
                 tag: "⭐ Em Destaque",
@@ -970,7 +1042,7 @@
                 tag: "Oficial",
                 corTag: "var(--primary-red)",
                 imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJSsCt9Haqpaaem845jS66C8DSWftOjUE7v497mYOGVVC-jSOd-XUSkM8&s=10",
-                textoCompleto: "A administração da SAD do Estrela da Amadora confirmed que o experiente guarda-redes brasileiro Renan Ribeiro não irá renovar o seu vínculo contratual.\n\nO guardião tricolor não aceitou a proposta de prolongamento, ditando o fim da sua ligação à baliza da Reboleira. O clube agradece toda a liderança, maturidade técnica e segurança demonstradas durante o período em que representou o plantel principal liderado por Pepa, desejando-lhe o melhor nos seus futuros projetos desportivos."
+                textoCompleto: "A administração da SAD do Estrela da Amadora confirmou que o experiente guarda-redes brasileiro Renan Ribeiro não irá renovar o seu vínculo contratual.\n\nO guardião tricolor não aceitou a proposta de prolongamento, ditando o fim da sua ligação à baliza da Reboleira. O clube agradece toda a liderança, maturidade técnica e segurança demonstradas durante o período em que representou o plantel principal liderado por Pepa, desejando-lhe o melhor nos seus futuros projetos desportivos."
             },
             "noticia_per": {
                 titulo: "PER do Estrela da Amadora aprovado por larga maioria",
@@ -991,7 +1063,7 @@
                 tag: "Oficial",
                 corTag: "var(--primary-green)",
                 imagem: "https://thumbs.web.sapo.io/?W=1550&H=0&delay_optim=1&webp=1&epic=ODM4HIuUJRAiegPQxfTzSE7sfs+yWpl8HA1qXeIEziSfI71aR0OIGJ6o3pcDyxFadaDBJcm21JXjtUhIYT7f5BLRLcPK6gGtx7v0UetOn1Bpi1Y=",
-                textoCompleto: "É oficial: o experiente timoneiro Pedro Miguel Dias Gonçalves, conhecido no futebol mundial por Pepa, assume o comando técnico principal tricolor para as próximas duas temporadas.\n\nO treinador regressa a Portugal altamente motivado e focado em elevar o patamar do clube na I Liga, deixando uma mensagem forte de compromisso para todos os adeptos tricolores na Reboleira: \"Por uma cidade vamos fazer história\"."
+                textoCompleto: "É oficial: o experiente timoneiro Pedro Miguel Dias Gonçalves, conhecido no futebol mundial por Pepa, assume o comando técnico principal tricolor para as próximas duas temporadas.\n\nO treinador regressa a Portugal altamente motivado e focado em elevar o patamar do clube na I Liga, deixando uma message forte de compromisso para todos os adeptos tricolores na Reboleira: \"Por uma cidade vamos fazer história\"."
             },
             "noticia_doue": {
                 titulo: "Show Internacional: Eddy Doué brilha e valoriza no Torneio de Toulon",
@@ -1031,7 +1103,7 @@
             
             document.getElementById('newsModalTag').innerText = noticia.tag;
             
-            if (idNoticia === 'noticia_luis_silva' || idNoticia === 'noticia_caica_manu') {
+            if (idNoticia === 'noticia_luis_silva' || idNoticia === 'noticia_caica_manu' || idNoticia === 'noticia_santiago_serra') {
                 document.getElementById('newsModalTag').style.backgroundColor = 'var(--primary-green)';
             } else {
                 document.getElementById('newsModalTag').style.backgroundColor = 'var(--primary-red)';
@@ -1127,7 +1199,9 @@
             for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
            
             var targetSecao = document.getElementById(idSecao);
-            if(targetSecao) targetSecao.classList.add('active');
+            if(targetSecao) {
+                targetSecao.classList.add('active');
+            }
            
             var idBotao = 'btn-' + idSecao;
             if(idSecao === 'community') idBotao = 'btn-comm';
@@ -1142,7 +1216,10 @@
             var botoes = document.querySelectorAll('nav button');
             for (var j = 0; j < botoes.length; j++) { botoes[j].classList.remove('active'); }
            
-            document.getElementById(idModalidadeSecao).classList.add('active');
+            var targetMod = document.getElementById(idModalidadeSecao);
+            if (targetMod) {
+                targetMod.classList.add('active');
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
